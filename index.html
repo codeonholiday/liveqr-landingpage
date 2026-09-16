@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>LiveQR — Nhận donate VietQR về thẳng tài khoản ngân hàng | Alert OBS realtime</title>
   <meta name="description" content="Nền tảng donate cho streamer Việt: phí thấp nhất thị trường, tiền về thẳng tài khoản ngân hàng qua VietQR, alert + TTS tiếng Việt realtime trên OBS, kiểm duyệt nội dung và widget tương tác." />
-  <meta name="theme-color" content="#141927" />
+  <meta name="theme-color" content="#10141f" />
   <link rel="canonical" href="https://liveqr.me/" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://liveqr.me/" />
@@ -15,7 +15,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -60,7 +60,7 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy reveal">
-          <p class="kicker">Dành cho streamer Việt · OBS · Facebook / TikTok / YouTube Live</p>
+          <p class="kicker"><span class="kicker-dot" aria-hidden="true"></span>Dành cho streamer Việt · OBS · Facebook / TikTok / YouTube</p>
           <h1>Donate về thẳng tài khoản ngân hàng.<br /><span class="grad">Không ví trung gian, không chờ tất toán.</span></h1>
           <p class="hero-sub">
             LiveQR tạo trang donate VietQR riêng cho bạn. Khán giả quét mã, tiền vào thẳng
@@ -69,15 +69,23 @@
           </p>
           <div class="hero-cta">
             <a class="btn btn-primary btn-lg" href="https://app.liveqr.me" target="_blank" rel="noopener">Dùng thử miễn phí</a>
-            <a class="btn btn-ghost btn-lg" href="#demo">Trải nghiệm demo
+            <a class="btn btn-ghost btn-lg" href="#demo">Xem demo trực tiếp
               <svg viewBox="0 0 16 16" width="15" height="15" fill="none" aria-hidden="true"><path d="M8 2v10m0 0 4-4m-4 4-4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
           </div>
           <ul class="hero-points">
-            <li>Phí mỗi donate <strong>thấp nhất thị trường</strong></li>
-            <li><strong>0đ</strong> bị giữ — không ví trung gian</li>
-            <li>Alert <strong>realtime</strong> khi tiền về</li>
+            <li><span class="check" aria-hidden="true">✓</span>Phí donate <strong>thấp nhất thị trường</strong></li>
+            <li><span class="check" aria-hidden="true">✓</span><strong>0đ</strong> bị giữ — không ví trung gian</li>
+            <li><span class="check" aria-hidden="true">✓</span>Alert <strong>realtime</strong> khi tiền về</li>
           </ul>
+          <div class="platform-row">
+            <b>Chạy trên</b>
+            <span class="plat">OBS</span>
+            <span class="plat">Facebook</span>
+            <span class="plat">TikTok</span>
+            <span class="plat">YouTube</span>
+            <span class="plat">Twitch</span>
+          </div>
         </div>
 
         <div class="hero-visual reveal" aria-hidden="true">
@@ -113,7 +121,7 @@
         <div class="trust-item reveal"><span class="trust-num">0đ</span><span>Tiền bị giữ trong ví trung gian</span></div>
         <div class="trust-item reveal"><span class="trust-num">&lt; 8%</span><span>Phí mỗi donate — thấp nhất thị trường*</span></div>
         <div class="trust-item reveal"><span class="trust-num">Realtime</span><span>Alert hiện lên sóng ngay khi tiền về</span></div>
-        <div class="trust-item reveal"><span class="trust-num">100%</span><span>Lời nhắn được kiểm duyệt tiếng Việt trước khi lên màn hình</span></div>
+        <div class="trust-item reveal"><span class="trust-num">100%</span><span>Lời nhắn được kiểm duyệt trước khi lên sóng</span></div>
       </div>
     </section>
 
@@ -124,8 +132,8 @@
           <p class="kicker">Trải nghiệm ngay trên trình duyệt</p>
           <h2>Bên trái là khán giả. Bên phải là màn hình stream của bạn.</h2>
           <p class="section-sub">
-            Bản giả lập y như thật — không cần đăng ký. <strong>Bật loa lên</strong>: mỗi donate được
-            giọng đọc tiếng Việt đọc lời nhắn. Thử donate liên tiếp để thấy <strong>hàng đợi alert</strong>,
+            Bản giả lập y như thật — không cần đăng ký. Thử donate liên tiếp để thấy
+            <strong>hàng đợi alert</strong> và dòng <strong>TTS đang đọc</strong>,
             thử lời nhắn thô tục để thấy <strong>kiểm duyệt chặn</strong>.
           </p>
         </div>
@@ -175,7 +183,7 @@
             <button class="btn btn-ghost btn-sm btn-block" id="soundToggle" type="button">🔊 Âm thanh: BẬT</button>
 
             <div class="demo-hints">
-              <p>💡 Bấm <strong>Donate ngay</strong> liên tiếp nhiều lần — alert phát tuần tự kèm <strong>giọng đọc tiếng Việt</strong>, không đè nhau.</p>
+              <p>💡 Bấm <strong>Donate ngay</strong> liên tiếp nhiều lần — alert phát tuần tự, hiện <strong>TTS đang đọc</strong>, không đè nhau.</p>
             </div>
 
             <div class="panel-divider"></div>
@@ -210,7 +218,7 @@
                     <span class="obs-alert-who"><b id="alertName">fan</b> vừa donate <b class="amt" id="alertAmount">100.000₫</b></span>
                   </div>
                   <p class="obs-alert-msg"><span id="alertMsg"></span><span class="caret" id="alertCaret"></span></p>
-                  <span class="obs-alert-tts" id="alertTts">🔊 Giọng đọc đang đọc lời nhắn…</span>
+                  <span class="obs-alert-tts" id="alertTts">🔊 TTS đang đọc lời nhắn…</span>
                 </div>
 
                 <!-- hàng đợi -->
@@ -299,32 +307,44 @@
         </div>
         <div class="features-grid">
           <div class="feature-card reveal">
-            <span class="feature-icon">⚡</span>
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M13 2 4 14h7l-1 8 10-14h-7l0-6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            </span>
             <h3>VietQR donate tức thì</h3>
             <p>Mã QR động gắn nội dung chuyển khoản riêng cho từng lượt donate. Khán giả quét mã, app ngân hàng mở sẵn thông tin — không cần tài khoản, không thẻ cào.</p>
           </div>
           <div class="feature-card reveal">
-            <span class="feature-icon">🔔</span>
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M6 17V9a6 6 0 1 1 12 0v8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M4 17h16M10 20h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
             <h3>Alert OBS realtime, có hàng đợi</h3>
             <p>Alert bật lên ngay khi tiền về tài khoản. Donate dồn dập vào buổi đỉnh điểm vẫn phát tuần tự — không chớp tắt, không đè âm thanh.</p>
           </div>
           <div class="feature-card reveal">
-            <span class="feature-icon">🗣️</span>
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M4 10v4a3 3 0 0 0 3 3h1V7H7a3 3 0 0 0-3 3Z" stroke="currentColor" stroke-width="1.8"/><path d="M12 5v14c6-2 8-5 8-7s-2-5-8-7Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            </span>
             <h3>TTS đọc lời nhắn tiếng Việt</h3>
             <p>Giọng đọc tự nhiên đọc tên và lời nhắn của khán giả. Cài ngưỡng mức tối thiểu để TTS không bị spam những lượt donate nhỏ.</p>
           </div>
           <div class="feature-card reveal">
-            <span class="feature-icon">🎡</span>
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.8"/><path d="M12 12 16 8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg>
+            </span>
             <h3>Widget tương tác</h3>
             <p>Vòng quay, thử thách, bình chọn, đồng hồ đếm, PK — công cụ giữ chân khán giả cả buổi live, chạy chung overlay với alert.</p>
           </div>
           <div class="feature-card reveal">
-            <span class="feature-icon">🛡️</span>
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M12 3 4.8 6v6.2c0 4.6 3.1 7.8 7.2 8.8 4.1-1 7.2-4.2 7.2-8.8V6L12 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m8.8 12 2.2 2.2 4.4-4.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
             <h3>Kiểm duyệt tiếng Việt</h3>
             <p>Từ điển tiếng Việt + luật riêng của bạn chặn lời nhắn thô tục, độc hại <em>trước khi</em> lên màn hình và trước khi TTS đọc — giảm rủi ro vi phạm khi phát sóng.</p>
           </div>
           <div class="feature-card reveal">
-            <span class="feature-icon">📊</span>
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M4 19V5M4 19h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="7" y="11" width="3.2" height="5.5" rx=".8" stroke="currentColor" stroke-width="1.6"/><rect x="12.2" y="8" width="3.2" height="8.5" rx=".8" stroke="currentColor" stroke-width="1.6"/><rect x="17.4" y="6" width="3.2" height="10.5" rx=".8" stroke="currentColor" stroke-width="1.6"/></svg>
+            </span>
             <h3>Báo cáo doanh thu CSV</h3>
             <p>Tổng hợp toàn bộ donate theo thời gian, xuất CSV một cú bấm — phục vụ đối chiếu ngân hàng và kê khai thuế cuối năm.</p>
           </div>
@@ -346,7 +366,7 @@
             <thead>
               <tr>
                 <th class="col-criteria">Tiêu chí</th>
-                <th class="col-liveqr">LiveQR</th>
+                <th class="col-liveqr">LiveQR <span class="liveqr-badge">Bạn chọn</span></th>
                 <th>WeScan</th>
                 <th>Zypage</th>
                 <th>PlayerDuo</th>
@@ -453,6 +473,7 @@
 
         <div class="pricing-card reveal">
           <div class="pricing-left">
+            <span class="pricing-badge">Phí thấp nhất thị trường</span>
             <h3>Bắt đầu ngay hôm nay</h3>
             <ul class="pricing-points">
               <li>Miễn phí tạo trang donate &amp; widget OBS</li>

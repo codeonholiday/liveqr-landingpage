@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════════════════
    LiveQR landing — demo tương tác
    Khán giả (trái) donate → overlay OBS (phải) hiện alert tuần tự,
-   có hàng đợi, kiểm duyệt tiếng Việt, TTS giọng Việt (Google),
+   có hàng đợi, kiểm duyệt tiếng Việt, trạng thái đang đọc,
    vòng quay, bình chọn.
    ═══════════════════════════════════════════════════════════ */
 (function () {
@@ -45,84 +45,8 @@
     soundToggle.addEventListener('click', function () {
       soundOn = !soundOn;
       soundToggle.textContent = soundOn ? '🔊 Âm thanh: BẬT' : '🔇 Âm thanh: TẮT';
-      if (!soundOn && window.speechSynthesis) window.speechSynthesis.cancel();
       if (soundOn) chime();
     });
-  }
-
-  /* ── TTS giọng Việt (ưu tiên giọng Google Tiếng Việt) ───── */
-  function pickVietnameseVoice() {
-    if (!('speechSynthesis' in window)) return null;
-    var voices = window.speechSynthesis.getVoices() || [];
-    var vi = voices.filter(function (v) { return (v.lang || '').toLowerCase().indexOf('vi') === 0; });
-    if (!vi.length) return null;
-    var google = vi.filter(function (v) { return /google/i.test(v.name || ''); });
-    var female = vi.filter(function (v) { return /minh|female|nữ/i.test(v.name || ''); });
-    return google[0] || female[0] || vi[0];
-  }
-  /* warm-up danh sách giọng (Chrome tải bất đồng bộ) */
-  if ('speechSynthesis' in window) {
-    window.speechSynthesis.getVoices();
-    if (typeof window.speechSynthesis.onvoiceschanged !== 'undefined') {
-      window.speechSynthesis.onvoiceschanged = function () { window.speechSynthesis.getVoices(); };
-    }
-  }
-
-  function speak(text, onEnd) {
-    var voice = pickVietnameseVoice();
-    if (!soundOn || !voice) { if (onEnd) onEnd(false); return; }
-    try {
-      var synth = window.speechSynthesis;
-      synth.cancel();
-      var u = new SpeechSynthesisUtterance(text);
-      u.voice = voice;
-      u.lang = 'vi-VN';
-      u.rate = 1.05;
-      u.pitch = 1.1;
-      var done = false;
-      function finish(ok) { if (done) return; done = true; if (onEnd) onEnd(ok); }
-      u.onend = function () { finish(true); };
-      u.onerror = function () { finish(false); };
-      synth.speak(u);
-      setTimeout(function () { finish(false); }, 16000);
-    } catch (e) {
-      if (onEnd) onEnd(false);
-    }
-  }
-
-  /* Đọc số tiền thành chữ tiếng Việt: 200000 → "hai trăm nghìn" */
-  function docSo(n) {
-    var digits = ['không', 'một', 'hai', 'ba', 'bốn', 'năm', 'sáu', 'bảy', 'tám', 'chín'];
-    function block3(x) {
-      var tr = Math.floor(x / 100), ch = Math.floor((x % 100) / 10), dv = x % 10, out = [];
-      if (tr > 0) out.push(digits[tr], 'trăm');
-      if (ch > 1) {
-        out.push(digits[ch], 'mươi');
-        if (dv === 1) out.push('mốt');
-        else if (dv === 5) out.push('lăm');
-        else if (dv > 0) out.push(digits[dv]);
-      } else if (ch === 1) {
-        out.push('mười');
-        if (dv === 5) out.push('lăm');
-        else if (dv > 0) out.push(digits[dv]);
-      } else if (dv > 0) {
-        if (tr > 0) out.push('linh');
-        out.push(digits[dv]);
-      }
-      return out.join(' ');
-    }
-    if (n === 0) return 'không';
-    var units = [['tỷ', 1e9], ['triệu', 1e6], ['nghìn', 1e3]];
-    var parts = [];
-    for (var i = 0; i < units.length; i++) {
-      if (n >= units[i][1]) {
-        var q = Math.floor(n / units[i][1]);
-        parts.push(block3(q) + ' ' + units[i][0]);
-        n -= q * units[i][1];
-      }
-    }
-    if (n > 0) parts.push(block3(n));
-    return parts.join(' ');
   }
 
   /* ── Kiểm duyệt tiếng Việt (bản demo thu nhỏ) ────────────── */
@@ -263,13 +187,13 @@
     alertAmount.textContent = vnd(item.amount);
     alertMsg.textContent = '';
     alertCaret.style.display = 'inline-block';
-    alertTts.textContent = '🔊 Giọng đọc đang đọc lời nhắn…';
+    alertTts.textContent = '🔊 TTS đang đọc lời nhắn…';
 
     if (soundOn) chime();
 
     var text = item.message;
 
-    /* typewriter giả lập dòng chữ chạy theo giọng đọc */
+    /* typewriter giả lập dòng chữ đang được đọc */
     var i = 0;
     clearInterval(typeTimer);
     typeTimer = setInterval(function () {
@@ -293,16 +217,7 @@
       }, 380);
     }
 
-    var spoken = item.name + ' vừa donate ' + docSo(item.amount) + ' đồng. ' + text;
-    speak(spoken, function (ok) {
-      if (ok) {
-        alertTts.textContent = '✓ Giọng đọc đã đọc xong';
-        setTimeout(advance, 550);
-      } else {
-        /* không có giọng Việt / đang tắt tiếng → tính theo độ dài lời nhắn */
-        setTimeout(advance, Math.min(7500, 2800 + text.length * 55));
-      }
-    });
+    setTimeout(advance, Math.min(7500, 2800 + text.length * 55));
   }
 
   /* ── Toast kiểm duyệt ───────────────────────────────────── */
@@ -345,15 +260,24 @@
     wheelBtn.addEventListener('click', function () {
       if (wheelSpinning) return;
       wheelSpinning = true;
-      wheelOverlay.classList.remove('hidden');
       wheelResult.textContent = 'Đang quay…';
+      wheelOverlay.classList.remove('hidden');
 
       var target = Math.floor(Math.random() * 6);
       /* đưa tâm segment `target` về vị trí con trỏ (đỉnh) + jitter */
       var jitter = (Math.random() * 36 - 18);
       var finalAngle = wheelAngle + 360 * 5 + (360 - (target * 60 + 30)) - (wheelAngle % 360) + jitter;
-      wheelInner.style.transform = 'rotate(' + finalAngle + 'deg)';
-      wheelAngle = finalAngle;
+
+      /* overlay vừa bỏ display:none — phải paint góc hiện tại rồi mới quay */
+      wheelInner.style.transition = 'none';
+      wheelInner.style.transform = 'rotate(' + wheelAngle + 'deg)';
+      void wheelInner.offsetWidth;
+
+      requestAnimationFrame(function () {
+        wheelInner.style.transition = '';
+        wheelInner.style.transform = 'rotate(' + finalAngle + 'deg)';
+        wheelAngle = finalAngle;
+      });
 
       setTimeout(function () {
         wheelResult.textContent = 'Kết quả: ' + WHEEL_RESULTS[target] + '!';
