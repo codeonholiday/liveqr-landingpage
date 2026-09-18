@@ -35,6 +35,7 @@
     osc.stop(t + dur + 0.05);
   }
   function chime() { tone(880, 0, 0.45); tone(1174.7, 0.09, 0.5); tone(1568, 0.18, 0.55, 'triangle', 0.1); }
+  function pop() { tone(520, 0, 0.12, 'triangle', 0.1); tone(780, 0.06, 0.14, 'triangle', 0.08); }
   function buzz() { tone(140, 0, 0.22, 'sawtooth', 0.1); tone(110, 0.1, 0.25, 'sawtooth', 0.08); }
   function winSound() { tone(523.3, 0, 0.18); tone(659.3, 0.12, 0.18); tone(784, 0.24, 0.3); }
 
@@ -76,12 +77,66 @@
     catch (e) { return amount.toLocaleString() + '₫'; }
   }
 
+  /* ── Catalog quà tặng (khớp app LiveQR) ─────────────────── */
+  var GIFTS = [
+    { id: 'rose', name: 'Hoa hồng', emoji: '🌹', minAmountVnd: 10000, tier: 'rail', accent: '#e8365d', animation: 'assets/gifts/rose.webm' },
+    { id: 'heart', name: 'Trái tim', emoji: '❤️', minAmountVnd: 20000, tier: 'rail', accent: '#ff5c7d', animation: 'assets/gifts/heart.webm' },
+    { id: 'coffee', name: 'Cà phê', emoji: '☕', minAmountVnd: 30000, tier: 'rail', accent: '#c08457', animation: 'assets/gifts/coffee.webm' },
+    { id: 'gift-box', name: 'Hộp quà', emoji: '🎁', minAmountVnd: 50000, tier: 'banner', accent: '#5ee5a2', animation: 'assets/gifts/gift-box.webm' },
+    { id: 'star', name: 'Ngôi sao', emoji: '⭐', minAmountVnd: 100000, tier: 'banner', accent: '#ffd76a', animation: 'assets/gifts/star.webm' },
+    { id: 'rocket', name: 'Tên lửa', emoji: '🚀', minAmountVnd: 200000, tier: 'takeover', accent: '#ffae70', animation: 'assets/gifts/rocket.webm' },
+    { id: 'fireworks', name: 'Pháo hoa', emoji: '🎆', minAmountVnd: 1000000, tier: 'takeover', accent: '#9b7cff', animation: 'assets/gifts/fireworks.webm' }
+  ];
+  var GIFT_TIER_PLAY = { rail: 5, banner: 7, takeover: 9 };
+
+  function findGift(id) {
+    if (!id) return null;
+    for (var g = 0; g < GIFTS.length; g++) {
+      if (GIFTS[g].id === id) return GIFTS[g];
+    }
+    return null;
+  }
+
+  function mountGiftArt(container, gift, size) {
+    container.className = 'gift-art';
+    if (size) {
+      container.style.width = size + 'px';
+      container.style.height = size + 'px';
+      container.style.setProperty('--gift-art-size', size + 'px');
+    }
+    container.innerHTML = '';
+    if (!gift.animation) {
+      container.innerHTML = '<span class="gift-emoji">' + gift.emoji + '</span>';
+      return;
+    }
+    var video = document.createElement('video');
+    video.loop = true;
+    video.autoplay = true;
+    video.muted = true;
+    video.playsInline = true;
+    video.src = gift.animation;
+    video.addEventListener('error', function () {
+      container.innerHTML = '<span class="gift-emoji">' + gift.emoji + '</span>';
+    });
+    container.appendChild(video);
+    video.play().catch(function () {
+      container.innerHTML = '<span class="gift-emoji">' + gift.emoji + '</span>';
+    });
+  }
+
+  function formatMoney(amount) {
+    try { return amount.toLocaleString('vi-VN') + ' ₫'; }
+    catch (e) { return amount.toLocaleString() + ' ₫'; }
+  }
+
   /* ── Trạng thái demo ────────────────────────────────────── */
   var queue = [];
   var playing = false;
   var selectedAmount = 100000;
+  var selectedGiftId = null;
   var GUEST_NAMES = ['Fan số 1', 'Bé Na', 'Thánh Lurk', 'Bé Mít', 'Cá Voi Kỳ Lộn', 'Khán giả ẩn danh'];
 
+  var giftGrid = $('giftGrid');
   var amountGrid = $('amountGrid');
   var customAmount = $('demoAmountCustom');
   var nameInput = $('demoName');
@@ -92,6 +147,7 @@
   var obsAlert = $('obsAlert');
   var alertAvatar = $('alertAvatar');
   var alertName = $('alertName');
+  var alertAction = $('alertAction');
   var alertAmount = $('alertAmount');
   var alertMsg = $('alertMsg');
   var alertCaret = $('alertCaret');
@@ -99,6 +155,60 @@
   var queueBadge = $('queueBadge');
   var queueCount = $('queueCount');
   var modToast = $('modToast');
+  var giftFeed = $('giftFeed');
+  var obsScene = document.querySelector('.obs-scene');
+
+  /* ── Render lưới quà tặng ───────────────────────────────── */
+  function selectAmountChip(amount) {
+    if (!amountGrid) return;
+    amountGrid.querySelectorAll('.amount-chip').forEach(function (c) {
+      c.classList.toggle('selected', parseInt(c.dataset.amount, 10) === amount);
+    });
+  }
+
+  function selectGift(id) {
+    selectedGiftId = id;
+    if (!giftGrid) return;
+    giftGrid.querySelectorAll('.gift-option').forEach(function (btn) {
+      btn.classList.toggle('selected', btn.dataset.giftId === id);
+    });
+    if (id) {
+      var gift = findGift(id);
+      if (gift) {
+        selectedAmount = gift.minAmountVnd;
+        selectAmountChip(gift.minAmountVnd);
+        if (customAmount) customAmount.value = '';
+      }
+    }
+  }
+
+  if (giftGrid) {
+    GIFTS.forEach(function (gift) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'gift-option';
+      btn.dataset.giftId = gift.id;
+      btn.title = gift.name + ' — từ ' + formatMoney(gift.minAmountVnd);
+
+      var art = document.createElement('span');
+      art.className = 'gift-option-art';
+      mountGiftArt(art, gift, 38);
+
+      var name = document.createElement('strong');
+      name.textContent = gift.name;
+
+      var price = document.createElement('small');
+      price.textContent = 'từ ' + formatMoney(gift.minAmountVnd);
+
+      btn.appendChild(art);
+      btn.appendChild(name);
+      btn.appendChild(price);
+      btn.addEventListener('click', function () {
+        selectGift(selectedGiftId === gift.id ? null : gift.id);
+      });
+      giftGrid.appendChild(btn);
+    });
+  }
 
   /* ── Chọn số tiền ───────────────────────────────────────── */
   if (amountGrid) {
@@ -108,6 +218,7 @@
       amountGrid.querySelectorAll('.amount-chip').forEach(function (c) { c.classList.remove('selected'); });
       chip.classList.add('selected');
       selectedAmount = parseInt(chip.dataset.amount, 10);
+      selectGift(null);
       if (customAmount) customAmount.value = '';
     });
   }
@@ -117,23 +228,42 @@
       if (v > 0) {
         selectedAmount = v;
         amountGrid.querySelectorAll('.amount-chip').forEach(function (c) { c.classList.remove('selected'); });
+        selectGift(null);
       }
     });
   }
 
   /* ── Donate ─────────────────────────────────────────────── */
-  function donate(name, message, amount) {
+  function playGift(item) {
+    if (obsIdle) obsIdle.classList.add('hidden');
+    appendGiftFeed(item);
+    showGiftFloat(item);
+  }
+
+  function donate(name, message, amount, gift) {
     if (violates(message)) {
       showModToast();
       if (soundOn) buzz();
       return;
     }
-    queue.push({ name: name, message: message, amount: amount });
+    var item = { name: name, message: message, amount: amount, gift: gift || null };
+    if (gift) {
+      /* Quà tặng bỏ qua hàng đợi alert — phát ngay, chỉ feed góc + animation */
+      playGift(item);
+      return;
+    }
+    queue.push(item);
     updateQueueBadge();
     if (!playing) next();
   }
 
+  function currentGift() {
+    return findGift(selectedGiftId);
+  }
+
   function currentAmount() {
+    var gift = currentGift();
+    if (gift) return gift.minAmountVnd;
     var custom = customAmount ? parseInt(customAmount.value, 10) : NaN;
     return (custom >= 10000) ? custom : selectedAmount;
   }
@@ -143,14 +273,14 @@
       var name = (nameInput && nameInput.value.trim()) || GUEST_NAMES[Math.floor(Math.random() * GUEST_NAMES.length)];
       var message = (msgInput && msgInput.value.trim()) || 'Cày tiếp đi stream ơi! 🔥';
       if (msgInput) msgInput.value = '';
-      donate(name, message, currentAmount());
+      donate(name, message, currentAmount(), currentGift());
     });
   }
   if (toxicBtn) {
     toxicBtn.addEventListener('click', function () {
       if (msgInput) msgInput.value = 'dm stream này chán quá';
       var name = (nameInput && nameInput.value.trim()) || 'Tài Khoản Troll';
-      donate(name, 'dm stream này chán quá', currentAmount());
+      donate(name, 'dm stream này chán quá', currentAmount(), currentGift());
     });
   }
   if (msgInput) {
@@ -172,6 +302,75 @@
 
   var typeTimer = null;
 
+  function appendGiftFeed(item) {
+    if (!giftFeed || !item.gift) return;
+    var row = document.createElement('div');
+    row.className = 'gift-feed-row';
+    row.style.setProperty('--gift-accent', item.gift.accent || '#9b7cff');
+    var note = item.message ? ' · ' + item.message.slice(0, 48) : '';
+    row.innerHTML =
+      '<span class="gift-feed-emoji">' + item.gift.emoji + '</span>' +
+      '<div><strong>' + item.name + ' vừa tặng ' + item.gift.name + '</strong>' +
+      '<small>' + formatMoney(item.amount) + note + '</small></div>';
+    giftFeed.appendChild(row);
+    while (giftFeed.children.length > 4) {
+      if (giftFeed.firstElementChild) giftFeed.removeChild(giftFeed.firstElementChild);
+    }
+    setTimeout(function () {
+      row.classList.add('out');
+      setTimeout(function () { if (row.parentNode) row.remove(); }, 420);
+    }, 8000);
+  }
+
+  function burstConfetti(accent, parent) {
+    if (!parent) return;
+    var layer = document.createElement('div');
+    layer.className = 'gift-confetti';
+    var colors = [accent || '#ffd76a', '#9b7cff', '#5ee5a2', '#e8799d', '#ffae70', '#ffffff'];
+    for (var c = 0; c < 36; c++) {
+      var bit = document.createElement('i');
+      bit.style.left = (38 + Math.random() * 24) + '%';
+      bit.style.top = (28 + Math.random() * 18) + '%';
+      bit.style.background = colors[c % colors.length];
+      bit.style.animationDelay = (Math.random() * 0.25) + 's';
+      bit.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
+      layer.appendChild(bit);
+    }
+    parent.appendChild(layer);
+    setTimeout(function () { layer.remove(); }, 2000);
+  }
+
+  function showGiftFloat(item) {
+    if (!obsScene || !item.gift) return;
+    var gift = item.gift;
+    var float = document.createElement('div');
+    float.className = 'gift-float tier-' + (gift.tier || 'banner');
+    float.style.setProperty('--gift-accent', gift.accent || '#9b7cff');
+    float.style.left = (18 + Math.random() * 64) + '%';
+    float.style.top = (20 + Math.random() * 52) + '%';
+    var art = document.createElement('div');
+    float.appendChild(art);
+    obsScene.appendChild(float);
+    mountGiftArt(art, gift, 0);
+
+    if (gift.tier === 'takeover') {
+      burstConfetti(gift.accent, obsScene);
+      var flash = document.createElement('div');
+      flash.className = 'gift-flash';
+      obsScene.appendChild(flash);
+      setTimeout(function () { flash.remove(); }, 700);
+      if (soundOn) chime();
+    } else if (soundOn) {
+      pop();
+    }
+
+    var seconds = GIFT_TIER_PLAY[gift.tier] || GIFT_TIER_PLAY.banner;
+    setTimeout(function () {
+      float.classList.add('out');
+      setTimeout(function () { float.remove(); }, 520);
+    }, seconds * 1000);
+  }
+
   function next() {
     if (queue.length === 0) { playing = false; updateQueueBadge(); return; }
     playing = true;
@@ -184,6 +383,7 @@
     var initial = (item.name || '?').trim().charAt(0).toUpperCase() || '?';
     alertAvatar.textContent = initial;
     alertName.textContent = item.name;
+    if (alertAction) alertAction.textContent = 'vừa donate';
     alertAmount.textContent = vnd(item.amount);
     alertMsg.textContent = '';
     alertCaret.style.display = 'inline-block';

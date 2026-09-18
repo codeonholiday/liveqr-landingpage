@@ -64,6 +64,7 @@
     "featureList": [
       "VietQR donate tức thì",
       "Trang donate tuỳ chỉnh theo phong cách streamer",
+      "Quà tặng animated trên OBS (7 loại, 3 tier)",
       "Alert OBS realtime có hàng đợi",
       "TTS đọc lời nhắn tiếng Việt",
       "Kiểm duyệt nội dung tiếng Việt",
@@ -316,9 +317,9 @@
           <p class="kicker">Trải nghiệm ngay trên trình duyệt</p>
           <h2>Bên trái là khán giả. Bên phải là màn hình stream của bạn.</h2>
           <p class="section-sub">
-            Bản giả lập y như thật — không cần đăng ký. Thử donate liên tiếp để thấy
-            <strong>hàng đợi alert</strong> và dòng <strong>TTS đang đọc</strong>,
-            thử lời nhắn thô tục để thấy <strong>kiểm duyệt chặn</strong>.
+            Bản giả lập y như thật — không cần đăng ký. Chọn <strong>quà tặng animated</strong> (feed góc + hiệu ứng bay),
+            hoặc donate thường để thấy <strong>alert to + TTS</strong> phát tuần tự.
+            Thử lời nhắn thô tục để thấy <strong>kiểm duyệt chặn</strong>.
           </p>
         </div>
 
@@ -334,6 +335,9 @@
                 <small>Mở app ngân hàng → quét QR → xong trong 5 giây</small>
               </div>
             </div>
+
+            <label class="field-label">Chọn quà tặng <span class="field-label-note">(không bắt buộc)</span></label>
+            <div class="gift-grid" id="giftGrid" aria-label="Chọn quà tặng"></div>
 
             <label class="field-label" for="demoAmount">Số tiền donate</label>
             <div class="amount-grid" id="amountGrid">
@@ -367,7 +371,7 @@
             <button class="btn btn-ghost btn-sm btn-block" id="soundToggle" type="button">🔊 Âm thanh: BẬT</button>
 
             <div class="demo-hints">
-              <p>💡 Bấm <strong>Donate ngay</strong> liên tiếp nhiều lần — alert phát tuần tự, hiện <strong>TTS đang đọc</strong>, không đè nhau.</p>
+              <p>💡 <strong>Donate thường</strong> → alert to + TTS tuần tự. <strong>Tặng quà</strong> → quà bay lên màn hình + feed góc trái, không qua hàng đợi alert. Thử <strong>Tên lửa</strong> hoặc <strong>Pháo hoa</strong> để thấy takeover.</p>
             </div>
 
             <div class="panel-divider"></div>
@@ -399,11 +403,14 @@
                 <div class="obs-alert hidden" id="obsAlert" role="status">
                   <div class="obs-alert-head">
                     <span class="obs-alert-avatar" id="alertAvatar">F</span>
-                    <span class="obs-alert-who"><b id="alertName">fan</b> vừa donate <b class="amt" id="alertAmount">100.000₫</b></span>
+                    <span class="obs-alert-who"><b id="alertName">fan</b> <span id="alertAction">vừa donate</span> <b class="amt" id="alertAmount">100.000₫</b></span>
                   </div>
                   <p class="obs-alert-msg"><span id="alertMsg"></span><span class="caret" id="alertCaret"></span></p>
                   <span class="obs-alert-tts" id="alertTts">🔊 TTS đang đọc lời nhắn…</span>
                 </div>
+
+                <!-- quà tặng -->
+                <div class="gift-feed" id="giftFeed" aria-live="polite"></div>
 
                 <!-- hàng đợi -->
                 <div class="queue-badge hidden" id="queueBadge"><span class="queue-pulse"></span><span id="queueCount">0</span> alert đang chờ</div>
@@ -447,8 +454,8 @@
             </div>
 
             <div class="obs-caption">
-              Trên thực tế, vùng này là 1 <strong>Browser Source</strong> trong OBS — alert, vòng quay,
-              bình chọn đều render cùng một URL widget.
+              Trên thực tế, vùng này là 1 <strong>Browser Source</strong> trong OBS — alert, quà tặng animated,
+              vòng quay, bình chọn đều render cùng một URL widget.
             </div>
           </div>
         </div>
@@ -503,6 +510,13 @@
             </span>
             <h3>Trang donate cá nhân hoá</h3>
             <p>Tuỳ chỉnh màu chủ đạo, ảnh nền, tiêu đề, lời mô tả, mức tiền gợi ý và quà tặng — thậm chí thêm CSS riêng. Trang <b>liveqr.me/@ban</b> trông như một phần thương hiệu kênh, không phải form donate chung chung.</p>
+          </div>
+          <div class="feature-card reveal">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M20 12v8H4v-8M12 3v13M8 7l4-4 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <h3>Quà tặng animated kiểu TikTok</h3>
+            <p>7 loại quà với animation WebM trong suốt — khán giả chọn trên trang donate, quà bay lên màn hình stream theo tier (rail, banner, takeover). Tên lửa và pháo hoa kèm flash + confetti.</p>
           </div>
           <div class="feature-card reveal">
             <span class="feature-icon" aria-hidden="true">
@@ -601,6 +615,15 @@
                 <td class="ok">✓</td>
                 <td class="ok">✓</td>
                 <td class="muted">—</td>
+              </tr>
+              <tr>
+                <td class="col-criteria">Quà tặng animated trên OBS</td>
+                <td class="col-liveqr ok">✓ 7 loại, 3 tier</td>
+                <td class="no">✗</td>
+                <td class="no">✗</td>
+                <td class="muted">Một phần</td>
+                <td class="no">✗</td>
+                <td class="no">✗</td>
               </tr>
               <tr>
                 <td class="col-criteria">TTS tiếng Việt có hàng đợi</td>

@@ -10,6 +10,7 @@
     "/styles.css",
     "/script.js",
     "/demo.js",
-    "/brand/*"
+    "/brand/*",
+    "/assets/*"
   ]
 }
