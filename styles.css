@@ -4,16 +4,18 @@
    ═══════════════════════════════════════════════════════════ */
 
 :root {
-  --bg: #10141f;
-  --panel: #1b2133;
-  --panel-2: #222942;
-  --line: #343d59;
-  --text: #fbfcff;
-  --muted: #c3cbdc;
-  --muted-2: #a1abc0;
+  --bg: #0b0d13;
+  --panel: #12151e;
+  --panel-2: #171b26;
+  --line: #242936;
+  --text: #f5f6fa;
+  --muted: #9299ab;
+  --muted-2: #7a8294;
   --purple: #9b7cff;
-  --purple-soft: rgba(155, 124, 255, 0.14);
-  --purple-line: rgba(155, 124, 255, 0.38);
+  --purple-soft: rgba(155, 124, 255, 0.12);
+  --purple-line: rgba(155, 124, 255, 0.3);
+  --purple-bg: #1d1b31;
+  --purple-border: #3d3060;
   --green: #5ee5a2;
   --green-soft: rgba(94, 229, 162, 0.12);
   --orange: #ffae70;
@@ -22,7 +24,7 @@
   --radius: 12px;
   --radius-lg: 18px;
   --font-body: 'DM Sans', system-ui, sans-serif;
-  --font-head: 'Be Vietnam Pro', var(--font-body);
+  --font-head: 'Space Grotesk', var(--font-body);
   --shadow-card: 0 24px 60px -36px rgba(0, 0, 0, .7);
 }
 
@@ -97,17 +99,11 @@ section[id] { scroll-margin-top: 84px; }
   border-bottom: 1px solid transparent;
   transition: border-color .25s ease, background .25s ease;
 }
-.site-header.scrolled { border-bottom-color: var(--line); background: rgba(16, 20, 31, .92); }
+.site-header.scrolled { border-bottom-color: var(--line); background: rgba(11, 13, 19, .92); }
 .header-inner { display: flex; align-items: center; gap: 24px; height: 68px; }
 
-.brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-head); }
-.brand-mark {
-  display: grid; place-items: center; width: 34px; height: 34px;
-  border-radius: 9px; color: var(--purple); background: var(--purple-soft);
-  border: 1px solid var(--purple-line);
-  box-shadow: 0 0 0 1px rgba(155, 124, 255, .08), 0 8px 20px -10px rgba(155, 124, 255, .6);
-}
-.brand-name { font-size: 19px; font-weight: 700; letter-spacing: .01em; }
+.brand { display: inline-flex; align-items: center; }
+.brand-logo { display: block; height: 28px; width: auto; }
 
 .main-nav { display: flex; align-items: center; gap: 26px; margin-left: auto; font-size: 15px; font-weight: 500; }
 .main-nav a:not(.nav-cta-mobile) { color: var(--muted); transition: color .15s; }

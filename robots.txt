@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Allow: /@
 
 Sitemap: https://liveqr.me/sitemap.xml

@@ -12,6 +12,7 @@ async function proxyToApp(request) {
   const target = new URL(url.pathname + url.search, APP_ORIGIN);
   const headers = new Headers(request.headers);
   headers.set('Host', 'app.liveqr.me');
+  headers.set('X-Forwarded-Host', url.host);
 
   const init = {
     method: request.method,
