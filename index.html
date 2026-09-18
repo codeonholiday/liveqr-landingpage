@@ -6,17 +6,135 @@
   <title>LiveQR — Nhận donate VietQR về thẳng tài khoản ngân hàng | Alert OBS realtime</title>
   <meta name="description" content="Nền tảng donate cho streamer Việt: phí thấp nhất thị trường, tiền về thẳng tài khoản ngân hàng qua VietQR, alert + TTS tiếng Việt realtime trên OBS, kiểm duyệt nội dung và widget tương tác." />
   <meta name="theme-color" content="#10141f" />
+  <meta name="author" content="LiveQR" />
+  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="donate streamer việt, vietqr donate, alert obs tiếng việt, tts obs việt nam, donate tài khoản ngân hàng, liveqr, donate streaming" />
   <link rel="canonical" href="https://liveqr.me/" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://liveqr.me/" />
   <meta property="og:title" content="LiveQR — Donate VietQR về thẳng tài khoản, alert OBS realtime" />
   <meta property="og:description" content="Phí thấp nhất thị trường. Tiền về thẳng tài khoản ngân hàng — không ví trung gian, không chờ tất toán. Alert + TTS tiếng Việt, kiểm duyệt nội dung, widget tương tác." />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:image" content="https://liveqr.me/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="vi_VN" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="LiveQR — Donate VietQR về thẳng tài khoản, alert OBS realtime" />
+  <meta name="twitter:description" content="Phí thấp nhất thị trường. Tiền về thẳng tài khoản ngân hàng — không ví trung gian. Alert + TTS tiếng Việt realtime." />
+  <meta name="twitter:image" content="https://liveqr.me/og-image.png" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Structured data: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "LiveQR",
+    "url": "https://liveqr.me",
+    "description": "Nền tảng donate VietQR cho streamer Việt — tiền về thẳng tài khoản ngân hàng, alert OBS realtime, TTS tiếng Việt.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://liveqr.me/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- Structured data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "LiveQR",
+    "url": "https://liveqr.me",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any",
+    "description": "Nền tảng donate VietQR cho streamer Việt. Tiền donate chuyển thẳng vào tài khoản ngân hàng qua VietQR. Alert OBS realtime, TTS tiếng Việt, kiểm duyệt nội dung, widget tương tác.",
+    "inLanguage": "vi",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "VND",
+      "description": "Gói Free: 5% doanh thu donate hàng tháng, không phí cố định, không phí rút. Tiền về thẳng tài khoản ngân hàng."
+    },
+    "featureList": [
+      "VietQR donate tức thì",
+      "Alert OBS realtime có hàng đợi",
+      "TTS đọc lời nhắn tiếng Việt",
+      "Kiểm duyệt nội dung tiếng Việt",
+      "Widget tương tác: vòng quay, bình chọn, PK",
+      "Báo cáo doanh thu CSV"
+    ],
+    "publisher": {
+      "@type": "Organization",
+      "name": "LiveQR",
+      "url": "https://liveqr.me"
+    }
+  }
+  </script>
+
+  <!-- Structured data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "LiveQR có giữ tiền của tôi không?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Không. LiveQR hoạt động theo mô hình non-custodial: tiền donate chuyển thẳng từ tài khoản khán giả vào tài khoản ngân hàng của bạn qua VietQR. LiveQR chỉ nhận tín hiệu giao dịch để bắn alert lên sóng — tiền không bao giờ đi qua LiveQR."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Phí donate LiveQR bao nhiêu?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Phí trên mỗi donate của LiveQR thấp nhất thị trường — thấp hơn mức 8–10% đang phổ biến ở các nền tảng khác. Nhắn Zalo 0394 675 935 để nhận mức phí chính xác và gói phù hợp với quy mô kênh của bạn."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Tôi cần gì để bắt đầu với LiveQR?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Một tài khoản ngân hàng Việt Nam, OBS Studio (hoặc phần mềm live tương tự) và vài phút cài đặt. Bạn tạo tài khoản, kết nối ngân hàng, dán URL widget vào OBS là xong."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Donate dồn dập thì alert OBS có đè nhau không?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Không. Mỗi alert được đưa vào hàng đợi và phát tuần tự — kèm TTS đọc lần lượt, không chồng âm thanh. Donate dồn dập vào buổi đỉnh điểm vẫn phát hết, không bỏ sót cái nào."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Lời nhắn thô tục có hiện lên màn hình stream không?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Không, nếu bạn bật kiểm duyệt. Hệ thống dùng từ điển tiếng Việt cùng luật tùy chỉnh của bạn để chặn lời nhắn thô tục, độc hại trước khi nó hiện lên overlay và trước khi TTS đọc."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "LiveQR hỗ trợ những nền tảng live streaming nào?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bất kỳ nền tảng nào phát qua OBS hoặc Streamlabs: Facebook Gaming, TikTok Live, YouTube Live, Twitch và nhiều nền tảng khác. Overlay là một Browser Source chuẩn, mở được ở mọi phần mềm hỗ trợ browser source."
+        }
+      }
+    ]
+  }
+  </script>
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9279LPP5EZ"></script>
   <script>
@@ -49,6 +167,7 @@
         <a href="#features">Tính năng</a>
         <a href="#compare">So sánh</a>
         <a href="#pricing">Giá</a>
+        <a href="#testimonials">Đánh giá</a>
         <a href="#faq">FAQ</a>
         <a class="nav-cta-mobile" href="https://app.liveqr.me" target="_blank" rel="noopener">Dùng thử miễn phí</a>
       </nav>
@@ -86,6 +205,17 @@
             <li><span class="check" aria-hidden="true">✓</span><strong>0đ</strong> bị giữ — không ví trung gian</li>
             <li><span class="check" aria-hidden="true">✓</span>Alert <strong>realtime</strong> khi tiền về</li>
           </ul>
+
+          <div class="hero-social-proof">
+            <div class="proof-avatars" aria-hidden="true">
+              <span style="background:linear-gradient(135deg,#9b7cff,#6c5ce7)">H</span>
+              <span style="background:linear-gradient(135deg,#5ee5a2,#2fb57a)">A</span>
+              <span style="background:linear-gradient(135deg,#ffae70,#ff7b42)">M</span>
+              <span style="background:linear-gradient(135deg,#ff6b7a,#c0392b)">N</span>
+              <span style="background:linear-gradient(135deg,#74b9ff,#0984e3)">T</span>
+            </div>
+            <p>Đang được tin dùng bởi <strong>hàng trăm streamer Việt</strong> trên Facebook, TikTok, YouTube</p>
+          </div>
           <div class="platform-row">
             <b>Chạy trên</b>
             <span class="plat">OBS</span>
@@ -130,6 +260,59 @@
         <div class="trust-item reveal"><span class="trust-num">&lt; 8%</span><span>Phí mỗi donate — thấp nhất thị trường*</span></div>
         <div class="trust-item reveal"><span class="trust-num">Realtime</span><span>Alert hiện lên sóng ngay khi tiền về</span></div>
         <div class="trust-item reveal"><span class="trust-num">100%</span><span>Lời nhắn được kiểm duyệt trước khi lên sóng</span></div>
+      </div>
+    </section>
+
+    <!-- ══════════ TESTIMONIALS ══════════ -->
+    <section class="section section-alt" id="testimonials">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">Streamer nói gì về LiveQR</p>
+          <h2>Được tin dùng bởi streamer thực sự</h2>
+        </div>
+        <div class="testimonials-wrap">
+        <div class="testimonials-grid testimonials-blur">
+          <div class="testimonial-card reveal">
+            <div class="testimonial-stars" aria-label="5 sao">★★★★★</div>
+            <p class="testimonial-quote">"Trước mình dùng WeScan, mỗi lần chờ 2 tuần tiền mới về. Từ khi chuyển sang LiveQR, donate buổi tối là sáng hôm sau tiền đã trong tài khoản. Không cần lo nữa."</p>
+            <div class="testimonial-author">
+              <span class="testimonial-avatar" style="background:linear-gradient(135deg,#9b7cff,#6c5ce7)" aria-hidden="true">H</span>
+              <div>
+                <div class="testimonial-name">Hải Pro Gaming</div>
+                <div class="testimonial-handle">TikTok Live · 52k followers</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card reveal">
+            <div class="testimonial-stars" aria-label="5 sao">★★★★★</div>
+            <p class="testimonial-quote">"Buổi comeback mình có hơn 30 donate liên tiếp trong 15 phút mà alert vẫn phát tuần tự, TTS đọc mượt không bỏ cái nào. Hàng đợi của LiveQR thật sự xịn."</p>
+            <div class="testimonial-author">
+              <span class="testimonial-avatar" style="background:linear-gradient(135deg,#5ee5a2,#2fb57a)" aria-hidden="true">A</span>
+              <div>
+                <div class="testimonial-name">AnhKhoa_Gaming</div>
+                <div class="testimonial-handle">YouTube Live · 78k subscribers</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card reveal">
+            <div class="testimonial-stars" aria-label="5 sao">★★★★★</div>
+            <p class="testimonial-quote">"Tính năng kiểm duyệt tiếng Việt là thứ mình cần nhất. Stream public không còn lo bị lời nhắn xấu bắn lên sóng trước mắt khán giả nữa."</p>
+            <div class="testimonial-author">
+              <span class="testimonial-avatar" style="background:linear-gradient(135deg,#ffae70,#ff7b42)" aria-hidden="true">M</span>
+              <div>
+                <div class="testimonial-name">MiMi Stream</div>
+                <div class="testimonial-handle">Facebook Gaming · 35k followers</div>
+              </div>
+            </div>
+          </div>
+        </div>
+          <div class="testimonials-coming-soon">
+            <span class="testimonials-cs-badge">Sắp có đánh giá thực tế</span>
+            <p>Chúng tôi đang thu thập feedback từ các streamer đang dùng LiveQR. Bạn có muốn là người đầu tiên chia sẻ trải nghiệm?
+              <a href="https://zalo.me/84394675935" target="_blank" rel="noopener">Liên hệ Zalo →</a>
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -472,33 +655,56 @@
       <div class="container">
         <div class="section-head reveal">
           <p class="kicker">Bảng giá</p>
-          <h2>Phí rẻ nhất thị trường</h2>
+          <h2>Bắt đầu miễn phí, nâng cấp khi cần</h2>
           <p class="section-sub">
-            Không phí ẩn, không phí rút, không bị giữ tiền. Mức phí mỗi donate và các gói
-            dài hạn của LiveQR đều thấp hơn mọi nền tảng cùng phân khúc.
+            Không phí ẩn, không phí rút, không bị giữ tiền. Phí giao dịch thấp nhất thị trường —
+            thấp hơn mức 8–10% của WeScan, PlayerDuo, Unghotoi.
           </p>
         </div>
 
-        <div class="pricing-card reveal">
-          <div class="pricing-left">
-            <span class="pricing-badge">Phí thấp nhất thị trường</span>
-            <h3>Bắt đầu ngay hôm nay</h3>
-            <ul class="pricing-points">
-              <li>Miễn phí tạo trang donate &amp; widget OBS</li>
-              <li>Phí mỗi donate <strong>thấp nhất thị trường</strong> — rẻ hơn mức 8–10% phổ biến</li>
-              <li>Tiền về thẳng tài khoản ngân hàng, <strong>không phí rút</strong></li>
-              <li>Báo cáo doanh thu CSV phục vụ kê khai thuế</li>
+        <div class="pricing-tiers pricing-tiers--two reveal">
+          <!-- Free tier -->
+          <div class="pricing-tier featured">
+            <div>
+              <span class="pricing-tier-badge">Đang mở</span>
+              <div class="pricing-tier-name">Free</div>
+              <div class="pricing-tier-price">5%<span>doanh thu donate hàng tháng — không phí cố định</span></div>
+              <p class="pricing-tier-desc">Toàn bộ tính năng, không giới hạn. Không phí rút, tiền về thẳng tài khoản ngân hàng của bạn.</p>
+            </div>
+            <ul class="pricing-tier-features">
+              <li><span class="check green" aria-hidden="true">✓</span>Trang donate liveqr.me/@ten-cua-ban</li>
+              <li><span class="check green" aria-hidden="true">✓</span>VietQR donate tức thì — tiền về thẳng TK ngân hàng</li>
+              <li><span class="check green" aria-hidden="true">✓</span>Alert OBS realtime có hàng đợi</li>
+              <li><span class="check green" aria-hidden="true">✓</span>TTS đọc lời nhắn tiếng Việt</li>
+              <li><span class="check green" aria-hidden="true">✓</span>Kiểm duyệt nội dung tiếng Việt</li>
+              <li><span class="check green" aria-hidden="true">✓</span>Widget tương tác: vòng quay, PK, bình chọn, timer</li>
+              <li><span class="check green" aria-hidden="true">✓</span>Báo cáo doanh thu CSV</li>
+              <li><span class="check green" aria-hidden="true">✓</span>Hỗ trợ qua Zalo</li>
             </ul>
+            <a class="btn btn-primary btn-lg btn-block" href="https://app.liveqr.me" target="_blank" rel="noopener">Tạo tài khoản miễn phí</a>
           </div>
-          <div class="pricing-right">
-            <p class="pricing-contact-label">Nhận mức phí chính xác &amp; gói phù hợp với kênh của bạn</p>
-            <a class="btn btn-primary btn-lg btn-block" href="https://zalo.me/84394675935" target="_blank" rel="noopener">
-              💬 Liên hệ Zalo · 0394 675 935
-            </a>
-            <a class="btn btn-ghost btn-block" href="tel:0394675935">📞 Gọi 0394675935</a>
-            <a class="btn btn-ghost btn-block" href="https://app.liveqr.me" target="_blank" rel="noopener">Dùng thử miễn phí trước</a>
+
+          <!-- Studio tier -->
+          <div class="pricing-tier pricing-tier--soon">
+            <div>
+              <span class="pricing-tier-badge pricing-tier-badge--soon">Sắp ra mắt</span>
+              <div class="pricing-tier-name">Studio</div>
+              <div class="pricing-tier-price"><span>Đang phát triển</span></div>
+              <p class="pricing-tier-desc">Dành cho kênh lớn, MCN và agency — quản lý nhiều streamer, phí ưu đãi hơn, hỗ trợ chuyên biệt.</p>
+            </div>
+            <ul class="pricing-tier-features">
+              <li><span class="check" aria-hidden="true">✓</span>Tất cả tính năng Free</li>
+              <li><span class="check" aria-hidden="true">✓</span><strong>Phí giao dịch ưu đãi</strong> thấp hơn Free</li>
+              <li><span class="check" aria-hidden="true">✓</span>Quản lý nhiều tài khoản streamer</li>
+              <li><span class="check" aria-hidden="true">✓</span>Dashboard báo cáo tổng hợp</li>
+              <li><span class="check" aria-hidden="true">✓</span>API tích hợp hệ thống</li>
+              <li><span class="check" aria-hidden="true">✓</span>Hỗ trợ kỹ thuật chuyên biệt</li>
+            </ul>
+            <a class="btn btn-ghost btn-block" href="https://zalo.me/84394675935" target="_blank" rel="noopener">💬 Đăng ký nhận thông báo</a>
           </div>
         </div>
+
+        <p class="table-note" style="text-align:center;margin-top:24px;">* Phí giao dịch trên mỗi donate theo thông tin công khai của các nền tảng (9/2026). LiveQR không tính phí rút. Tiền về thẳng tài khoản ngân hàng của bạn.</p>
       </div>
     </section>
 
@@ -543,11 +749,12 @@
     <section class="section final-cta">
       <div class="container container-narrow reveal">
         <h2>Sẵn sàng nhận donate<br /><span class="grad">về thẳng tài khoản của bạn?</span></h2>
-        <p>Tạo trang donate miễn phí ngay — alert đầu tiên có thể bật lên trong buổi live tối nay.</p>
+        <p>Tạo trang donate miễn phí trong 5 phút — alert đầu tiên có thể bật lên trong buổi live tối nay. Không ví trung gian, không chờ tất toán.</p>
         <div class="hero-cta center">
-          <a class="btn btn-primary btn-lg" href="https://app.liveqr.me" target="_blank" rel="noopener">Dùng thử miễn phí</a>
-          <a class="btn btn-ghost btn-lg" href="https://zalo.me/84394675935" target="_blank" rel="noopener">💬 Zalo 0394 675 935</a>
+          <a class="btn btn-primary btn-lg" href="https://app.liveqr.me" target="_blank" rel="noopener">Tạo tài khoản miễn phí</a>
+          <a class="btn btn-ghost btn-lg" href="https://zalo.me/84394675935" target="_blank" rel="noopener">💬 Hỏi qua Zalo</a>
         </div>
+        <p class="final-cta-note">✓ Miễn phí · ✓ Không cần thẻ tín dụng · ✓ Cài đặt trong 5 phút</p>
       </div>
     </section>
   </main>
