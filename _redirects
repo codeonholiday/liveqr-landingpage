@@ -1,0 +1,3 @@
+# Fallback when Pages Functions không chạy — vẫn mở được trang donate.
+/@* https://app.liveqr.me/@:splat 302
+/_next/* https://app.liveqr.me/_next/:splat 302

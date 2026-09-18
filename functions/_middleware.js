@@ -1,6 +1,5 @@
 /**
  * Proxy trang donate public từ app.liveqr.me lên liveqr.me.
- * liveqr.me/@username → nội dung app, URL giữ nguyên trên thanh địa chỉ.
  */
 const APP_ORIGIN = 'https://app.liveqr.me';
 
@@ -34,5 +33,5 @@ export async function onRequest(context) {
     return proxyToApp(context.request);
   }
 
-  return context.env.ASSETS.fetch(context.request);
+  return context.next();
 }
