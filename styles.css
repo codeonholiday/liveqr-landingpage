@@ -725,6 +725,7 @@ section[id] { scroll-margin-top: 84px; }
 .features-grid .reveal:nth-child(4) { transition-delay: .04s; }
 .features-grid .reveal:nth-child(5) { transition-delay: .1s; }
 .features-grid .reveal:nth-child(6) { transition-delay: .16s; }
+.features-grid .reveal:nth-child(7) { transition-delay: .08s; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
