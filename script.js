@@ -46,6 +46,85 @@
     });
   });
 
+  /* Hero demo video — play/pause, seek, âm thanh */
+  var heroVideo = document.getElementById('heroDemoVideo');
+  var heroPlay = document.getElementById('heroDemoPlay');
+  var heroSeek = document.getElementById('heroDemoSeek');
+  var heroTime = document.getElementById('heroDemoTime');
+  var heroMute = document.getElementById('heroDemoMute');
+  if (heroVideo && heroPlay && heroSeek && heroTime && heroMute) {
+    var heroSeeking = false;
+
+    function fmtTime(sec) {
+      if (!isFinite(sec) || sec < 0) return '0:00';
+      var m = Math.floor(sec / 60);
+      var s = Math.floor(sec % 60);
+      return m + ':' + String(s).padStart(2, '0');
+    }
+
+    function syncPlayUi() {
+      var playing = !heroVideo.paused && !heroVideo.ended;
+      heroPlay.querySelector('.icon-play').classList.toggle('hidden', playing);
+      heroPlay.querySelector('.icon-pause').classList.toggle('hidden', !playing);
+      heroPlay.setAttribute('aria-label', playing ? 'Tạm dừng video' : 'Phát video');
+    }
+
+    function syncMuteUi() {
+      var muted = heroVideo.muted || heroVideo.volume === 0;
+      heroMute.querySelector('.icon-vol').classList.toggle('hidden', muted);
+      heroMute.querySelector('.icon-muted').classList.toggle('hidden', !muted);
+      heroMute.setAttribute('aria-label', muted ? 'Bật tiếng' : 'Tắt tiếng');
+    }
+
+    function syncSeekUi() {
+      if (heroSeeking || !heroVideo.duration) return;
+      heroSeek.value = String((heroVideo.currentTime / heroVideo.duration) * 100);
+      heroTime.textContent = fmtTime(heroVideo.currentTime) + ' / ' + fmtTime(heroVideo.duration);
+    }
+
+    heroPlay.addEventListener('click', function () {
+      if (heroVideo.paused || heroVideo.ended) {
+        heroVideo.muted = false;
+        syncMuteUi();
+        heroVideo.play().catch(function () {
+          heroVideo.muted = true;
+          syncMuteUi();
+          heroVideo.play();
+        });
+      } else {
+        heroVideo.pause();
+      }
+      syncPlayUi();
+    });
+
+    heroMute.addEventListener('click', function () {
+      heroVideo.muted = !heroVideo.muted;
+      if (!heroVideo.muted && heroVideo.volume === 0) heroVideo.volume = 1;
+      syncMuteUi();
+    });
+
+    heroSeek.addEventListener('input', function () {
+      heroSeeking = true;
+      if (heroVideo.duration) {
+        var t = (Number(heroSeek.value) / 100) * heroVideo.duration;
+        heroVideo.currentTime = t;
+        heroTime.textContent = fmtTime(t) + ' / ' + fmtTime(heroVideo.duration);
+      }
+    });
+    heroSeek.addEventListener('change', function () { heroSeeking = false; });
+
+    heroVideo.addEventListener('play', syncPlayUi);
+    heroVideo.addEventListener('pause', syncPlayUi);
+    heroVideo.addEventListener('ended', syncPlayUi);
+    heroVideo.addEventListener('timeupdate', syncSeekUi);
+    heroVideo.addEventListener('loadedmetadata', syncSeekUi);
+    heroVideo.addEventListener('volumechange', syncMuteUi);
+
+    syncPlayUi();
+    syncMuteUi();
+    syncSeekUi();
+  }
+
   /* Scroll-reveal */
   var reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
