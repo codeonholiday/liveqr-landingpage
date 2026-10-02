@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cách đọc bình luận TikTok Live thành giọng nói miễn phí (2026) | LiveQR</title>
+  <meta name="description" content="Hướng dẫn đọc bình luận TikTok Live thành giọng nói TTS tiếng Việt miễn phí — cài đặt trên OBS Studio hoặc TikTok Live Studio, không cần phần mềm bổ sung, xong trong 10 phút." />
+  <meta name="author" content="LiveQR" />
+  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="đọc bình luận tiktok live, tts đọc comment tiktok, overlay bình luận tiktok obs, cách đọc comment tiktok live miễn phí, tiktok comment to speech" />
+  <link rel="canonical" href="https://liveqr.me/huong-dan/doc-binh-luan-tiktok-live" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://liveqr.me/huong-dan/doc-binh-luan-tiktok-live" />
+  <meta property="og:title" content="Cách đọc bình luận TikTok Live thành giọng nói miễn phí (2026)" />
+  <meta property="og:description" content="Hướng dẫn đọc bình luận TikTok Live thành giọng nói TTS tiếng Việt miễn phí — cài trên OBS (Browser Source) hoặc TikTok Live Studio (Source Link), xong trong 10 phút." />
+  <meta property="og:image" content="https://liveqr.me/og-image.png" />
+  <meta property="og:locale" content="vi_VN" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cách đọc bình luận TikTok Live thành giọng nói miễn phí (2026)" />
+  <meta name="twitter:description" content="Hướng dẫn đọc comment TikTok Live bằng TTS tiếng Việt trên OBS — miễn phí với LiveQR." />
+  <meta name="twitter:image" content="https://liveqr.me/og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Cách đọc bình luận TikTok Live thành giọng nói miễn phí",
+    "description": "Hướng dẫn đọc bình luận TikTok Live thành giọng nói TTS miễn phí trên OBS. So sánh TikFinity, extension Chrome và LiveQR.",
+    "url": "https://liveqr.me/huong-dan/doc-binh-luan-tiktok-live",
+    "datePublished": "2026-09-15",
+    "dateModified": "2026-09-15",
+    "author": {
+      "@type": "Organization",
+      "name": "LiveQR",
+      "url": "https://liveqr.me"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "LiveQR",
+      "url": "https://liveqr.me",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://liveqr.me/brand/logo-on-dark.svg"
+      }
+    },
+    "inLanguage": "vi"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "LiveQR đọc bình luận TikTok Live có miễn phí không?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tính năng đang trong giai đoạn thử nghiệm (beta) và hiện miễn phí. Sau khi ra chính thức sẽ có mức phí riêng. Liên hệ Zalo 0394 675 935 để biết thêm chi tiết."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Cần cài phần mềm gì để dùng LiveQR đọc bình luận TikTok Live?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Không cần cài thêm phần mềm. Nếu dùng OBS Studio: thêm Browser Source, dán URL widget vào là xong. Nếu stream thẳng trên TikTok Live Studio (không dùng OBS): chọn Add Source → Source Link, dán URL widget vào — không cần OBS."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Đọc bình luận TikTok Live có hiện chữ lên màn hình stream không?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Không. LiveQR chỉ phát âm thanh TTS — bình luận được đọc thành giọng nói nhưng không hiện text lên màn hình stream, không che nội dung đang phát."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kết nối TikTok Live của LiveQR có ổn định không?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "LiveQR kết nối vào phiên TikTok Live qua API và nhận bình luận theo thời gian thực. Kết nối ổn định trong suốt phiên live và tự động xếp bình luận vào hàng đợi TTS."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://liveqr.me" },
+      { "@type": "ListItem", "position": 2, "name": "Hướng dẫn", "item": "https://liveqr.me/huong-dan" },
+      { "@type": "ListItem", "position": 3, "name": "Đọc bình luận TikTok Live", "item": "https://liveqr.me/huong-dan/doc-binh-luan-tiktok-live" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+
+  <style>
+    .article-hero { padding: 64px 0 40px; }
+    .article-breadcrumb { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+    .article-breadcrumb a { color: var(--purple); }
+    .article-breadcrumb span { margin: 0 6px; opacity: .5; }
+    .article-meta { font-size: 14px; color: var(--muted-2); margin-bottom: 32px; display: flex; gap: 16px; flex-wrap: wrap; }
+    .article-meta span { display: inline-flex; align-items: center; gap: 6px; }
+    .article-body { max-width: 720px; }
+    .article-body h2 { font-size: clamp(22px, 2.8vw, 30px); margin: 48px 0 16px; color: var(--text); }
+    .article-body h3 { font-size: clamp(18px, 2vw, 22px); margin: 32px 0 12px; color: var(--purple); }
+    .article-body p { color: var(--muted); line-height: 1.75; font-size: 16.5px; margin-bottom: 16px; }
+    .article-body ul, .article-body ol { color: var(--muted); line-height: 1.75; padding-left: 24px; margin-bottom: 16px; }
+    .article-body li { margin-bottom: 8px; font-size: 16px; }
+    .article-body strong { color: var(--text); }
+    .article-body a { color: var(--purple); font-weight: 600; }
+    .article-body a:hover { text-decoration: underline; }
+    .article-cta-box { margin: 48px 0; padding: 32px; background: var(--panel-2); border: 1px solid var(--purple-line); border-radius: var(--radius-lg); }
+    .article-cta-box h3 { margin: 0 0 12px; color: var(--text); font-size: 20px; }
+    .article-cta-box p { margin: 0 0 20px; }
+    .article-cta-box .cta-btns { display: flex; flex-wrap: wrap; gap: 12px; }
+    .platform-compare { margin: 24px 0; border-collapse: collapse; width: 100%; overflow-x: auto; display: block; }
+    .platform-compare th, .platform-compare td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--line); font-size: 14.5px; white-space: nowrap; }
+    .platform-compare th { color: var(--muted-2); font-size: 13px; font-weight: 600; background: var(--panel-2); }
+    .platform-compare td { color: var(--muted); }
+    .platform-compare td:first-child { color: var(--text); font-weight: 600; }
+    .platform-compare tr:last-child td { border-bottom: none; }
+    .ok { color: var(--green); font-weight: 600; }
+    .no { color: var(--red); }
+    .highlight { color: var(--purple); font-weight: 700; }
+    .step-list { list-style: none; padding: 0; counter-reset: steps; }
+    .step-list li { counter-increment: steps; display: flex; gap: 16px; margin-bottom: 20px; align-items: flex-start; }
+    .step-list li::before {
+      content: counter(steps);
+      display: grid; place-items: center; flex-shrink: 0;
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--purple-soft); border: 1px solid var(--purple-line);
+      color: var(--purple); font-weight: 700; font-size: 14px;
+      margin-top: 2px;
+    }
+    .step-list li > div { flex: 1; }
+    .step-list li strong { display: block; color: var(--text); font-size: 16px; margin-bottom: 4px; }
+    .step-list li span { color: var(--muted); font-size: 15px; line-height: 1.6; }
+    .tip-box { padding: 16px 20px; background: rgba(94, 229, 162, .07); border: 1px solid rgba(94, 229, 162, .22); border-radius: var(--radius); margin: 20px 0; }
+    .tip-box strong { color: var(--green); }
+    .tip-box p { margin: 0; font-size: 15px; }
+    .faq-section { margin-top: 48px; }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════ HEADER ══════════ -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="brand" href="../../" aria-label="LiveQR — trang chủ">
+        <img class="brand-logo" src="../../brand/logo-on-dark.svg" alt="LiveQR" height="28" width="148" />
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="Điều hướng chính">
+        <a href="../../#demo">Demo</a>
+        <a href="../../#features">Tính năng</a>
+        <a href="../../#compare">So sánh</a>
+        <a href="../../#pricing">Giá</a>
+        <a href="../../#faq">FAQ</a>
+        <a class="nav-cta-mobile" href="https://app.liveqr.me" target="_blank" rel="noopener">Dùng thử miễn phí</a>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm" href="https://app.liveqr.me" target="_blank" rel="noopener">Dùng thử miễn phí</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Mở menu" aria-expanded="false" aria-controls="mainNav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="article-hero">
+      <div class="container">
+        <nav class="article-breadcrumb" aria-label="Breadcrumb">
+          <a href="../../">Trang chủ</a>
+          <span aria-hidden="true">›</span>
+          <a href="../">Hướng dẫn</a>
+          <span aria-hidden="true">›</span>
+          <span>Đọc bình luận TikTok Live</span>
+        </nav>
+
+        <div class="article-body">
+          <h1 style="font-size:clamp(28px,4vw,46px);letter-spacing:-.03em;margin-bottom:16px;">
+            Cách đọc bình luận TikTok Live thành giọng nói miễn phí
+          </h1>
+          <div class="article-meta">
+            <span>📅 Cập nhật tháng 9/2026</span>
+            <span>⏱ Đọc trong 6 phút</span>
+            <span>✍️ LiveQR</span>
+          </div>
+
+          <p>
+            Streamer TikTok Live ngày càng cần công cụ đọc bình luận thành giọng nói để tương tác tốt hơn với khán giả mà không phải liên tục nhìn vào chat. Thay vì đọc từng comment bằng mắt, TTS (Text-to-Speech) tự đọc tên và nội dung bình luận qua loa — giúp bạn tập trung vào nội dung trong khi khán giả vẫn cảm thấy được chú ý. Bài viết này so sánh các cách phổ biến và hướng dẫn cài đặt miễn phí.
+          </p>
+
+          <h2>Tại sao cần đọc bình luận TikTok Live thành giọng nói?</h2>
+
+          <p>
+            Trong một buổi stream, chat box TikTok Live có thể chạy rất nhanh — đặc biệt khi lượng khán giả tăng. Nếu bạn đang chơi game, nấu ăn hay làm nội dung cần tập trung, bạn không thể vừa nhìn màn hình vừa đọc chat. TTS giải quyết vấn đề này bằng cách đọc to bình luận qua loa hoặc tai nghe của bạn.
+          </p>
+          <p>
+            Lợi ích thực tế:
+          </p>
+          <ul>
+            <li><strong>Không cần nhìn chat liên tục</strong> — tập trung vào game, nội dung, hay biểu diễn mà không bỏ sót comment của fan</li>
+            <li><strong>Tăng tương tác hai chiều</strong> — khán giả nghe thấy comment của mình được đọc → cảm giác được chú ý → gửi thêm</li>
+            <li><strong>Chuyên nghiệp hơn</strong> — các streamer lớn ở Nhật, Hàn, Mỹ đều dùng TTS đọc bình luận, giờ streamer Việt cũng có thể làm được</li>
+            <li><strong>Kiểm soát nội dung</strong> — lọc và kiểm duyệt trước khi đọc, tránh bị bắt nghe comment tục tĩu bất ngờ trên sóng</li>
+          </ul>
+
+          <h2>Các cách đọc bình luận TikTok Live phổ biến</h2>
+
+          <p>Hiện có ba hướng tiếp cận chính. Mỗi cách có ưu và nhược điểm riêng:</p>
+
+          <h3>1. TikFinity</h3>
+          <p>
+            TikFinity là phần mềm Windows chuyên cho TikTok Live, hỗ trợ đọc bình luận, quà tặng, theo dõi… Bản free có tính năng cơ bản nhưng bị giới hạn số bình luận/phút và thiếu nhiều tính năng quan trọng. Bản Pro khoảng <strong>$5–$9/tháng</strong>.
+          </p>
+          <ul>
+            <li>Phải cài phần mềm riêng trên Windows (không hỗ trợ Mac)</li>
+            <li>Giọng đọc tiếng Việt phụ thuộc vào voice engine của hệ điều hành — thường giọng máy, không tự nhiên</li>
+            <li>Chỉ đọc comment TikTok, <strong>không kết hợp được alert donate</strong> — bạn vẫn cần thêm tool donate riêng</li>
+            <li>Giao diện phức tạp cho người mới</li>
+          </ul>
+
+          <h3>2. Extension Chrome / "Chị Google TikTok"</h3>
+          <p>
+            Một số extension Chrome miễn phí (hay được gọi là "Chị Google TikTok" trong cộng đồng streamer Việt) đọc comment TikTok Live bằng Web Speech API của trình duyệt. Nghe có vẻ tiện, nhưng thực tế có nhiều hạn chế:
+          </p>
+          <ul>
+            <li><strong>Không tích hợp được vào OBS</strong> — âm thanh phát qua trình duyệt, không capture được vào stream một cách sạch sẽ</li>
+            <li>Giọng đọc phụ thuộc vào giọng cài sẵn trong Chrome/Windows, thường không tự nhiên với tiếng Việt</li>
+            <li><strong>TikTok thường xuyên block API</strong> — extension hay bị lỗi sau mỗi lần TikTok cập nhật</li>
+            <li>Không có hàng đợi — nhiều comment cùng lúc sẽ bị cắt đè nhau</li>
+            <li>Không có kiểm duyệt nội dung</li>
+          </ul>
+
+          <h3>3. LiveQR — tích hợp sẵn trong widget OBS</h3>
+          <p>
+            LiveQR là nền tảng donate VietQR cho streamer Việt, nhưng tính năng đọc bình luận TikTok Live được tích hợp trực tiếp vào widget OBS — cùng một Browser Source với alert donate. Không cần cài thêm phần mềm nào.
+          </p>
+          <p>Cách hoạt động:</p>
+          <ul>
+            <li>Bạn nhập username TikTok vào dashboard LiveQR</li>
+            <li>LiveQR kết nối vào phiên live và nhận bình luận theo thời gian thực</li>
+            <li>Mỗi bình luận được đưa vào hàng đợi TTS — đọc lần lượt, không đè âm thanh nhau</li>
+            <li><strong>Chỉ phát âm thanh TTS</strong> — không hiện chữ lên màn hình stream, không che content</li>
+            <li>Ghép chung hàng đợi với alert donate — bình luận và donate đọc xen kẽ nhau mượt mà</li>
+            <li>Kiểm duyệt tiếng Việt — chặn bình luận xấu trước khi TTS đọc</li>
+          </ul>
+          <p>
+            Về chi phí donate: LiveQR tính <strong>5% doanh thu donate hàng tháng</strong> — không phí cố định, không phí cài đặt. Tính năng đọc bình luận TikTok Live hiện đang trong giai đoạn <strong>thử nghiệm (beta)</strong>, miễn phí trong thời gian này — sau khi ra chính thức sẽ có mức phí riêng, <a href="https://zalo.me/84394675935" target="_blank" rel="noopener">liên hệ Zalo</a> để biết thêm chi tiết.
+          </p>
+
+          <div style="overflow-x:auto;margin:28px 0;">
+            <table class="platform-compare">
+              <thead>
+                <tr>
+                  <th>Tiêu chí</th>
+                  <th>TikFinity</th>
+                  <th>Extension Chrome</th>
+                  <th>LiveQR</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Chi phí</td>
+                  <td>Free (hạn chế) / $5–9/tháng</td>
+                  <td>Miễn phí</td>
+                  <td class="highlight">5% donate, không phí cố định</td>
+                </tr>
+                <tr>
+                  <td>Tích hợp OBS</td>
+                  <td class="ok">✓</td>
+                  <td class="no">✗ (capture phức tạp)</td>
+                  <td class="ok">✓ Browser Source chuẩn</td>
+                </tr>
+                <tr>
+                  <td>Giọng TTS tiếng Việt tự nhiên</td>
+                  <td class="no">✗ (phụ thuộc OS)</td>
+                  <td class="no">✗ (Web Speech API)</td>
+                  <td class="ok">✓</td>
+                </tr>
+                <tr>
+                  <td>Hàng đợi, không đè âm thanh</td>
+                  <td class="ok">✓</td>
+                  <td class="no">✗</td>
+                  <td class="ok">✓</td>
+                </tr>
+                <tr>
+                  <td>Kiểm duyệt tiếng Việt</td>
+                  <td class="no">✗</td>
+                  <td class="no">✗</td>
+                  <td class="ok">✓</td>
+                </tr>
+                <tr>
+                  <td>Kết hợp alert donate</td>
+                  <td class="no">✗</td>
+                  <td class="no">✗</td>
+                  <td class="ok">✓</td>
+                </tr>
+                <tr>
+                  <td>Không cần cài phần mềm riêng</td>
+                  <td class="no">✗</td>
+                  <td class="no">✗</td>
+                  <td class="ok">✓</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>Hướng dẫn cài đặt đọc bình luận TikTok Live với LiveQR</h2>
+
+          <p>Cài đặt mất khoảng 10 phút, không cần kiến thức kỹ thuật:</p>
+
+          <ol class="step-list">
+            <li>
+              <div>
+                <strong>Tạo tài khoản LiveQR</strong>
+                <span>Truy cập <a href="https://app.liveqr.me" target="_blank" rel="noopener">app.liveqr.me</a> và đăng ký bằng email hoặc tài khoản Google. Miễn phí, không cần thẻ tín dụng.</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Kết nối tài khoản ngân hàng</strong>
+                <span>Vào phần Cài đặt → Ngân hàng và kết nối qua <strong>SePay</strong> hoặc <strong>GPMpay</strong>. Đây là bước để nhận donate VietQR — tính năng đọc comment TikTok cũng chạy qua cùng widget này.</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Bật tính năng đọc bình luận TikTok Live</strong>
+                <span>Trong Dashboard, tìm mục <strong>TikTok Live</strong>. Nhập username TikTok của kênh bạn (không cần @). LiveQR sẽ kết nối vào phiên live khi bạn bắt đầu stream.</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Copy URL widget</strong>
+                <span>Trong phần Widget → Copy URL. Đây là địa chỉ Browser Source bạn sẽ dán vào OBS.</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Thêm widget vào phần mềm live</strong>
+                <span>Tuỳ phần mềm bạn đang dùng, chọn một trong hai cách:</span>
+                <div style="margin-top:14px;display:grid;gap:10px;">
+                  <div style="padding:14px 16px;background:var(--panel-2);border:1px solid var(--line);border-radius:10px;">
+                    <p style="margin:0 0 6px;color:var(--text);font-weight:600;">OBS Studio / Streamlabs OBS</p>
+                    <p style="margin:0;color:var(--muted);font-size:15px;line-height:1.65;">Sources → nhấn dấu <b>+</b> → <b>Browser</b>. Dán URL widget vào ô URL. Đặt Width = 1920, Height = 1080. Tick <b>"Shutdown source when not visible"</b> và <b>"Refresh browser when scene becomes active"</b>. Widget chỉ phát âm thanh — không cần đặt trong vùng hiển thị.</p>
+                  </div>
+                  <div style="padding:14px 16px;background:var(--panel-2);border:1px solid var(--line);border-radius:10px;">
+                    <p style="margin:0 0 6px;color:var(--text);font-weight:600;">TikTok Live Studio (không dùng OBS)</p>
+                    <p style="margin:0;color:var(--muted);font-size:15px;line-height:1.65;">Chọn <b>Add Source → Source Link</b>, dán URL widget của LiveQR vào. TikTok Live Studio load widget và âm thanh TTS phát qua phiên live — không cần OBS.</p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Thêm link donate vào TikTok Live</strong>
+                <span>Để khán giả biết chỗ donate, dán link <b>liveqr.me/@ten-cua-ban</b> vào tiêu đề buổi live hoặc ghim ngay dưới dạng bình luận sau khi bắt đầu live. Khán giả mở link → quét mã VietQR → tiền về thẳng tài khoản của bạn và bình luận TikTok được TTS đọc qua OBS.</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Bắt đầu phiên TikTok Live</strong>
+                <span>Khi bạn bắt đầu live trên TikTok, LiveQR tự động phát hiện phiên live và bắt đầu nhận bình luận. Mỗi bình luận được đưa vào hàng đợi TTS và đọc lần lượt qua OBS.</span>
+              </div>
+            </li>
+          </ol>
+
+          <div class="tip-box">
+            <p><strong>💡 Mẹo:</strong> Trong OBS, đặt Browser Source vào một scene riêng hoặc đặt ở góc ngoài vùng hiển thị — widget chỉ phát âm thanh nên không cần hiển thị trên màn hình stream.</p>
+          </div>
+
+          <h2>Mẹo tối ưu khi dùng đọc bình luận TikTok Live</h2>
+
+          <p>Sau khi cài xong, bạn có thể tinh chỉnh thêm:</p>
+          <ul>
+            <li>
+              <strong>Bật kiểm duyệt tiếng Việt</strong> — LiveQR có từ điển kiểm duyệt sẵn + cho phép bạn thêm từ khoá cấm riêng. Bình luận vi phạm bị chặn trước khi TTS đọc, không bao giờ lên sóng.
+            </li>
+            <li>
+              <strong>Lọc từ khoá</strong> — Chỉ đọc comment chứa một từ khoá cụ thể (ví dụ: "câu hỏi", "vote", "gg") để tránh hàng đợi bị lấp bởi những comment ngắn như "haha", "lol".
+            </li>
+            <li>
+              <strong>Test trước buổi live</strong> — Dùng tính năng Demo ngay trên trang <a href="../../#demo">liveqr.me</a> để nghe giọng đọc và kiểm tra cài đặt mà không cần mở stream thật.
+            </li>
+          </ul>
+
+          <div class="article-cta-box">
+            <h3>Bật đọc bình luận TikTok Live ngay hôm nay</h3>
+            <p>Tính năng đang thử nghiệm beta — miễn phí trong thời gian này. Tạo tài khoản LiveQR, dán URL widget vào OBS — xong trong 10 phút. Liên hệ Zalo để hỏi thêm về giá khi ra chính thức.</p>
+            <div class="cta-btns">
+              <a class="btn btn-primary btn-lg" href="https://app.liveqr.me" target="_blank" rel="noopener">Tạo tài khoản miễn phí</a>
+              <a class="btn btn-ghost btn-lg" href="https://zalo.me/84394675935" target="_blank" rel="noopener">💬 Hỏi qua Zalo</a>
+            </div>
+          </div>
+
+          <div class="faq-list" id="faq">
+            <h2>Câu hỏi thường gặp</h2>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">LiveQR đọc bình luận TikTok Live có mất phí không?<span class="faq-icon"></span></button>
+              <div class="faq-a"><p>Tính năng đang trong giai đoạn <strong>thử nghiệm (beta)</strong> và hiện miễn phí. Sau khi ra chính thức sẽ có mức phí riêng — chưa công bố cụ thể. <a href="https://zalo.me/84394675935" target="_blank" rel="noopener">Liên hệ Zalo 0394 675 935</a> để biết thêm chi tiết và nhận thông báo sớm nhất.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">Cần cài phần mềm gì để dùng LiveQR đọc bình luận TikTok Live?<span class="faq-icon"></span></button>
+              <div class="faq-a"><p>Không cần cài thêm phần mềm nào. Nếu dùng <strong>OBS Studio</strong> (hoặc Streamlabs): thêm Browser Source, dán URL widget vào là xong. Nếu stream thẳng bằng <strong>TikTok Live Studio</strong>: chọn Add Source → <b>Source Link</b>, dán URL widget vào — âm thanh TTS phát qua phiên live mà không cần OBS.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">Đọc bình luận TikTok Live có hiện chữ lên màn hình stream không?<span class="faq-icon"></span></button>
+              <div class="faq-a"><p>Không. LiveQR <strong>chỉ phát âm thanh TTS</strong> — bình luận được đọc thành giọng nói nhưng không hiện text lên màn hình stream, không che nội dung đang phát. Màn hình của bạn hoàn toàn sạch.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">Kết nối TikTok Live của LiveQR có ổn định không?<span class="faq-icon"></span></button>
+              <div class="faq-a"><p>LiveQR kết nối vào phiên TikTok Live qua API và nhận bình luận theo thời gian thực. Kết nối ổn định trong suốt phiên live. Nếu có sự cố kết nối, LiveQR tự động thử kết nối lại mà không cần bạn làm gì.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">Bình luận đến dồn dập có bị bỏ sót không?<span class="faq-icon"></span></button>
+              <div class="faq-a"><p>Không. LiveQR dùng hệ thống hàng đợi — mỗi bình luận được xếp vào hàng và đọc lần lượt, không đè nhau. Bình luận đến trong lúc TTS đang đọc sẽ được giữ trong hàng và đọc tiếp sau khi xong.</p></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="../../">
+          <img class="brand-logo" src="../../brand/logo-on-dark.svg" alt="LiveQR" height="28" width="148" />
+        </a>
+        <p>Donate VietQR về thẳng tài khoản ngân hàng. Trang donate tuỳ chỉnh, alert OBS realtime cho streamer Việt.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sản phẩm</h4>
+        <a href="https://app.liveqr.me" target="_blank" rel="noopener">Dùng thử miễn phí</a>
+        <a href="../../#demo">Demo alert</a>
+        <a href="../../#pricing">Bảng giá</a>
+        <a href="../../#features">Tính năng</a>
+      </div>
+      <div class="footer-col">
+        <h4>Hướng dẫn</h4>
+        <a href="../nhan-donate-tiktok-live/">Nhận donate TikTok Live</a>
+        <a href="../doc-binh-luan-tiktok-live/">Đọc bình luận TikTok Live</a>
+        <a href="../donate-giong-chi-google-obs/">Donate giọng chị Google OBS</a>
+        <a href="../tao-trang-donate-streamer/">Tạo trang donate miễn phí</a>
+        <a href="../wescan-la-gi/">WeScan là gì?</a>
+        <a href="../phi-donate-streamer-viet/">So sánh phí donate</a>
+      </div>
+      <div class="footer-col">
+        <h4>Liên hệ</h4>
+        <a href="https://zalo.me/84394675935" target="_blank" rel="noopener">Zalo: 0394 675 935</a>
+        <a href="tel:0394675935">Gọi: 0394675935</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 LiveQR. Số liệu so sánh theo thông tin công khai của các nền tảng (9/2026).</span>
+    </div>
+  </footer>
+
+  <script src="../../script.js"></script>
+</body>
+</html>
