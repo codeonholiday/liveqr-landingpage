@@ -11,6 +11,8 @@
     "/script.js",
     "/demo.js",
     "/brand/*",
-    "/assets/*"
+    "/assets/*",
+    "/huong-dan",
+    "/huong-dan/*"
   ]
 }

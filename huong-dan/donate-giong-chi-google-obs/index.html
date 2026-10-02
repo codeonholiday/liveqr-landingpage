@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cách cài giọng đọc donate (TTS) vào OBS miễn phí 2026 — Hướng dẫn LiveQR</title>
+  <meta name="description" content="Hướng dẫn cài TTS đọc donate vào OBS và TikTok Live Studio miễn phí với LiveQR — alert tự đọc tên và lời nhắn khán giả bằng giọng tiếng Việt tự nhiên, hàng đợi thông minh, không chồng âm." />
+  <meta name="keywords" content="donate giọng chị google obs, tts đọc donate obs, giọng đọc donate streamer, obs tts tiếng việt, alert donate có giọng đọc, donate text to speech việt nam, cài tts obs liveqr" />
+  <meta name="author" content="LiveQR" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://liveqr.me/huong-dan/donate-giong-chi-google-obs" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://liveqr.me/huong-dan/donate-giong-chi-google-obs" />
+  <meta property="og:title" content="Cách cài giọng đọc donate (TTS) vào OBS miễn phí 2026 — LiveQR" />
+  <meta property="og:description" content="Alert donate tự đọc tên và lời nhắn khán giả bằng giọng tiếng Việt tự nhiên — hướng dẫn cài TTS vào OBS và TikTok Live Studio miễn phí với LiveQR." />
+  <meta property="og:image" content="https://liveqr.me/og-image.png" />
+  <meta property="og:locale" content="vi_VN" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cài giọng đọc donate TTS vào OBS miễn phí — LiveQR" />
+  <meta name="twitter:description" content="Alert donate tự đọc tên và lời nhắn khán giả bằng giọng tiếng Việt — cài TTS miễn phí với LiveQR." />
+  <meta name="twitter:image" content="https://liveqr.me/og-image.png" />
+
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Cách cài giọng đọc donate (TTS) vào OBS miễn phí với LiveQR",
+    "description": "Hướng dẫn cài TTS đọc donate vào OBS và TikTok Live Studio miễn phí — alert tự đọc tên và lời nhắn khán giả bằng giọng tiếng Việt tự nhiên.",
+    "url": "https://liveqr.me/huong-dan/donate-giong-chi-google-obs",
+    "datePublished": "2026-09-20",
+    "dateModified": "2026-10-02",
+    "author": { "@type": "Organization", "name": "LiveQR", "url": "https://liveqr.me" },
+    "publisher": { "@type": "Organization", "name": "LiveQR", "url": "https://liveqr.me", "logo": { "@type": "ImageObject", "url": "https://liveqr.me/brand/logo-on-dark.svg" } },
+    "inLanguage": "vi",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://liveqr.me/huong-dan/donate-giong-chi-google-obs" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://liveqr.me" },
+      { "@type": "ListItem", "position": 2, "name": "Hướng dẫn", "item": "https://liveqr.me/huong-dan" },
+      { "@type": "ListItem", "position": 3, "name": "Cài TTS đọc donate vào OBS", "item": "https://liveqr.me/huong-dan/donate-giong-chi-google-obs" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Giọng TTS tiếng Việt của LiveQR có tự nhiên không?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Có. LiveQR dùng giọng đọc tự nhiên hỗ trợ đầy đủ dấu tiếng Việt, ngắt nghỉ đúng chỗ — không bị đọc ngắc như TTS cơ bản của hệ điều hành. Bạn có thể preview giọng trong Dashboard trước khi dùng." }
+      },
+      {
+        "@type": "Question",
+        "name": "Nếu nhiều người donate cùng lúc thì TTS có bị chồng âm không?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Không. LiveQR có hàng đợi thông minh — mỗi alert phát tuần tự, TTS đọc xong alert này mới chuyển sang alert tiếp theo. Donate dồn dập trong buổi peak vẫn phát hết, không bỏ sót ai." }
+      },
+      {
+        "@type": "Question",
+        "name": "LiveQR có hỗ trợ TikTok Live Studio không cần OBS không?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Có. Nếu stream bằng TikTok Live Studio, bạn chọn Add Source → Source Link và dán URL widget của LiveQR vào. Alert và TTS phát trực tiếp qua phiên live, không cần cài OBS." }
+      },
+      {
+        "@type": "Question",
+        "name": "LiveQR có giữ tiền donate không?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Không. Tiền chuyển thẳng từ tài khoản khán giả vào tài khoản ngân hàng của bạn qua VietQR — LiveQR chỉ nhận tín hiệu giao dịch để kích hoạt alert và TTS." }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+
+  <style>
+    .article-hero { padding: 64px 0 40px; }
+    .article-breadcrumb { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+    .article-breadcrumb a { color: var(--purple); }
+    .article-breadcrumb span { margin: 0 6px; opacity: .5; }
+    .article-meta { font-size: 14px; color: var(--muted-2); margin-bottom: 32px; display: flex; gap: 16px; flex-wrap: wrap; }
+    .article-meta span { display: inline-flex; align-items: center; gap: 6px; }
+    .article-body { max-width: 720px; }
+    .article-body h2 { font-size: clamp(22px, 2.8vw, 30px); margin: 48px 0 16px; color: var(--text); }
+    .article-body h3 { font-size: clamp(18px, 2vw, 22px); margin: 32px 0 12px; color: var(--purple); }
+    .article-body p { color: var(--muted); line-height: 1.75; font-size: 16.5px; margin-bottom: 16px; }
+    .article-body ul, .article-body ol { color: var(--muted); line-height: 1.75; padding-left: 24px; margin-bottom: 16px; }
+    .article-body li { margin-bottom: 8px; font-size: 16px; }
+    .article-body strong { color: var(--text); }
+    .article-body a { color: var(--purple); font-weight: 600; }
+    .article-body a:hover { text-decoration: underline; }
+    .article-cta-box { margin: 48px 0; padding: 32px; background: var(--panel-2); border: 1px solid var(--purple-line); border-radius: var(--radius-lg); }
+    .article-cta-box h3 { margin: 0 0 12px; color: var(--text); font-size: 20px; }
+    .article-cta-box p { margin: 0 0 20px; }
+    .article-cta-box .cta-btns { display: flex; flex-wrap: wrap; gap: 12px; }
+    .step-list { list-style: none; padding: 0; counter-reset: steps; }
+    .step-list li { counter-increment: steps; display: flex; gap: 16px; margin-bottom: 20px; align-items: flex-start; }
+    .step-list li::before {
+      content: counter(steps);
+      display: grid; place-items: center; flex-shrink: 0;
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--purple-soft); border: 1px solid var(--purple-line);
+      color: var(--purple); font-weight: 700; font-size: 14px;
+      margin-top: 2px;
+    }
+    .step-list li > div { flex: 1; }
+    .step-list li strong { display: block; color: var(--text); font-size: 16px; margin-bottom: 4px; }
+    .step-list li span { color: var(--muted); font-size: 15px; line-height: 1.6; }
+    .tip-box { padding: 16px 20px; background: rgba(94, 229, 162, .07); border: 1px solid rgba(94, 229, 162, .22); border-radius: var(--radius); margin: 20px 0; }
+    .tip-box strong { color: var(--green); }
+    .tip-box p { margin: 0; font-size: 15px; }
+    .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+    .feature-card { padding: 16px 18px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); }
+    .feature-card strong { display: block; color: var(--text); margin-bottom: 4px; font-size: 15px; }
+    .feature-card span { color: var(--muted); font-size: 14px; line-height: 1.55; }
+    @media (max-width: 520px) { .feature-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="brand" href="../../" aria-label="LiveQR — trang chủ">
+        <img class="brand-logo" src="../../brand/logo-on-dark.svg" alt="LiveQR" height="28" width="148" />
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="Điều hướng chính">
+        <a href="../../#demo">Demo</a>
+        <a href="../../#features">Tính năng</a>
+        <a href="../../#compare">So sánh</a>
+        <a href="../../#pricing">Giá</a>
+        <a href="../../#faq">FAQ</a>
+        <a class="nav-cta-mobile" href="https://app.liveqr.me" target="_blank" rel="noopener">Dùng thử miễn phí</a>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm" href="https://app.liveqr.me" target="_blank" rel="noopener">Dùng thử miễn phí</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Mở menu" aria-expanded="false" aria-controls="mainNav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="article-hero">
+      <div class="container">
+        <nav class="article-breadcrumb" aria-label="Breadcrumb">
+          <a href="../../">Trang chủ</a>
+          <span aria-hidden="true">›</span>
+          <a href="../">Hướng dẫn</a>
+          <span aria-hidden="true">›</span>
+          <span>Cài TTS đọc donate vào OBS</span>
+        </nav>
+
+        <div class="article-body">
+          <h1 style="font-size:clamp(28px,4vw,46px);letter-spacing:-.03em;margin-bottom:16px;">
+            Cài giọng chị Google đọc donate vào OBS miễn phí — Hướng dẫn LiveQR
+          </h1>
+          <div class="article-meta">
+            <span>📅 Cập nhật tháng 10/2026</span>
+            <span>⏱ Đọc trong 5 phút</span>
+            <span>✍️ LiveQR</span>
+          </div>
+
+          <p>
+            Khi khán giả donate, streamer chuyên nghiệp không chỉ hiện alert — alert còn <strong>tự đọc tên và lời nhắn</strong> bằng giọng nói. Khán giả nghe tên mình được xướng lên, họ hào hứng hơn, donate nhiều hơn. Tính năng này gọi là <strong>TTS (Text-to-Speech)</strong>, hay dân mạng Việt quen gọi là "giọng chị Google." Bài này hướng dẫn cách cài TTS donate tiếng Việt vào OBS (hoặc TikTok Live Studio) miễn phí với LiveQR — xong trong 10 phút.
+          </p>
+
+          <h2>TTS donate hoạt động thế nào với LiveQR?</h2>
+
+          <p>LiveQR tích hợp TTS trực tiếp vào widget alert — không cần cài thêm phần mềm, không cần Virtual Audio Cable, không cần viết script. Khi có người chuyển khoản donate:</p>
+          <ul>
+            <li>LiveQR nhận tín hiệu giao dịch từ SePay hoặc GPMpay</li>
+            <li>Alert bật lên trong OBS — đồng thời TTS bắt đầu đọc tên và lời nhắn</li>
+            <li><strong>Hàng đợi thông minh:</strong> 5 người donate liên tiếp → TTS đọc lần lượt từng người, không đè âm thanh, không bỏ sót</li>
+            <li>Toàn bộ chạy trong <strong>một URL widget duy nhất</strong> — dán vào OBS hoặc TikTok Live Studio là xong</li>
+          </ul>
+
+          <div class="feature-grid">
+            <div class="feature-card">
+              <strong>Giọng tiếng Việt tự nhiên</strong>
+              <span>Đọc đúng dấu, ngắt nghỉ hợp lý — không robot như TTS hệ điều hành</span>
+            </div>
+            <div class="feature-card">
+              <strong>Hàng đợi thông minh</strong>
+              <span>Donate dồn dập vẫn phát hết tuần tự, không đè âm thanh, không bỏ sót alert</span>
+            </div>
+            <div class="feature-card">
+              <strong>Kiểm duyệt tiếng Việt</strong>
+              <span>TTS tự động bỏ qua lời nhắn chứa từ ngữ xấu trước khi đọc trên sóng</span>
+            </div>
+            <div class="feature-card">
+              <strong>Không giữ tiền</strong>
+              <span>Tiền về thẳng tài khoản ngân hàng của bạn — LiveQR không qua ví trung gian</span>
+            </div>
+          </div>
+
+          <h2>Hướng dẫn cài đặt TTS donate với LiveQR</h2>
+
+          <p>Cài đặt mất khoảng 10 phút. Bạn cần: tài khoản ngân hàng Việt Nam và OBS Studio (hoặc TikTok Live Studio).</p>
+
+          <ol class="step-list">
+            <li>
+              <div>
+                <strong>Tạo tài khoản LiveQR</strong>
+                <span>Truy cập <a href="https://app.liveqr.me" target="_blank" rel="noopener">app.liveqr.me</a> → bấm Đăng ký. Điền thông tin kênh và chọn username — đây sẽ là đường dẫn trang donate của bạn (VD: <code>liveqr.me/@ten-cua-ban</code>). Miễn phí, không cần thẻ tín dụng.</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Kết nối tài khoản ngân hàng</strong>
+                <span>Vào <b>Settings → Kết nối ngân hàng</b>. LiveQR hỗ trợ hai cổng: <b>SePay</b> và <b>GPMpay</b> — chọn cổng bạn đang dùng hoặc đăng ký một trong hai. Tiền donate chuyển thẳng vào tài khoản của bạn, không qua ví trung gian.</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Bật và cấu hình TTS</strong>
+                <span>Vào <b>Dashboard → Alert Settings → TTS</b>. Bật tính năng TTS, chọn giọng đọc tiếng Việt ưa thích. Đặt <b>ngưỡng donate tối thiểu để TTS đọc</b> (VD: từ 10.000đ trở lên) để tránh spam. Bấm Preview để nghe thử giọng trước khi lưu.</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Copy URL Widget</strong>
+                <span>Trong LiveQR Dashboard → bấm <b>Copy URL Widget</b>. Đây là địa chỉ bạn sẽ dán vào OBS hoặc TikTok Live Studio ở bước tiếp theo.</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Thêm widget vào phần mềm stream</strong>
+                <span>Tuỳ phần mềm bạn đang dùng, chọn một trong hai cách:</span>
+                <div style="margin-top:14px;display:grid;gap:10px;">
+                  <div style="padding:14px 16px;background:var(--panel-2);border:1px solid var(--line);border-radius:10px;">
+                    <p style="margin:0 0 6px;color:var(--text);font-weight:600;">OBS Studio / Streamlabs OBS</p>
+                    <p style="margin:0;color:var(--muted);font-size:15px;line-height:1.65;">Sources → nhấn dấu <b>+</b> → <b>Browser</b>. Dán URL widget vào ô URL. Đặt Width = 1920, Height = 1080. Tick <b>"Shutdown source when not visible"</b> và <b>"Refresh browser when scene becomes active"</b>. Bấm OK.</p>
+                  </div>
+                  <div style="padding:14px 16px;background:var(--panel-2);border:1px solid var(--line);border-radius:10px;">
+                    <p style="margin:0 0 6px;color:var(--text);font-weight:600;">TikTok Live Studio (không dùng OBS)</p>
+                    <p style="margin:0;color:var(--muted);font-size:15px;line-height:1.65;">Chọn <b>Add Source → Source Link</b>, dán URL widget vào. Alert và TTS phát trực tiếp qua phiên TikTok Live — không cần OBS.</p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Test alert + TTS</strong>
+                <span>Quay lại LiveQR Dashboard → bấm <b>Test Alert</b>. Trong OBS (hoặc TikTok Live Studio) bạn sẽ nghe giọng TTS đọc "Tên người dùng vừa donate X đồng: [lời nhắn test]." Nghe thấy → xong, bạn đã sẵn sàng stream.</span>
+              </div>
+            </li>
+          </ol>
+
+          <div class="tip-box">
+            <p><strong>💡 Mẹo:</strong> Trong OBS, đặt Browser Source vào layer trên cùng trong Scene Collection để widget hoạt động trên mọi scene mà không cần thêm lại từng scene.</p>
+          </div>
+
+          <h2>Mẹo tối ưu khi dùng TTS donate</h2>
+
+          <ul>
+            <li>
+              <strong>Cài ngưỡng TTS linh hoạt theo buổi:</strong> Giờ cao điểm nhiều donate → tăng ngưỡng lên 20.000–50.000đ để hàng đợi không bị backlog. Buổi nhỏ → giảm xuống 5.000–10.000đ để khán giả nhỏ cũng được nghe tên.
+            </li>
+            <li>
+              <strong>Kết hợp với quà tặng animated:</strong> LiveQR có các loại quà animated (tên lửa, pháo hoa, hoa...) — khi khán giả chọn quà, TTS đọc "X vừa tặng [tên quà]" kèm animation trên stream.
+            </li>
+            <li>
+              <strong>Kiểm duyệt TTS:</strong> Bật tính năng kiểm duyệt tiếng Việt trong Settings để TTS tự bỏ qua lời nhắn chứa từ ngữ xấu — đặc biệt quan trọng khi stream giờ đông hoặc kênh public.
+            </li>
+            <li>
+              <strong>Test trước buổi live:</strong> Dùng nút <b>Test Alert</b> trong Dashboard để kiểm tra giọng đọc và cài đặt mà không cần mở stream thật.
+            </li>
+          </ul>
+
+          <div class="article-cta-box">
+            <h3>Cài giọng đọc donate vào OBS ngay hôm nay</h3>
+            <p>Tạo tài khoản LiveQR miễn phí, kết nối ngân hàng và dán URL widget vào OBS — xong trong 10 phút. Phí 5% doanh thu donate hàng tháng, tiền về thẳng tài khoản ngân hàng.</p>
+            <div class="cta-btns">
+              <a class="btn btn-primary btn-lg" href="https://app.liveqr.me" target="_blank" rel="noopener">Tạo tài khoản miễn phí</a>
+              <a class="btn btn-ghost btn-lg" href="https://zalo.me/84394675935" target="_blank" rel="noopener">💬 Hỏi qua Zalo</a>
+            </div>
+          </div>
+
+          <div class="faq-list" id="faq">
+            <h2>Câu hỏi thường gặp</h2>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">Giọng TTS tiếng Việt của LiveQR có nghe tự nhiên không?<span class="faq-icon"></span></button>
+              <div class="faq-a"><p>Có. LiveQR dùng giọng đọc tự nhiên hỗ trợ đầy đủ dấu tiếng Việt, ngắt nghỉ đúng chỗ — không bị đọc ngắc như TTS cơ bản của hệ điều hành. Bạn có thể preview giọng ngay trong Dashboard trước khi dùng thực tế.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">Nếu nhiều người donate cùng lúc thì TTS có bị chồng âm không?<span class="faq-icon"></span></button>
+              <div class="faq-a"><p>Không. LiveQR có hàng đợi thông minh — mỗi alert phát tuần tự, TTS đọc xong alert này mới chuyển sang alert tiếp theo. Donate dồn dập trong buổi peak vẫn phát hết, không bỏ sót ai.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">LiveQR có hỗ trợ TikTok Live Studio không cần OBS không?<span class="faq-icon"></span></button>
+              <div class="faq-a"><p>Có. Nếu stream bằng TikTok Live Studio, bạn chọn <strong>Add Source → Source Link</strong> và dán URL widget của LiveQR vào. Alert và TTS phát trực tiếp qua phiên live — không cần cài OBS.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">TTS có đọc được emoji trong lời nhắn không?<span class="faq-icon"></span></button>
+              <div class="faq-a"><p>TTS tự động bỏ qua emoji và chỉ đọc phần văn bản. Lời nhắn lẫn lộn emoji sẽ không khiến giọng đọc kỳ lạ.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">LiveQR có giữ tiền donate không?<span class="faq-icon"></span></button>
+              <div class="faq-a"><p>Không. Tiền chuyển thẳng từ tài khoản khán giả vào tài khoản ngân hàng của bạn qua VietQR — LiveQR chỉ nhận tín hiệu giao dịch để kích hoạt alert và TTS. LiveQR không giữ tiền của bạn dù chỉ 1 đồng.</p></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="../../">
+          <img class="brand-logo" src="../../brand/logo-on-dark.svg" alt="LiveQR" height="28" width="148" />
+        </a>
+        <p>Donate VietQR về thẳng tài khoản ngân hàng. Trang donate tuỳ chỉnh, alert OBS realtime cho streamer Việt.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sản phẩm</h4>
+        <a href="https://app.liveqr.me" target="_blank" rel="noopener">Dùng thử miễn phí</a>
+        <a href="../../#demo">Demo alert</a>
+        <a href="../../#pricing">Bảng giá</a>
+        <a href="../../#features">Tính năng</a>
+      </div>
+      <div class="footer-col">
+        <h4>Hướng dẫn</h4>
+        <a href="../doc-binh-luan-tiktok-live/">Đọc bình luận TikTok Live</a>
+        <a href="../donate-giong-chi-google-obs/">Donate giọng chị Google</a>
+        <a href="../phi-donate-streamer-viet/">So sánh phí donate</a>
+      </div>
+      <div class="footer-col">
+        <h4>Liên hệ</h4>
+        <a href="https://zalo.me/84394675935" target="_blank" rel="noopener">Zalo: 0394 675 935</a>
+        <a href="tel:0394675935">Gọi: 0394675935</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 LiveQR.</span>
+    </div>
+  </footer>
+
+  <script src="../../script.js"></script>
+</body>
+</html>

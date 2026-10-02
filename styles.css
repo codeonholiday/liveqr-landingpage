@@ -719,7 +719,7 @@ section[id] { scroll-margin-top: 84px; }
 
 /* ── Footer ──────────────────────────────────────────────── */
 .site-footer { border-top: 1px solid var(--line); background: #121722; padding: 56px 0 0; }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 36px; padding-bottom: 40px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 28px; padding-bottom: 40px; }
 .footer-brand p { margin: 14px 0 0; color: var(--muted); font-size: 13.5px; max-width: 30ch; }
 .footer-col { display: grid; gap: 10px; align-content: start; }
 .footer-col h4 { margin: 0 0 6px; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
