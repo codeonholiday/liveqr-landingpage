@@ -7,7 +7,7 @@ HTML/CSS/JS thuần — không build tool, không dependency.
 |---|---|
 | `index.html` | Toàn bộ nội dung trang (tiếng Việt) |
 | `styles.css` | Design system (brand token đồng bộ với app: `#0b0d13`, tím `#9b7cff`, xanh `#5ee5a2`, DM Sans + Space Grotesk) |
-| `demo.js` | Demo tương tác: donate → alert overlay, hàng đợi, TTS giọng Việt (Web Speech API), kiểm duyệt tiếng Việt, vòng quay, bình chọn |
+| `demo.js` | Demo tương tác: donate → alert overlay, hàng đợi, TTS, đọc bình luận TikTok Live (chỉ phát âm thanh), kiểm duyệt tiếng Việt |
 | `script.js` | Menu mobile, FAQ accordion, scroll-reveal, header |
 | `favicon.svg`, `robots.txt`, `sitemap.xml` | Meta/SEO |
 
@@ -39,10 +39,13 @@ python3 -m http.server 4173
 - **Mức phí**: khi chốt số cụ thể, sửa cột "LiveQR" trong bảng so sánh (section `#compare`) và section `#pricing`.
 - **Dữ liệu đối thủ**: các số liệu WeScan/Zypage/PlayerDuo/Unghotoi/Gank cập nhật tháng 9/2026 — nên kiểm tra lại trước các chiến dịch lớn; nguồn ghi trong footnote của bảng.
 - **Từ khóa kiểm duyệt trong demo**: mảng `BAD_TOKENS` / `BAD_PHRASES` trong `demo.js`.
+- **Tên & bình luận TikTok giả lập trong demo**: mảng `TT_NAMES` / `TT_COMMENTS` trong `demo.js`.
+- **Demo để 4 quà tặng tiêu biểu** (mảng `GIFTS` trong `demo.js`) — catalog đầy đủ 7 quà nằm trong app. Widget tương tác (vòng quay, bình chọn) không có trong demo nhưng vẫn là tính năng của app.
 
 ## Ghi chú
 
 - Bảng so sánh dùng số liệu **công khai** của các nền tảng (website chính thức, hướng dẫn dùng, thỏa luận cộng đồng) — có footnote ghi nguồn & thời điểm; cần giữ disclaimer để tránh tranh chấp.
 - Demo hoàn toàn client-side: không gọi API, không thu thập dữ liệu người xem.
-- **TTS trong demo** dùng Web Speech API của trình duyệt: Chrome có giọng "Google Tiếng Việt" (giọng nữ), macOS có giọng "Minh". Nếu máy người xem không có giọng Việt nào, demo tự fallback về chế độ im lặng (alert vẫn phát tuần tự theo độ dài lời nhắn). Số tiền được đọc thành chữ tiếng Việt (hàm `docSo` trong `demo.js`).
-- Trình duyệt chỉ cho phát âm sau lần click đầu tiên của người dùng (chính sách autoplay) — nút **Donate ngay** chính là cú click mở khoá đó.
+- **TTS trong demo là giả lập** (hiệu ứng chữ chạy + trạng thái "đang đọc" + âm thanh WebAudio) — không dùng Web Speech API; độ dài mỗi lượt đọc tính theo độ dài lời nhắn/bình luận. Trên app thật TTS là giọng đọc tiếng Việt thật.
+- Demo đọc bình luận TikTok cũng là giả lập: bình luận **không hiện lên overlay** (đúng như app thật — chỉ phát âm thanh), overlay chỉ có badge "đang đọc" kèm số bình luận đang chờ; bình luận vi phạm từ điển kiểm duyệt sẽ bị chặn giống donate.
+- Trình duyệt chỉ cho phát âm sau lần click đầu tiên của người dùng (chính sách autoplay) — nút **Donate ngay** / **Gửi bình luận** chính là cú click mở khoá đó.

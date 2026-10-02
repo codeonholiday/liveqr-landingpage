@@ -86,6 +86,12 @@ section[id] { scroll-margin-top: 84px; }
 .btn-ghost:hover { border-color: var(--purple-line); background: var(--purple-soft); }
 .btn-danger-ghost { background: transparent; color: var(--red); border-color: rgba(255, 107, 122, .35); }
 .btn-danger-ghost:hover { background: var(--red-soft); }
+.btn-tiktok {
+  background: linear-gradient(92deg, #25f4ee 0%, #2ea8f0 46%, #fe2c55 100%);
+  color: #0b0d13;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 10px 28px -12px rgba(37, 244, 238, .5);
+}
+.btn-tiktok:hover { filter: brightness(1.07); box-shadow: inset 0 1px 0 rgba(255,255,255,.34), 0 14px 34px -12px rgba(254, 44, 85, .55); }
 .btn-sm { padding: 8px 14px; font-size: 14px; }
 .btn-lg { padding: 15px 26px; font-size: 16.5px; }
 .btn-block { width: 100%; }
@@ -347,6 +353,7 @@ section[id] { scroll-margin-top: 84px; }
   background: var(--purple-soft); border: 1px solid var(--purple-line); border-radius: 999px;
 }
 .panel-tag.green { color: var(--green); background: var(--green-soft); border-color: rgba(94, 229, 162, .3); }
+.panel-tag.tiktok { color: #7df3ee; background: rgba(37, 244, 238, .07); border-color: rgba(37, 244, 238, .28); }
 .panel-divider { height: 1px; background: var(--line); margin: 20px 0; }
 
 .viewer-profile { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
@@ -380,9 +387,16 @@ section[id] { scroll-margin-top: 84px; }
 .amount-chip:hover { border-color: var(--purple-line); color: var(--text); }
 .amount-chip.selected { color: #0b0d13; background: var(--purple); border-color: var(--purple); }
 
-/* gift picker */
-.gift-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 14px; }
+/* gift picker — carousel ngang kiểu TikTok */
+.gift-grid {
+  display: flex; gap: 8px; margin-bottom: 14px;
+  overflow-x: auto; padding-bottom: 6px;
+  scrollbar-width: thin; scrollbar-color: var(--line) transparent;
+}
+.gift-grid::-webkit-scrollbar { height: 6px; }
+.gift-grid::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
 .gift-option {
+  flex: 0 0 106px;
   display: flex; flex-direction: column; align-items: center; gap: 5px;
   padding: 10px 4px 8px; font: inherit; text-align: center;
   color: var(--muted); background: var(--panel-2); border: 1px solid var(--line); border-radius: 11px;
@@ -399,13 +413,15 @@ section[id] { scroll-margin-top: 84px; }
 .gift-art video { width: 100%; height: 100%; object-fit: contain; display: block; }
 
 #donateBtn { margin-top: 4px; }
-#toxicBtn { margin-top: 10px; }
 
-.demo-hints { margin-top: 14px; padding: 12px 14px; border-radius: 10px; background: var(--panel-2); border: 1px dashed var(--line); }
-.demo-hints p { margin: 0; font-size: 14px; color: var(--muted); }
-.demo-hints strong { color: var(--text); }
-
-.interact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+/* TikTok Live chat — phía khán giả */
+.tt-head { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 12px; margin-bottom: 14px; }
+.tt-head .panel-tag { margin-bottom: 0; }
+.tt-head small { font-size: 12.5px; color: var(--muted); }
+.tt-inline { display: flex; gap: 10px; align-items: stretch; margin-bottom: 0; }
+.tt-inline input { flex: 1; min-width: 0; }
+.tt-inline .btn { flex: none; }
+.btn-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
 
 /* OBS frame */
 .obs-frame { background: var(--panel-2); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
@@ -513,77 +529,27 @@ section[id] { scroll-margin-top: 84px; }
   80% { transform: translateX(calc(-50% + 4px)); }
 }
 
-/* wheel overlay */
-.wheel-overlay {
-  position: absolute; inset: 0; z-index: 8;
-  display: grid; place-items: center;
-  background: rgba(8, 10, 15, .82); backdrop-filter: blur(4px);
-  animation: fadeIn .3s ease both;
+/* TikTok Live — badge "đang đọc" trên overlay OBS (chỉ âm thanh, không hiện chữ) */
+.tt-chat {
+  position: absolute; right: 12px; bottom: 46px; z-index: 4;
+  pointer-events: none;
 }
-.wheel-overlay.hidden { display: none; }
-@keyframes fadeIn { from { opacity: 0; } }
-.wheel-box { display: grid; justify-items: center; gap: 16px; }
-.wheel { position: relative; width: 230px; height: 230px; }
-.wheel-inner {
-  position: absolute; inset: 0; border-radius: 50%;
-  background: conic-gradient(
-    #9b7cff 0deg 60deg, #6c5ce7 60deg 120deg, #5ee5a2 120deg 180deg,
-    #2fb57a 180deg 240deg, #ffae70 240deg 300deg, #b06ab3 300deg 360deg
-  );
-  border: 5px solid #39415e;
-  box-shadow: 0 0 0 6px rgba(155, 124, 255, .18), inset 0 0 24px rgba(0, 0, 0, .45);
-  transform: rotate(0deg);
-  transition: transform 4.2s cubic-bezier(.15, .85, .18, 1);
-  will-change: transform;
+.tt-chat.hidden { display: none; }
+.tt-tts {
+  display: inline-flex; align-items: center; gap: 8px;
+  max-width: 100%; padding: 6px 12px;
+  font-size: 12.5px; font-weight: 600; color: #c8fff9;
+  background: rgba(16, 32, 40, .92);
+  border: 1px solid rgba(37, 244, 238, .38); border-radius: 999px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .4);
 }
-.wheel-label {
-  position: absolute; left: 50%; top: 50%;
-  width: 26px; height: 26px; margin: -13px; border-radius: 50%;
-  display: grid; place-items: center; font-size: 13px;
-  background: #1b2133; border: 1px solid var(--line);
-}
-.wheel-pointer {
-  position: absolute; left: 50%; top: -9px; transform: translateX(-50%); z-index: 2;
-  width: 0; height: 0; border-left: 11px solid transparent; border-right: 11px solid transparent;
-  border-top: 16px solid var(--green);
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .6));
-}
-.wheel-hub {
-  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 2;
-  width: 34px; height: 34px; border-radius: 50%;
-  background: #1b2133; border: 3px solid var(--purple);
-  display: grid; place-items: center; font-size: 15px;
-}
-.wheel-result { margin: 0; font-family: var(--font-head); font-size: 18px; font-weight: 600; background: rgba(18, 21, 30, .9); padding: 10px 22px; border-radius: 999px; border: 1px solid var(--line); }
-
-/* vote overlay */
-.vote-overlay {
-  position: absolute; inset: 0; z-index: 8;
-  display: grid; place-items: center;
-  background: rgba(8, 10, 15, .82); backdrop-filter: blur(4px);
-  animation: fadeIn .3s ease both;
-}
-.vote-overlay.hidden { display: none; }
-.vote-box {
-  display: grid; gap: 16px; width: min(460px, 90%);
-  padding: 24px; background: var(--panel); border: 1px solid var(--line); border-radius: 16px;
-}
-.vote-q { margin: 0; font-family: var(--font-head); font-size: 20px; font-weight: 600; text-align: center; }
-.vote-bars { display: grid; gap: 12px; }
-.vote-opt {
-  display: grid; grid-template-columns: 140px 1fr 52px; align-items: center; gap: 12px;
-  padding: 13px 14px; font: inherit; text-align: left;
-  background: var(--panel-2); border: 1px solid var(--line); border-radius: 12px; cursor: pointer;
-  transition: border-color .15s, transform .1s;
-}
-.vote-opt:hover { border-color: var(--purple-line); }
-.vote-opt:active { transform: scale(.98); }
-.vote-label { font-size: 15px; font-weight: 600; }
-.vote-bar { display: block; height: 13px; background: #181e30; border-radius: 999px; overflow: hidden; }
-.vote-bar i { display: block; height: 100%; width: 50%; border-radius: 999px; background: linear-gradient(90deg, var(--purple), var(--green)); transition: width .5s ease; }
-.vote-pct { font-family: var(--font-head); font-size: 17px; font-weight: 700; text-align: right; }
-.vote-total { margin: 0; text-align: center; font-size: 14px; color: var(--muted); }
-.vote-box .btn { justify-self: center; }
+.tt-tts span:last-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tt-tts-wave { display: inline-flex; align-items: flex-end; gap: 2px; height: 12px; flex: none; }
+.tt-tts-wave i { width: 3px; border-radius: 2px; background: #25f4ee; animation: eq 1s ease-in-out infinite; }
+.tt-tts-wave i:nth-child(1) { height: 45%; animation-delay: 0s; }
+.tt-tts-wave i:nth-child(2) { height: 100%; animation-delay: .15s; }
+.tt-tts-wave i:nth-child(3) { height: 60%; animation-delay: .3s; }
+.tt-tts-wave i:nth-child(4) { height: 85%; animation-delay: .08s; }
 
 .obs-caption { margin-top: 14px; font-size: 14px; color: var(--muted); }
 .obs-caption strong { color: var(--text); }
@@ -635,6 +601,30 @@ section[id] { scroll-margin-top: 84px; }
 .feature-card h3 { font-size: 17.5px; }
 .feature-card p { margin: 0; color: var(--muted); font-size: 15.5px; }
 .feature-card em { color: var(--orange); font-style: normal; font-weight: 600; }
+
+/* thẻ tính năng TikTok — nổi bật, chiếm cả hàng */
+.feature-card--tiktok {
+  grid-column: 1 / -1;
+  background: linear-gradient(100deg, rgba(37, 244, 238, .07), rgba(254, 44, 85, .06) 52%, var(--panel));
+  border-color: rgba(37, 244, 238, .26);
+}
+.feature-card--tiktok:hover {
+  border-color: rgba(37, 244, 238, .48);
+  box-shadow: 0 28px 60px -32px rgba(37, 244, 238, .28);
+}
+.feature-tiktok-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.feature-tiktok-head .feature-icon { margin-bottom: 0; }
+.feature-icon.tiktok {
+  color: #25f4ee;
+  background: rgba(37, 244, 238, .09);
+  border-color: rgba(37, 244, 238, .32);
+  box-shadow: inset 0 0 0 1px rgba(254, 44, 85, .18);
+}
+.feature-new-badge {
+  padding: 4px 11px;
+  font-size: 11.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  color: #0b1226; background: var(--green); border-radius: 999px;
+}
 
 /* ── Compare table ───────────────────────────────────────── */
 .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--panel); box-shadow: var(--shadow-card); }
@@ -855,7 +845,6 @@ section[id] { scroll-margin-top: 84px; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-  .wheel-inner { transition-duration: 4.2s !important; }
 }
 
 /* ── Responsive ──────────────────────────────────────────── */
@@ -916,11 +905,9 @@ section[id] { scroll-margin-top: 84px; }
   .trust-item { border-right: none !important; border-bottom: 1px solid var(--line); padding: 18px 4px; }
   .trust-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--line); }
   .trust-item:last-child { border-bottom: none; }
-  .field-row, .interact-grid { grid-template-columns: 1fr; }
+  .field-row { grid-template-columns: 1fr; }
+  .btn-pair { grid-template-columns: 1fr; }
   .amount-grid { grid-template-columns: repeat(3, 1fr); }
-  .gift-grid { grid-template-columns: repeat(3, 1fr); }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .mock-alert, .obs-alert { max-width: 86%; }
-  .vote-opt { grid-template-columns: 1fr 40px; }
-  .vote-opt .vote-label { grid-column: 1 / -1; }
 }

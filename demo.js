@@ -1,8 +1,8 @@
 /* ═══════════════════════════════════════════════════════════
    LiveQR landing — demo tương tác
    Khán giả (trái) donate → overlay OBS (phải) hiện alert tuần tự,
-   có hàng đợi, kiểm duyệt tiếng Việt, trạng thái đang đọc,
-   vòng quay, bình chọn.
+   có hàng đợi, kiểm duyệt tiếng Việt, đọc bình luận TikTok Live
+   (chỉ phát âm thanh — không hiện chữ lên overlay).
    ═══════════════════════════════════════════════════════════ */
 (function () {
   'use strict';
@@ -37,7 +37,6 @@
   function chime() { tone(880, 0, 0.45); tone(1174.7, 0.09, 0.5); tone(1568, 0.18, 0.55, 'triangle', 0.1); }
   function pop() { tone(520, 0, 0.12, 'triangle', 0.1); tone(780, 0.06, 0.14, 'triangle', 0.08); }
   function buzz() { tone(140, 0, 0.22, 'sawtooth', 0.1); tone(110, 0.1, 0.25, 'sawtooth', 0.08); }
-  function winSound() { tone(523.3, 0, 0.18); tone(659.3, 0.12, 0.18); tone(784, 0.24, 0.3); }
 
   /* ── Bật/tắt âm thanh & giọng đọc ───────────────────────── */
   var soundOn = true;
@@ -77,13 +76,10 @@
     catch (e) { return amount.toLocaleString() + '₫'; }
   }
 
-  /* ── Catalog quà tặng (khớp app LiveQR) ─────────────────── */
+  /* ── Catalog quà tặng (demo để 4 quà tiêu biểu — catalog đầy đủ trong app LiveQR) ── */
   var GIFTS = [
     { id: 'rose', name: 'Hoa hồng', emoji: '🌹', minAmountVnd: 10000, tier: 'rail', accent: '#e8365d', animation: 'assets/gifts/rose.webm' },
-    { id: 'heart', name: 'Trái tim', emoji: '❤️', minAmountVnd: 20000, tier: 'rail', accent: '#ff5c7d', animation: 'assets/gifts/heart.webm' },
     { id: 'coffee', name: 'Cà phê', emoji: '☕', minAmountVnd: 30000, tier: 'rail', accent: '#c08457', animation: 'assets/gifts/coffee.webm' },
-    { id: 'gift-box', name: 'Hộp quà', emoji: '🎁', minAmountVnd: 50000, tier: 'banner', accent: '#5ee5a2', animation: 'assets/gifts/gift-box.webm' },
-    { id: 'star', name: 'Ngôi sao', emoji: '⭐', minAmountVnd: 100000, tier: 'banner', accent: '#ffd76a', animation: 'assets/gifts/star.webm' },
     { id: 'rocket', name: 'Tên lửa', emoji: '🚀', minAmountVnd: 200000, tier: 'takeover', accent: '#ffae70', animation: 'assets/gifts/rocket.webm' },
     { id: 'fireworks', name: 'Pháo hoa', emoji: '🎆', minAmountVnd: 1000000, tier: 'takeover', accent: '#9b7cff', animation: 'assets/gifts/fireworks.webm' }
   ];
@@ -138,7 +134,6 @@
 
   var giftGrid = $('giftGrid');
   var amountGrid = $('amountGrid');
-  var customAmount = $('demoAmountCustom');
   var nameInput = $('demoName');
   var msgInput = $('demoMessage');
   var donateBtn = $('donateBtn');
@@ -166,6 +161,21 @@
     });
   }
 
+  /* bỏ chọn quà → khôi phục chip tiền gần với mức hiện tại */
+  function restoreNearestChip() {
+    if (!amountGrid) return;
+    var chips = Array.prototype.slice.call(amountGrid.querySelectorAll('.amount-chip'))
+      .map(function (c) { return parseInt(c.dataset.amount, 10); })
+      .sort(function (a, b) { return a - b; });
+    if (!chips.length) return;
+    var pick = chips[0];
+    for (var i = 0; i < chips.length; i++) {
+      if (chips[i] <= selectedAmount) pick = chips[i];
+    }
+    selectedAmount = pick;
+    selectAmountChip(pick);
+  }
+
   function selectGift(id) {
     selectedGiftId = id;
     if (!giftGrid) return;
@@ -177,8 +187,9 @@
       if (gift) {
         selectedAmount = gift.minAmountVnd;
         selectAmountChip(gift.minAmountVnd);
-        if (customAmount) customAmount.value = '';
       }
+    } else {
+      restoreNearestChip();
     }
   }
 
@@ -219,17 +230,6 @@
       chip.classList.add('selected');
       selectedAmount = parseInt(chip.dataset.amount, 10);
       selectGift(null);
-      if (customAmount) customAmount.value = '';
-    });
-  }
-  if (customAmount) {
-    customAmount.addEventListener('input', function () {
-      var v = parseInt(customAmount.value, 10);
-      if (v > 0) {
-        selectedAmount = v;
-        amountGrid.querySelectorAll('.amount-chip').forEach(function (c) { c.classList.remove('selected'); });
-        selectGift(null);
-      }
     });
   }
 
@@ -264,8 +264,7 @@
   function currentAmount() {
     var gift = currentGift();
     if (gift) return gift.minAmountVnd;
-    var custom = customAmount ? parseInt(customAmount.value, 10) : NaN;
-    return (custom >= 10000) ? custom : selectedAmount;
+    return selectedAmount;
   }
 
   if (donateBtn) {
@@ -432,113 +431,95 @@
     modTimer = setTimeout(function () { modToast.classList.add('hidden'); }, 2800);
   }
 
-  /* ── Vòng quay ──────────────────────────────────────────── */
-  var WHEEL_EMOJI = ['🎤', '💃', '🕐', '🔥', '💚', '🎯'];
-  var WHEEL_RESULTS = ['Hát 1 bài 🎤', 'Nhảy 1 bài 💃', 'AFK 1 phút 🕐', 'Chơi màn khó hơn 🔥', 'Tặng fan 10k 💚', 'Quay lại 🎯'];
-  var wheelOverlay = $('wheelOverlay');
-  var wheelInner = $('wheelInner');
-  var wheelResult = $('wheelResult');
-  var wheelBtn = $('wheelBtn');
-  var wheelSpinning = false;
-  var wheelAngle = 0;
+  /* ── Đọc bình luận TikTok Live (giả lập — chỉ phát âm thanh) ── */
+  var TT_NAMES = [
+    'buivannam.2k5', 'meocobe.121', 'thanh.ne.2k3', 'hibap.studio', 'loan.chabanh',
+    'tranducbo.888', 'kemxoi.99', 'nhim.uday', 'hoathoxinh', 'sky.vn.official'
+  ];
+  var TT_COMMENTS = [
+    'Hola stream ơi 🥰', 'Vào đúng lúc hay quá', 'Chơi màn này ghê thật',
+    'Xin combo 3 phát đi ạ 🔥', 'Ai Hà Nội giơ tay 🙋', 'Follow rồi nhé, kênh vui quá',
+    'Cười muốn xỉu 😂', 'Giọng đọc bình luận mượt ghê', 'Chiến hết mình nào stream',
+    'Đắk Lắk có ai không', 'Tối nay live tới mấy giờ vậy ạ', 'Gửi tim rồi nhé ❤️'
+  ];
+  var ttChat = $('ttChat');
+  var ttTtsText = $('ttTtsText');
+  var ttInput = $('ttComment');
+  var ttSendBtn = $('ttSendBtn');
+  var ttBurstBtn = $('ttBurstBtn');
+  var ttQueue = [];
+  var ttReading = false;
+  var ttBursting = false;
+  var ttHideTimer = null;
 
-  if (wheelInner) {
-    WHEEL_EMOJI.forEach(function (emo, idx) {
-      var label = document.createElement('span');
-      label.className = 'wheel-label';
-      label.textContent = emo;
-      label.style.transform = 'rotate(' + (idx * 60 + 30) + 'deg) translateY(-80px)';
-      wheelInner.appendChild(label);
-    });
-    var hub = document.createElement('span');
-    hub.className = 'wheel-hub';
-    hub.textContent = '🎁';
-    $('wheel').appendChild(hub);
+  function ttRandom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+  /* Bình luận KHÔNG hiện lên overlay — overlay chỉ có badge trạng thái đang đọc */
+  function ttRenderBadge() {
+    ttTtsText.textContent = ttQueue.length > 0
+      ? 'Đang đọc bình luận TikTok · còn ' + ttQueue.length + ' chờ'
+      : 'Đang đọc bình luận TikTok…';
   }
 
-  if (wheelBtn) {
-    wheelBtn.addEventListener('click', function () {
-      if (wheelSpinning) return;
-      wheelSpinning = true;
-      wheelResult.textContent = 'Đang quay…';
-      wheelOverlay.classList.remove('hidden');
-
-      var target = Math.floor(Math.random() * 6);
-      /* đưa tâm segment `target` về vị trí con trỏ (đỉnh) + jitter */
-      var jitter = (Math.random() * 36 - 18);
-      var finalAngle = wheelAngle + 360 * 5 + (360 - (target * 60 + 30)) - (wheelAngle % 360) + jitter;
-
-      /* overlay vừa bỏ display:none — phải paint góc hiện tại rồi mới quay */
-      wheelInner.style.transition = 'none';
-      wheelInner.style.transform = 'rotate(' + wheelAngle + 'deg)';
-      void wheelInner.offsetWidth;
-
-      requestAnimationFrame(function () {
-        wheelInner.style.transition = '';
-        wheelInner.style.transform = 'rotate(' + finalAngle + 'deg)';
-        wheelAngle = finalAngle;
-      });
-
-      setTimeout(function () {
-        wheelResult.textContent = 'Kết quả: ' + WHEEL_RESULTS[target] + '!';
-        if (soundOn) winSound();
-        setTimeout(function () {
-          wheelOverlay.classList.add('hidden');
-          wheelSpinning = false;
-        }, 2400);
-      }, 4400);
-    });
+  function ttNext() {
+    if (ttQueue.length === 0) {
+      ttReading = false;
+      ttTtsText.textContent = 'Đã đọc hết bình luận';
+      clearTimeout(ttHideTimer);
+      ttHideTimer = setTimeout(function () {
+        if (!ttReading && ttQueue.length === 0) ttChat.classList.add('hidden');
+      }, 1600);
+      return;
+    }
+    ttReading = true;
+    var item = ttQueue.shift();
+    ttRenderBadge();
+    if (soundOn) pop();
+    setTimeout(ttNext, Math.min(3400, 1100 + item.text.length * 65));
   }
 
-  /* ── Bình chọn ──────────────────────────────────────────── */
-  var voteOverlay = $('voteOverlay');
-  var voteBtn = $('voteBtn');
-  var voteClose = $('voteClose');
-  var voteBarA = $('voteBarA');
-  var voteBarB = $('voteBarB');
-  var votePctA = $('votePctA');
-  var votePctB = $('votePctB');
-  var voteTotal = $('voteTotal');
-  var votes = { a: 0, b: 0 };
-  var voteTimer = null;
-
-  function renderVote() {
-    var total = votes.a + votes.b;
-    var pa = total ? Math.round((votes.a / total) * 100) : 50;
-    var pb = total ? 100 - pa : 50;
-    voteBarA.style.width = pa + '%';
-    voteBarB.style.width = pb + '%';
-    votePctA.textContent = pa + '%';
-    votePctB.textContent = pb + '%';
-    voteTotal.textContent = total;
+  function ttComment(name, text) {
+    /* bình luận TikTok cũng đi qua kiểm duyệt tiếng Việt */
+    if (violates(text)) {
+      showModToast();
+      if (soundOn) buzz();
+      return;
+    }
+    if (obsIdle) obsIdle.classList.add('hidden');
+    ttChat.classList.remove('hidden');
+    clearTimeout(ttHideTimer);
+    if (soundOn) tone(660, 0, 0.09, 'triangle', 0.06);
+    ttQueue.push({ name: name, text: text });
+    if (!ttReading) ttNext();
+    else ttRenderBadge();
   }
 
-  function castVote(side) {
-    votes[side]++;
-    renderVote();
-    if (soundOn) tone(side === 'a' ? 660 : 550, 0, 0.14, 'triangle', 0.08);
-  }
-
-  if (voteBtn) {
-    voteBtn.addEventListener('click', function () {
-      votes = { a: 3 + Math.floor(Math.random() * 5), b: 3 + Math.floor(Math.random() * 5) };
-      renderVote();
-      voteOverlay.classList.remove('hidden');
-      clearInterval(voteTimer);
-      /* giả lập khán giả khác cũng đang bình chọn */
-      voteTimer = setInterval(function () {
-        castVote(Math.random() > 0.5 ? 'a' : 'b');
-      }, 1100);
+  if (ttSendBtn) {
+    ttSendBtn.addEventListener('click', function () {
+      var text = ttInput ? ttInput.value.trim() : '';
+      if (!text) { if (ttInput) ttInput.focus(); return; }
+      ttInput.value = '';
+      var name = (nameInput && nameInput.value.trim()) || ttRandom(TT_NAMES);
+      ttComment(name, text);
     });
   }
-  ['voteA', 'voteB'].forEach(function (id, i) {
-    var el = $(id);
-    if (el) el.addEventListener('click', function () { castVote(i === 0 ? 'a' : 'b'); });
-  });
-  if (voteClose) {
-    voteClose.addEventListener('click', function () {
-      voteOverlay.classList.add('hidden');
-      clearInterval(voteTimer);
+  if (ttInput) {
+    ttInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' && ttSendBtn) ttSendBtn.click();
+    });
+  }
+
+  /* ── Mô phỏng trận chat TikTok dồn dập ──────────────────── */
+  if (ttBurstBtn) {
+    ttBurstBtn.addEventListener('click', function () {
+      if (ttBursting) return;
+      ttBursting = true;
+      var left = 6 + Math.floor(Math.random() * 4);
+      (function fire() {
+        if (left-- <= 0) { ttBursting = false; return; }
+        ttComment(ttRandom(TT_NAMES), ttRandom(TT_COMMENTS));
+        setTimeout(fire, 420 + Math.random() * 680);
+      })();
     });
   }
 })();

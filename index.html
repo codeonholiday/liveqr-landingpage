@@ -4,23 +4,23 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>LiveQR — Nhận donate VietQR về thẳng tài khoản ngân hàng | Alert OBS realtime</title>
-  <meta name="description" content="Nền tảng donate cho streamer Việt: phí thấp nhất thị trường, tiền về thẳng tài khoản ngân hàng qua VietQR, trang donate tuỳ chỉnh theo phong cách kênh, alert + TTS tiếng Việt realtime trên OBS, kiểm duyệt nội dung và widget tương tác." />
+  <meta name="description" content="Nền tảng donate cho streamer Việt: phí thấp nhất thị trường, tiền về thẳng tài khoản ngân hàng qua VietQR, trang donate tuỳ chỉnh theo phong cách kênh, alert + TTS tiếng Việt realtime trên OBS, đọc bình luận TikTok Live thành giọng nói, kiểm duyệt nội dung và widget tương tác." />
   <meta name="theme-color" content="#0b0d13" />
   <meta name="author" content="LiveQR" />
   <meta name="robots" content="index, follow" />
-  <meta name="keywords" content="donate streamer việt, vietqr donate, alert obs tiếng việt, tts obs việt nam, donate tài khoản ngân hàng, liveqr, donate streaming" />
+  <meta name="keywords" content="donate streamer việt, vietqr donate, alert obs tiếng việt, tts obs việt nam, đọc bình luận tiktok live, doc comment tiktok, tts đọc comment tiktok, overlay bình luận tiktok obs, donate tài khoản ngân hàng, liveqr, donate streaming" />
   <link rel="canonical" href="https://liveqr.me/" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://liveqr.me/" />
   <meta property="og:title" content="LiveQR — Donate VietQR về thẳng tài khoản, alert OBS realtime" />
-  <meta property="og:description" content="Phí thấp nhất thị trường. Tiền về thẳng tài khoản ngân hàng — không ví trung gian, không chờ tất toán. Trang donate tuỳ chỉnh theo phong cách streamer. Alert + TTS tiếng Việt, kiểm duyệt nội dung, widget tương tác." />
+  <meta property="og:description" content="Phí thấp nhất thị trường. Tiền về thẳng tài khoản ngân hàng — không ví trung gian, không chờ tất toán. Alert + TTS tiếng Việt, đọc bình luận TikTok Live, kiểm duyệt nội dung, widget tương tác." />
   <meta property="og:image" content="https://liveqr.me/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="vi_VN" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="LiveQR — Donate VietQR về thẳng tài khoản, alert OBS realtime" />
-  <meta name="twitter:description" content="Phí thấp nhất thị trường. Tiền về thẳng tài khoản ngân hàng — không ví trung gian. Alert + TTS tiếng Việt realtime." />
+  <meta name="twitter:description" content="Phí thấp nhất thị trường. Tiền về thẳng tài khoản ngân hàng — không ví trung gian. Alert + TTS tiếng Việt realtime, đọc bình luận TikTok Live." />
   <meta name="twitter:image" content="https://liveqr.me/og-image.png" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -53,7 +53,7 @@
     "url": "https://liveqr.me",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Any",
-    "description": "Nền tảng donate VietQR cho streamer Việt. Tiền donate chuyển thẳng vào tài khoản ngân hàng qua VietQR. Trang donate tuỳ chỉnh theo phong cách kênh. Alert OBS realtime, TTS tiếng Việt, kiểm duyệt nội dung, widget tương tác.",
+    "description": "Nền tảng donate VietQR cho streamer Việt. Tiền donate chuyển thẳng vào tài khoản ngân hàng qua VietQR. Trang donate tuỳ chỉnh theo phong cách kênh. Alert OBS realtime, TTS tiếng Việt, đọc bình luận TikTok Live, kiểm duyệt nội dung, widget tương tác.",
     "inLanguage": "vi",
     "offers": {
       "@type": "Offer",
@@ -67,6 +67,7 @@
       "Quà tặng animated trên OBS (7 loại, 3 tier)",
       "Alert OBS realtime có hàng đợi",
       "TTS đọc lời nhắn tiếng Việt",
+      "Đọc bình luận TikTok Live bằng TTS",
       "Kiểm duyệt nội dung tiếng Việt",
       "Widget tương tác: vòng quay, bình chọn, PK",
       "Báo cáo doanh thu CSV"
@@ -123,6 +124,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Không, nếu bạn bật kiểm duyệt. Hệ thống dùng từ điển tiếng Việt cùng luật tùy chỉnh của bạn để chặn lời nhắn thô tục, độc hại trước khi nó hiện lên overlay và trước khi TTS đọc."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Đọc bình luận TikTok Live hoạt động như thế nào?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bạn nhập username TikTok của kênh, LiveQR kết nối vào phiên live và nhận bình luận theo thời gian thực. Bình luận được TTS đọc lần lượt qua hàng đợi — chỉ phát âm thanh, không hiện chữ lên màn hình. Ghép chung với alert donate, có kiểm duyệt tiếng Việt và lọc theo từ khoá. Không cần cài thêm phần mềm đọc comment riêng như TikFinity hay Chị Google TikTok."
         }
       },
       {
@@ -185,7 +194,8 @@
           <p class="hero-sub">
             LiveQR tạo trang donate VietQR riêng cho bạn — tuỳ chỉnh màu sắc, ảnh nền và nội dung
             theo phong cách kênh. Khán giả quét mã, tiền vào thẳng tài khoản của bạn — alert + TTS
-            đọc lời nhắn hiện lên OBS ngay khi tiền về, kèm kiểm duyệt tiếng Việt và widget tương tác.
+            đọc lời nhắn hiện lên OBS ngay khi tiền về, kèm đọc bình luận TikTok Live, kiểm duyệt
+            tiếng Việt và widget tương tác.
           </p>
           <div class="hero-cta">
             <a class="btn btn-primary btn-lg" href="https://app.liveqr.me" target="_blank" rel="noopener">Dùng thử miễn phí</a>
@@ -198,6 +208,7 @@
             <li><span class="check" aria-hidden="true">✓</span><strong>0đ</strong> bị giữ — không ví trung gian</li>
             <li><span class="check" aria-hidden="true">✓</span>Trang donate <strong>tuỳ chỉnh</strong> theo phong cách kênh</li>
             <li><span class="check" aria-hidden="true">✓</span>Alert <strong>realtime</strong> khi tiền về</li>
+            <li><span class="check" aria-hidden="true">✓</span>Đọc <strong>bình luận TikTok Live</strong> bằng giọng TTS</li>
           </ul>
 
           <div class="hero-social-proof">
@@ -321,9 +332,8 @@
           <p class="kicker">Trải nghiệm ngay trên trình duyệt</p>
           <h2>Bên trái là khán giả. Bên phải là màn hình stream của bạn.</h2>
           <p class="section-sub">
-            Bản giả lập y như thật — không cần đăng ký. Chọn <strong>quà tặng animated</strong> (feed góc + hiệu ứng bay),
-            hoặc donate thường để thấy <strong>alert to + TTS</strong> phát tuần tự.
-            Thử lời nhắn thô tục để thấy <strong>kiểm duyệt chặn</strong>.
+            Không cần đăng ký — <strong>donate</strong> để thấy alert + TTS, <strong>tặng quà</strong> để thấy hiệu ứng quà bay,
+            gửi <strong>bình luận TikTok</strong> để nghe giọng đọc.
           </p>
         </div>
 
@@ -348,8 +358,6 @@
               <button class="amount-chip" data-amount="20000">20k</button>
               <button class="amount-chip" data-amount="50000">50k</button>
               <button class="amount-chip selected" data-amount="100000">100k</button>
-              <button class="amount-chip" data-amount="200000">200k</button>
-              <button class="amount-chip" data-amount="500000">500k</button>
             </div>
 
             <div class="field-row">
@@ -358,31 +366,28 @@
                 <input id="demoName" type="text" maxlength="24" placeholder="VD: fan_cuaban" autocomplete="off" />
               </div>
               <div class="field">
-                <label class="field-label" for="demoAmountCustom">Hoặc số tiền khác</label>
-                <input id="demoAmountCustom" type="number" min="10000" step="10000" placeholder="Nhập số ₫" inputmode="numeric" />
+                <label class="field-label" for="demoMessage">Lời nhắn</label>
+                <input id="demoMessage" type="text" maxlength="120" placeholder="VD: Cày tiếp đi stream ơi!" autocomplete="off" />
               </div>
             </div>
 
-            <div class="field">
-              <label class="field-label" for="demoMessage">Lời nhắn</label>
-              <input id="demoMessage" type="text" maxlength="120" placeholder="VD: Cày tiếp đi stream ơi!" autocomplete="off" />
-            </div>
-
             <button class="btn btn-primary btn-lg btn-block" id="donateBtn">Donate ngay</button>
-            <button class="btn btn-danger-ghost btn-block" id="toxicBtn" title="Giả lập lời nhắn vi phạm để thấy kiểm duyệt">
-              Thử donate bị kiểm duyệt chặn
-            </button>
-            <button class="btn btn-ghost btn-sm btn-block" id="soundToggle" type="button">🔊 Âm thanh: BẬT</button>
-
-            <div class="demo-hints">
-              <p>💡 <strong>Donate thường</strong> → alert to + TTS tuần tự. <strong>Tặng quà</strong> → quà bay lên màn hình + feed góc trái, không qua hàng đợi alert. Thử <strong>Tên lửa</strong> hoặc <strong>Pháo hoa</strong> để thấy takeover.</p>
+            <div class="btn-pair">
+              <button class="btn btn-danger-ghost btn-sm" id="toxicBtn" title="Giả lập lời nhắn vi phạm để thấy kiểm duyệt">
+                🛡️ Thử kiểm duyệt
+              </button>
+              <button class="btn btn-ghost btn-sm" id="soundToggle" type="button">🔊 Âm thanh: BẬT</button>
             </div>
 
             <div class="panel-divider"></div>
-            <div class="panel-tag alt">🎮 Widget tương tác</div>
-            <div class="interact-grid">
-              <button class="btn btn-ghost" id="wheelBtn">🎡 Quay vòng quay</button>
-              <button class="btn btn-ghost" id="voteBtn">🗳️ Mở bình chọn</button>
+            <div class="tt-head">
+              <span class="panel-tag tiktok">🎵 TikTok Live</span>
+              <small>Bình luận được đọc thành tiếng — không hiện chữ lên màn hình</small>
+            </div>
+            <div class="field tt-inline">
+              <input id="ttComment" type="text" maxlength="120" placeholder="Bình luận TikTok… VD: Hola stream ơi" aria-label="Bình luận của khán giả TikTok" autocomplete="off" />
+              <button class="btn btn-tiktok" id="ttSendBtn" type="button">Gửi</button>
+              <button class="btn btn-ghost btn-sm" id="ttBurstBtn" type="button" title="Giả lập loạt bình luận TikTok dồn dập">⚡ Trận chat</button>
             </div>
           </div>
 
@@ -416,6 +421,14 @@
                 <!-- quà tặng -->
                 <div class="gift-feed" id="giftFeed" aria-live="polite"></div>
 
+                <!-- bình luận TikTok Live — chỉ phát âm thanh, không hiện chữ -->
+                <div class="tt-chat hidden" id="ttChat" role="status">
+                  <div class="tt-tts">
+                    <span class="tt-tts-wave" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <span id="ttTtsText">Đang đọc bình luận TikTok…</span>
+                  </div>
+                </div>
+
                 <!-- hàng đợi -->
                 <div class="queue-badge hidden" id="queueBadge"><span class="queue-pulse"></span><span id="queueCount">0</span> alert đang chờ</div>
 
@@ -424,42 +437,12 @@
                   <b>🛡️ Kiểm duyệt đã chặn</b>
                   <span id="modReason">Lời nhắn chứa từ ngữ không phù hợp — không hiện lên sóng.</span>
                 </div>
-
-                <!-- vòng quay -->
-                <div class="wheel-overlay hidden" id="wheelOverlay">
-                  <div class="wheel-box">
-                    <div class="wheel-pointer"></div>
-                    <div class="wheel" id="wheel"><div class="wheel-inner" id="wheelInner"></div></div>
-                    <p class="wheel-result" id="wheelResult">Đang quay…</p>
-                  </div>
-                </div>
-
-                <!-- bình chọn -->
-                <div class="vote-overlay hidden" id="voteOverlay">
-                  <div class="vote-box">
-                    <p class="vote-q">Fan đông hơn ở đâu? 🌍</p>
-                    <div class="vote-bars">
-                      <button class="vote-opt" id="voteA" data-side="a">
-                        <span class="vote-label">🌤️ Miền Bắc</span>
-                        <span class="vote-bar"><i id="voteBarA"></i></span>
-                        <span class="vote-pct" id="votePctA">50%</span>
-                      </button>
-                      <button class="vote-opt" id="voteB" data-side="b">
-                        <span class="vote-label">🌴 Miền Nam</span>
-                        <span class="vote-bar"><i id="voteBarB"></i></span>
-                        <span class="vote-pct" id="votePctB">50%</span>
-                      </button>
-                    </div>
-                    <p class="vote-total"><span id="voteTotal">0</span> lượt bình chọn</p>
-                    <button class="btn btn-ghost btn-sm" id="voteClose">Đóng bình chọn</button>
-                  </div>
-                </div>
               </div>
             </div>
 
             <div class="obs-caption">
-              Trên thực tế, vùng này là 1 <strong>Browser Source</strong> trong OBS — alert, quà tặng animated,
-              vòng quay, bình chọn đều render cùng một URL widget.
+              Trên thực tế, vùng này là 1 <strong>Browser Source</strong> trong OBS — alert, quà tặng animated
+              và giọng đọc bình luận TikTok đều render cùng một URL widget.
             </div>
           </div>
         </div>
@@ -487,7 +470,7 @@
           <div class="step-card reveal">
             <span class="step-num">3</span>
             <h3>Gắn widget vào OBS</h3>
-            <p>Thêm 1 Browser Source duy nhất. Alert + TTS đọc lời nhắn, vòng quay, bình chọn… hiện lên sóng ngay khi có donate.</p>
+            <p>Thêm 1 Browser Source duy nhất. Alert + TTS đọc lời nhắn, bình luận TikTok Live, vòng quay, bình chọn… hiện lên sóng ngay khi có donate.</p>
           </div>
         </div>
       </div>
@@ -501,6 +484,16 @@
           <h2>Mọi thứ một buổi live cần, gói trong một trang</h2>
         </div>
         <div class="features-grid">
+          <div class="feature-card feature-card--tiktok reveal">
+            <div class="feature-tiktok-head">
+              <span class="feature-icon tiktok" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M14.5 3h-2.6v11.4a2.5 2.5 0 1 1-1.9-2.42V9.3a5.1 5.1 0 1 0 4.5 5.05V8.9a5.6 5.6 0 0 0 3.5 1.2V7.5a3.1 3.1 0 0 1-3.5-3.1V3Z" fill="currentColor"/></svg>
+              </span>
+              <span class="feature-new-badge">Mới</span>
+            </div>
+            <h3>Đọc bình luận TikTok Live</h3>
+            <p>Kết nối username TikTok — bình luận khán giả được <em>TTS đọc thành giọng nói lần lượt</em>, ghép chung hàng đợi với alert donate. Chỉ phát âm thanh, không che màn hình. Kiểm duyệt chặn bình luận xấu trước khi đọc — không cần cài thêm tool như TikFinity.</p>
+          </div>
           <div class="feature-card reveal">
             <span class="feature-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M13 2 4 14h7l-1 8 10-14h-7l0-6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
@@ -639,6 +632,15 @@
                 <td class="no">✗</td>
               </tr>
               <tr>
+                <td class="col-criteria">Đọc bình luận TikTok Live bằng TTS</td>
+                <td class="col-liveqr ok">✓</td>
+                <td class="no">✗</td>
+                <td class="no">✗</td>
+                <td class="no">✗</td>
+                <td class="no">✗</td>
+                <td class="no">✗</td>
+              </tr>
+              <tr>
                 <td class="col-criteria">Kiểm duyệt tiếng Việt trước khi lên sóng</td>
                 <td class="col-liveqr ok">✓</td>
                 <td class="no">✗</td>
@@ -682,6 +684,7 @@
           WeScan: phí 10%/giao dịch, tất toán về ngân hàng 2 tuần/lần, streamer mới dùng Ví Siêu Tốc tới khi đạt 500k.
           Zypage: phí ~8%/giao dịch. PlayerDuo: 10% nút Donate. Unghotoi: donate thẻ cào thường bị chiết khấu ~20–30%.
           Gank: phí thanh toán nội địa ~1–2%, phí rút 5% (USD), xử lý ~7 ngày làm việc.
+          Đọc bình luận TikTok Live: các nền tảng trong bảng chưa tích hợp (9/2026) — streamer thường phải cài thêm tool riêng như TikFinity hay Chị Google TikTok.
         </p>
       </div>
     </section>
@@ -712,6 +715,7 @@
               <li><span class="check green" aria-hidden="true">✓</span>VietQR donate tức thì — tiền về thẳng TK ngân hàng</li>
               <li><span class="check green" aria-hidden="true">✓</span>Alert OBS realtime có hàng đợi</li>
               <li><span class="check green" aria-hidden="true">✓</span>TTS đọc lời nhắn tiếng Việt</li>
+              <li><span class="check green" aria-hidden="true">✓</span>Đọc bình luận TikTok Live bằng TTS</li>
               <li><span class="check green" aria-hidden="true">✓</span>Kiểm duyệt nội dung tiếng Việt</li>
               <li><span class="check green" aria-hidden="true">✓</span>Widget tương tác: vòng quay, PK, bình chọn, timer</li>
               <li><span class="check green" aria-hidden="true">✓</span>Báo cáo doanh thu CSV</li>
@@ -772,6 +776,10 @@
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">Lời nhắn xấu có hiện lên màn hình không?<span class="faq-icon"></span></button>
             <div class="faq-a"><p>Không, nếu bạn bật kiểm duyệt. Hệ thống dùng từ điển tiếng Việt cùng luật tùy chỉnh của bạn để chặn lời nhắn thô tục, độc hại <b>trước khi</b> nó hiện lên overlay và trước khi TTS đọc.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Đọc bình luận TikTok Live hoạt động thế nào?<span class="faq-icon"></span></button>
+            <div class="faq-a"><p>Bạn nhập username TikTok, LiveQR kết nối vào phiên live và nhận bình luận theo thời gian thực. Bình luận được <b>TTS đọc lần lượt qua hàng đợi</b> — chỉ phát âm thanh, không hiện chữ lên màn hình. Ghép chung alert donate, có kiểm duyệt và lọc từ khoá. Không cần cài thêm tool như TikFinity hay Chị Google TikTok. Thử ngay ở <a href="#demo">bản demo</a>.</p></div>
           </div>
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">LiveQR hỗ trợ nền tảng live nào?<span class="faq-icon"></span></button>
