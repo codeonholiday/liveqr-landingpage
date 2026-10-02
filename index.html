@@ -35,12 +35,7 @@
     "@type": "WebSite",
     "name": "LiveQR",
     "url": "https://liveqr.me",
-    "description": "Nền tảng donate VietQR cho streamer Việt — tiền về thẳng tài khoản ngân hàng, alert OBS realtime, TTS tiếng Việt.",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://liveqr.me/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
+    "description": "Nền tảng donate VietQR cho streamer Việt — tiền về thẳng tài khoản ngân hàng, alert OBS realtime, TTS tiếng Việt."
   }
   </script>
 
@@ -77,6 +72,24 @@
       "name": "LiveQR",
       "url": "https://liveqr.me"
     }
+  }
+  </script>
+
+  <!-- Structured data: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "LiveQR",
+    "url": "https://liveqr.me",
+    "logo": "https://liveqr.me/brand/logo-on-dark.svg",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+84-394-675-935",
+      "contactType": "customer support",
+      "availableLanguage": "Vietnamese"
+    },
+    "sameAs": []
   }
   </script>
 
@@ -146,6 +159,8 @@
   }
   </script>
 
+  <link rel="preload" as="fetch" href="https://media.liveqr.me/demo.webm" crossorigin />
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9279LPP5EZ"></script>
   <script>
@@ -192,10 +207,7 @@
           <p class="kicker"><span class="kicker-dot" aria-hidden="true"></span>Dành cho streamer Việt · OBS · Facebook / TikTok / YouTube</p>
           <h1>Donate về thẳng tài khoản ngân hàng.<br /><span class="grad">Không ví trung gian, không chờ tất toán.</span></h1>
           <p class="hero-sub">
-            LiveQR tạo trang donate VietQR riêng cho bạn — tuỳ chỉnh màu sắc, ảnh nền và nội dung
-            theo phong cách kênh. Khán giả quét mã, tiền vào thẳng tài khoản của bạn — alert + TTS
-            đọc lời nhắn hiện lên OBS ngay khi tiền về, kèm đọc bình luận TikTok Live, kiểm duyệt
-            tiếng Việt và widget tương tác.
+            Tạo trang donate VietQR riêng trong 5 phút — khán giả quét mã, tiền vào thẳng tài khoản của bạn không qua ví trung gian. Alert + TTS đọc lời nhắn hiện lên OBS ngay khi tiền về. Phí <strong>5%</strong> — thấp nhất thị trường, thấp hơn WeScan (10%) và PlayerDuo (10%).
           </p>
           <div class="hero-cta">
             <a class="btn btn-primary btn-lg" href="https://app.liveqr.me" target="_blank" rel="noopener">Dùng thử miễn phí</a>
@@ -239,6 +251,9 @@
                 class="hero-demo-video"
                 id="heroDemoVideo"
                 src="https://media.liveqr.me/demo.webm"
+                autoplay
+                muted
+                loop
                 playsinline
                 preload="metadata"
                 fetchpriority="high"
@@ -272,6 +287,7 @@
       </div>
     </section>
 
+    <!-- ══════════ SOCIAL PROOF ══════════ -->
     <!-- ══════════ TESTIMONIALS ══════════ -->
     <section class="section section-alt" id="testimonials">
       <div class="container">
@@ -763,7 +779,7 @@
           </div>
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">Phí bao nhiêu?<span class="faq-icon"></span></button>
-            <div class="faq-a"><p>Phí trên mỗi donate của LiveQR <b>thấp nhất thị trường</b> — thấp hơn mức 8–10% đang phổ biến ở các nền tảng khác. Nhắn Zalo <a href="https://zalo.me/84394675935" target="_blank" rel="noopener">0394 675 935</a> để nhận mức phí chính xác và gói phù hợp với quy mô kênh của bạn.</p></div>
+            <div class="faq-a"><p>Gói Free: <b>5% doanh thu donate hàng tháng</b> — không phí cố định, không phí rút. Thấp hơn mức 8–10% của WeScan, PlayerDuo, Unghotoi. Tiền về thẳng tài khoản ngân hàng của bạn, không qua ví trung gian. Kênh lớn hoặc MCN muốn phí ưu đãi hơn — nhắn Zalo <a href="https://zalo.me/84394675935" target="_blank" rel="noopener">0394 675 935</a> để tìm hiểu gói Studio.</p></div>
           </div>
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">Tôi cần gì để bắt đầu?<span class="faq-icon"></span></button>
@@ -798,7 +814,7 @@
           <a class="btn btn-primary btn-lg" href="https://app.liveqr.me" target="_blank" rel="noopener">Tạo tài khoản miễn phí</a>
           <a class="btn btn-ghost btn-lg" href="https://zalo.me/84394675935" target="_blank" rel="noopener">💬 Hỏi qua Zalo</a>
         </div>
-        <p class="final-cta-note">✓ Miễn phí · ✓ Không cần thẻ tín dụng · ✓ Cài đặt trong 5 phút</p>
+        <p class="final-cta-note">✓ Miễn phí · ✓ Không cần thẻ tín dụng · ✓ Cài đặt trong 5 phút · ✓ Alert đầu tiên trong buổi live tối nay</p>
       </div>
     </section>
   </main>
