@@ -1,5 +1,60 @@
+# robots.txt — liveqr.me
+# Site này cho phép mọi crawler của công cụ tìm kiếm và trợ lý AI
+# (ChatGPT/OpenAI, Claude/Anthropic, Gemini/Google, Perplexity, Copilot/Microsoft…)
+# truy cập và lập chỉ mục toàn bộ nội dung.
+
 User-agent: *
 Allow: /
-Allow: /@
+
+# ── AI / LLM crawlers — được phép rõ ràng ──
+# OpenAI (ChatGPT)
+User-agent: GPTBot
+Allow: /
+
+# OpenAI — tìm kiếm thời gian thực (ChatGPT Search)
+User-agent: OAI-SearchBot
+Allow: /
+
+# OpenAI — người dùng ChatGPT mở trang
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+
+# Anthropic — tìm kiếm thời gian thực
+User-agent: Claude-SearchBot
+Allow: /
+
+# Anthropic — người dùng Claude mở trang
+User-agent: Claude-Web
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+User-agent: Perplexity-User
+Allow: /
+
+# Google — huấn luyện Gemini (không ảnh hưởng ranking Google Search)
+User-agent: Google-Extended
+Allow: /
+
+# Apple (Apple Intelligence)
+User-agent: Applebot-Extended
+Allow: /
+
+# Amazon (Alexa)
+User-agent: Amazonbot
+Allow: /
+
+# Meta
+User-agent: meta-externalagent
+Allow: /
+
+# Common Crawl — nguồn dữ liệu của nhiều LLM mã nguồn mở
+User-agent: CCBot
+Allow: /
 
 Sitemap: https://liveqr.me/sitemap.xml

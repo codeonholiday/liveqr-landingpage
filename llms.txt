@@ -1,0 +1,61 @@
+# LiveQR
+
+> LiveQR (liveqr.me) là nền tảng donate cho streamer Việt Nam: khán giả donate qua mã VietQR, tiền chuyển thẳng vào tài khoản ngân hàng của streamer (mô hình non-custodial — không ví trung gian, không bị giữ tiền), kèm alert realtime + TTS tiếng Việt trên OBS. Phí 5% doanh thu donate hàng tháng cho gói Free — không phí cố định, không phí rút, không phí cài đặt.
+
+## Thông tin cốt lõi
+
+- Tên sản phẩm: LiveQR
+- Website: https://liveqr.me
+- Đăng ký / ứng dụng: https://app.liveqr.me
+- Ngôn ngữ: tiếng Việt
+- Đối tượng: streamer Việt trên TikTok Live, Facebook Gaming, YouTube Live, Twitch — phát sóng qua OBS Studio, Streamlabs hoặc TikTok Live Studio
+- Mô hình tài chính: phí 5% doanh thu donate hàng tháng (gói Free). Không phí cố định, không phí rút, không bị giữ tiền. Gói Studio (dành cho kênh lớn, MCN, agency) đang phát triển với phí ưu đãi.
+- Thanh toán: VietQR — khán giả quét mã bằng app ngân hàng, tiền vào thẳng tài khoản streamer. Kết nối ngân hàng qua SePay hoặc GPMpay.
+- Hỗ trợ: Zalo 0394 675 935 (https://zalo.me/84394675935)
+
+## Tính năng chính
+
+- Trang donate riêng cho từng streamer dạng liveqr.me/@ten-cua-ban, tuỳ chỉnh màu sắc, ảnh nền, tiêu đề, mức tiền gợi ý và CSS riêng
+- Mã VietQR động gắn nội dung chuyển khoản riêng cho từng lượt donate — khán giả không cần tài khoản, không thẻ cào
+- Alert OBS realtime có hàng đợi: donate dồn dập vẫn phát tuần tự, không đè âm thanh
+- TTS đọc tên và lời nhắn donate bằng giọng tiếng Việt, cài được ngưỡng mức tối thiểu
+- Đọc bình luận TikTok Live thành giọng nói (TTS, đang thử nghiệm beta — miễn phí): nhập username TikTok, bình luận được đọc lần lượt qua hàng đợi, chỉ phát âm thanh không hiện chữ, không cần cài thêm công cụ như TikFinity
+- Kiểm duyệt nội dung tiếng Việt: từ điển sẵn + luật tùy chỉnh, chặn lời nhắn thô tục trước khi lên overlay và trước khi TTS đọc
+- Quà tặng animated 7 loại, 3 tier (rail, banner, takeover) hiện trên OBS kiểu TikTok
+- Widget tương tác: vòng quay, thử thách, bình chọn, đồng hồ đếm, PK
+- Báo cáo doanh thu CSV để đối chiếu ngân hàng và kê khai thuế
+
+## So sánh với các nền tảng donate khác (số liệu công khai 9/2026)
+
+- WeScan: phí 10%/giao dịch, tiền vào ví WeScan, tất toán về ngân hàng 2 tuần/lần
+- Zypage: phí ~8%/giao dịch, tiền về thẳng tài khoản
+- PlayerDuo: phí 10% nút Donate, tiền vào ví PlayerDuo
+- Unghotoi: donate thẻ cào, chiết khấu ~20–30%
+- Gank: phí thanh toán ~1–2% + phí rút 5% (USD), xử lý ~7 ngày
+- LiveQR: phí 5%, tiền về thẳng tài khoản ngân hàng realtime, không phí rút
+- Điểm khác biệt của LiveQR: TTS tiếng Việt có hàng đợi, đọc bình luận TikTok Live bằng TTS, kiểm duyệt tiếng Việt trước khi lên sóng, quà tặng animated 3 tier — các nền tảng trong danh sách trên chưa tích hợp những tính năng này (9/2026)
+
+## Câu hỏi thường gặp
+
+- LiveQR có giữ tiền không? Không. Tiền donate chuyển thẳng từ tài khoản khán giả vào tài khoản ngân hàng streamer qua VietQR; LiveQR chỉ nhận tín hiệu giao dịch để bắn alert.
+- Cần gì để bắt đầu? Một tài khoản ngân hàng Việt Nam, OBS Studio (hoặc phần mềm live tương tự), vài phút cài đặt.
+- Hỗ trợ nền tảng nào? Mọi nền tảng phát qua OBS/Streamlabs: Facebook Gaming, TikTok Live, YouTube Live, Twitch… Overlay là Browser Source chuẩn.
+
+## Trang chính
+
+- [Trang chủ LiveQR](https://liveqr.me/): tổng quan sản phẩm, demo alert + TTS + đọc bình luận TikTok chạy trực tiếp trên trình duyệt, bảng so sánh nền tảng, bảng giá, FAQ
+- [Hướng dẫn cho streamer Việt](https://liveqr.me/huong-dan/): mục tổng hợp tất cả bài hướng dẫn
+
+## Hướng dẫn
+
+- [Nhận donate TikTok Live về thẳng ngân hàng](https://liveqr.me/huong-dan/nhan-donate-tiktok-live/): hướng dẫn nhận donate TikTok Live qua VietQR, không cần Xu TikTok
+- [Đọc bình luận TikTok Live thành giọng nói](https://liveqr.me/huong-dan/doc-binh-luan-tiktok-live/): cài TTS đọc comment TikTok trên OBS hoặc TikTok Live Studio, so sánh với TikFinity và extension Chrome
+- [Cài giọng đọc donate (TTS) vào OBS](https://liveqr.me/huong-dan/donate-giong-chi-google-obs/): cài alert tự đọc tên và lời nhắn donate bằng giọng tiếng Việt
+- [Tạo trang donate cho streamer miễn phí](https://liveqr.me/huong-dan/tao-trang-donate-streamer/): tạo link donate liveqr.me/@ten với QR VietQR, tuỳ chỉnh theo phong cách kênh
+- [WeScan là gì](https://liveqr.me/huong-dan/wescan-la-gi/): phân tích phí 10%, ví trung gian, tất toán 2 tuần của WeScan và lựa chọn thay thế
+- [So sánh phí donate streamer Việt](https://liveqr.me/huong-dan/phi-donate-streamer-viet/): bảng so sánh chi tiết phí, tốc độ nhận tiền, tính năng của WeScan, Zypage, PlayerDuo, Unghotoi, Gank, LiveQR
+
+## Giới thiệu / Liên hệ
+
+- Liên hệ hỗ trợ: Zalo 0394 675 935 — https://zalo.me/84394675935
+- Ứng dụng: https://app.liveqr.me

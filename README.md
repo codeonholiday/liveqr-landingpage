@@ -9,7 +9,8 @@ HTML/CSS/JS thuần — không build tool, không dependency.
 | `styles.css` | Design system (brand token đồng bộ với app: `#0b0d13`, tím `#9b7cff`, xanh `#5ee5a2`, DM Sans + Space Grotesk) |
 | `demo.js` | Demo tương tác: donate → alert overlay, hàng đợi, TTS, đọc bình luận TikTok Live (chỉ phát âm thanh), kiểm duyệt tiếng Việt |
 | `script.js` | Menu mobile, FAQ accordion, scroll-reveal, header |
-| `favicon.svg`, `robots.txt`, `sitemap.xml` | Meta/SEO |
+| `huong-dan/index.html` | Trang hub danh sách tất cả bài hướng dẫn |
+| `favicon.svg`, `robots.txt`, `sitemap.xml`, `og-image.png`, `llms.txt` | Meta/SEO — `og-image.png` là ảnh share 1200×630, `llms.txt` là bản tóm tắt cho AI crawler (ChatGPT, Claude, Perplexity), `robots.txt` cho phép rõ ràng các AI bot |
 
 ## Xem local
 

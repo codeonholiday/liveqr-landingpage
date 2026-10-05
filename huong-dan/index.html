@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hướng dẫn donate & live streaming cho streamer Việt | LiveQR</title>
+  <meta name="description" content="Tổng hợp hướng dẫn cho streamer Việt: nhận donate TikTok Live về thẳng ngân hàng, đọc bình luận TikTok Live bằng TTS, cài alert + giọng đọc vào OBS, tạo trang donate miễn phí, so sánh phí WeScan, Zypage, PlayerDuo." />
+  <meta name="author" content="LiveQR" />
+  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="huong dan donate streamer, nhan donate tiktok live, doc binh luan tiktok live, tts obs tieng viet, tao trang donate, wescan la gi, so sanh phi donate" />
+  <link rel="canonical" href="https://liveqr.me/huong-dan/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://liveqr.me/huong-dan/" />
+  <meta property="og:site_name" content="LiveQR" />
+  <meta property="og:title" content="Hướng dẫn donate & live streaming cho streamer Việt" />
+  <meta property="og:description" content="Nhận donate TikTok Live về thẳng ngân hàng, đọc bình luận TikTok bằng TTS, cài alert OBS, tạo trang donate miễn phí — hướng dẫn từng bước cho streamer Việt." />
+  <meta property="og:image" content="https://liveqr.me/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="vi_VN" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hướng dẫn donate & live streaming cho streamer Việt" />
+  <meta name="twitter:description" content="Nhận donate TikTok Live, đọc bình luận TikTok bằng TTS, cài alert OBS, tạo trang donate miễn phí." />
+  <meta name="twitter:image" content="https://liveqr.me/og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Hướng dẫn donate & live streaming cho streamer Việt",
+    "description": "Tổng hợp hướng dẫn cho streamer Việt về nhận donate VietQR, alert OBS, TTS tiếng Việt và đọc bình luận TikTok Live.",
+    "url": "https://liveqr.me/huong-dan/",
+    "inLanguage": "vi",
+    "isPartOf": { "@type": "WebSite", "name": "LiveQR", "url": "https://liveqr.me" },
+    "hasPart": [
+      { "@type": "Article", "name": "Cách nhận donate TikTok Live về thẳng ngân hàng (2026)", "url": "https://liveqr.me/huong-dan/nhan-donate-tiktok-live/" },
+      { "@type": "Article", "name": "Cách đọc bình luận TikTok Live thành giọng nói miễn phí (2026)", "url": "https://liveqr.me/huong-dan/doc-binh-luan-tiktok-live/" },
+      { "@type": "Article", "name": "Cách cài giọng đọc donate (TTS) vào OBS miễn phí 2026", "url": "https://liveqr.me/huong-dan/donate-giong-chi-google-obs/" },
+      { "@type": "Article", "name": "Cách tạo trang donate cho streamer miễn phí 2026", "url": "https://liveqr.me/huong-dan/tao-trang-donate-streamer/" },
+      { "@type": "Article", "name": "WeScan là gì? Phí, ưu nhược điểm và lựa chọn thay thế 2026", "url": "https://liveqr.me/huong-dan/wescan-la-gi/" },
+      { "@type": "Article", "name": "So sánh phí donate streamer Việt 2026", "url": "https://liveqr.me/huong-dan/phi-donate-streamer-viet/" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://liveqr.me/" },
+      { "@type": "ListItem", "position": 2, "name": "Hướng dẫn", "item": "https://liveqr.me/huong-dan/" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+
+  <style>
+    .hub-hero { padding: 64px 0 32px; }
+    .hub-breadcrumb { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+    .hub-breadcrumb a { color: var(--purple); }
+    .hub-breadcrumb span { margin: 0 6px; opacity: .5; }
+    .hub-head h1 { font-size: clamp(30px, 4.4vw, 48px); letter-spacing: -.03em; margin-bottom: 14px; }
+    .hub-head p { color: var(--muted); font-size: 17px; line-height: 1.7; max-width: 640px; }
+    .hub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 18px; padding: 24px 0 64px; }
+    .hub-card { display: flex; flex-direction: column; gap: 12px; padding: 26px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius-lg); transition: border-color .2s, transform .2s; }
+    .hub-card:hover { border-color: var(--purple-line); transform: translateY(-2px); }
+    .hub-card-tag { align-self: flex-start; font-size: 12.5px; font-weight: 600; color: var(--purple); background: var(--purple-soft); border: 1px solid var(--purple-line); padding: 5px 12px; border-radius: 999px; }
+    .hub-card h2 { font-size: 19px; line-height: 1.35; color: var(--text); }
+    .hub-card h2 a { color: inherit; }
+    .hub-card h2 a:hover { color: var(--purple); }
+    .hub-card p { color: var(--muted); font-size: 15px; line-height: 1.65; margin: 0; flex: 1; }
+    .hub-card-meta { font-size: 13.5px; color: var(--muted-2); display: flex; gap: 14px; }
+    .hub-cta { margin: 8px 0 72px; padding: 32px; background: var(--panel-2); border: 1px solid var(--purple-line); border-radius: var(--radius-lg); }
+    .hub-cta h2 { margin: 0 0 10px; color: var(--text); font-size: 22px; }
+    .hub-cta p { margin: 0 0 20px; color: var(--muted); }
+    .hub-cta .cta-btns { display: flex; flex-wrap: wrap; gap: 12px; }
+    @media (max-width: 640px) { .hub-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════ HEADER ══════════ -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="brand" href="../" aria-label="LiveQR — trang chủ">
+        <img class="brand-logo" src="../brand/logo-on-dark.svg" alt="LiveQR" height="28" width="148" />
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="Điều hướng chính">
+        <a href="../#demo">Demo</a>
+        <a href="../#features">Tính năng</a>
+        <a href="../#compare">So sánh</a>
+        <a href="../#pricing">Giá</a>
+        <a href="../#faq">FAQ</a>
+        <a class="nav-cta-mobile" href="https://app.liveqr.me" target="_blank" rel="noopener">Dùng thử miễn phí</a>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm" href="https://app.liveqr.me" target="_blank" rel="noopener">Dùng thử miễn phí</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Mở menu" aria-expanded="false" aria-controls="mainNav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="hub-hero">
+      <div class="container">
+        <nav class="hub-breadcrumb" aria-label="Breadcrumb">
+          <a href="../">Trang chủ</a>
+          <span aria-hidden="true">›</span>
+          <span>Hướng dẫn</span>
+        </nav>
+
+        <div class="hub-head">
+          <h1>Hướng dẫn donate &amp; live streaming cho streamer Việt</h1>
+          <p>Từng bước cài đặt và mẹo tối ưu doanh thu donate — nhận tiền về thẳng tài khoản ngân hàng, cài alert + giọng đọc TTS vào OBS, đọc bình luận TikTok Live và so sánh các nền tảng donate Việt Nam.</p>
+        </div>
+
+        <div class="hub-grid">
+          <article class="hub-card">
+            <span class="hub-card-tag">TikTok Live</span>
+            <h2><a href="nhan-donate-tiktok-live/">Cách nhận donate TikTok Live về thẳng ngân hàng (2026)</a></h2>
+            <p>Nhận donate TikTok Live qua VietQR — khán giả mở link, app ngân hàng tự động mở, tiền vào thẳng tài khoản của bạn. Phí 5%, không cần Xu TikTok.</p>
+            <div class="hub-card-meta"><span>⏱ 7 phút đọc</span><span>📅 9/2026</span></div>
+          </article>
+
+          <article class="hub-card">
+            <span class="hub-card-tag">TikTok Live · Mới</span>
+            <h2><a href="doc-binh-luan-tiktok-live/">Cách đọc bình luận TikTok Live thành giọng nói miễn phí</a></h2>
+            <p>TTS đọc bình luận TikTok Live bằng giọng tiếng Việt — cài trên OBS (Browser Source) hoặc TikTok Live Studio, không cần cài thêm phần mềm như TikFinity.</p>
+            <div class="hub-card-meta"><span>⏱ 6 phút đọc</span><span>📅 9/2026</span></div>
+          </article>
+
+          <article class="hub-card">
+            <span class="hub-card-tag">OBS · TTS</span>
+            <h2><a href="donate-giong-chi-google-obs/">Cách cài giọng đọc donate (TTS) vào OBS miễn phí</a></h2>
+            <p>Cài TTS đọc lời nhắn donate vào OBS và TikTok Live Studio — alert tự đọc tên và lời nhắn khán giả bằng giọng tiếng Việt tự nhiên, hàng đợi không chồng âm.</p>
+            <div class="hub-card-meta"><span>⏱ 7 phút đọc</span><span>📅 9/2026</span></div>
+          </article>
+
+          <article class="hub-card">
+            <span class="hub-card-tag">Trang donate</span>
+            <h2><a href="tao-trang-donate-streamer/">Cách tạo trang donate cho streamer miễn phí 2026</a></h2>
+            <p>Tạo trang donate riêng liveqr.me/@ten-cua-ban với mã VietQR động, tuỳ chỉnh màu sắc và ảnh nền, alert OBS realtime — miễn phí, xong trong 5 phút.</p>
+            <div class="hub-card-meta"><span>⏱ 6 phút đọc</span><span>📅 9/2026</span></div>
+          </article>
+
+          <article class="hub-card">
+            <span class="hub-card-tag">So sánh</span>
+            <h2><a href="wescan-la-gi/">WeScan là gì? Phí, ưu nhược điểm và lựa chọn thay thế</a></h2>
+            <p>WeScan là nền tảng donate phổ biến nhất ở Việt Nam — nhưng phí 10%/giao dịch và tiền bị giữ trong ví 2 tuần/lần. So sánh WeScan với LiveQR và hướng dẫn chuyển đổi.</p>
+            <div class="hub-card-meta"><span>⏱ 6 phút đọc</span><span>📅 9/2026</span></div>
+          </article>
+
+          <article class="hub-card">
+            <span class="hub-card-tag">So sánh</span>
+            <h2><a href="phi-donate-streamer-viet/">So sánh phí donate streamer Việt 2026</a></h2>
+            <p>Bảng so sánh chi tiết phí donate, tốc độ nhận tiền và tính năng của WeScan, Zypage, PlayerDuo, Unghotoi, Gank và LiveQR — chọn nền tảng phí thấp nhất cho kênh của bạn.</p>
+            <div class="hub-card-meta"><span>⏱ 8 phút đọc</span><span>📅 9/2026</span></div>
+          </article>
+        </div>
+
+        <div class="hub-cta">
+          <h2>Nhận donate về thẳng tài khoản trong 5 phút</h2>
+          <p>Tạo tài khoản LiveQR miễn phí — kết nối ngân hàng qua SePay hoặc GPMpay, dán URL widget vào OBS là có alert ngay trong buổi live tối nay.</p>
+          <div class="cta-btns">
+            <a class="btn btn-primary btn-lg" href="https://app.liveqr.me" target="_blank" rel="noopener">Tạo tài khoản miễn phí</a>
+            <a class="btn btn-ghost btn-lg" href="https://zalo.me/84394675935" target="_blank" rel="noopener">💬 Hỏi qua Zalo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="../">
+          <img class="brand-logo" src="../brand/logo-on-dark.svg" alt="LiveQR" height="28" width="148" />
+        </a>
+        <p>Donate VietQR về thẳng tài khoản ngân hàng. Trang donate tuỳ chỉnh, alert OBS realtime cho streamer Việt.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sản phẩm</h4>
+        <a href="https://app.liveqr.me" target="_blank" rel="noopener">Dùng thử miễn phí</a>
+        <a href="../#demo">Demo alert</a>
+        <a href="../#pricing">Bảng giá</a>
+        <a href="../#features">Tính năng</a>
+      </div>
+      <div class="footer-col">
+        <h4>Hướng dẫn</h4>
+        <a href="nhan-donate-tiktok-live/">Nhận donate TikTok Live</a>
+        <a href="doc-binh-luan-tiktok-live/">Đọc bình luận TikTok Live</a>
+        <a href="donate-giong-chi-google-obs/">Donate giọng chị Google OBS</a>
+        <a href="tao-trang-donate-streamer/">Tạo trang donate miễn phí</a>
+        <a href="wescan-la-gi/">WeScan là gì?</a>
+        <a href="phi-donate-streamer-viet/">So sánh phí donate</a>
+      </div>
+      <div class="footer-col">
+        <h4>Liên hệ</h4>
+        <a href="https://zalo.me/84394675935" target="_blank" rel="noopener">Zalo: 0394 675 935</a>
+        <a href="tel:0394675935">Gọi: 0394675935</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 LiveQR. Số liệu so sánh theo thông tin công khai của các nền tảng (9/2026).</span>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
