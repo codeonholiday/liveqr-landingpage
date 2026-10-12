@@ -42,6 +42,7 @@ python3 -m http.server 4173
 - **Từ khóa kiểm duyệt trong demo**: mảng `BAD_TOKENS` / `BAD_PHRASES` trong `demo.js`.
 - **Tên & bình luận TikTok giả lập trong demo**: mảng `TT_NAMES` / `TT_COMMENTS` trong `demo.js`.
 - **Demo để 4 quà tặng tiêu biểu** (mảng `GIFTS` trong `demo.js`) — catalog đầy đủ 7 quà nằm trong app. Widget tương tác (vòng quay, bình chọn) không có trong demo nhưng vẫn là tính năng của app.
+- **Video demo game (section `#games`)**: cả 2 thẻ game đều gắn clip thật từ TikTok Live (video dọc 9:16 — video chính `contain` ở giữa + `.game-video-bg` làm nền blur), host trên `media.liveqr.me`: thẻ Đua ngựa 3D dùng `https://media.liveqr.me/dua-ngua-3d.webm`, thẻ Ai thông minh hơn lớp 5 dùng `https://media.liveqr.me/quiz-lop5.webm`. Để thay clip khác: đổi `src` của cả 2 phần tử video trong thẻ tương ứng về cùng 1 file (placeholder CSS tự ẩn khi video tải xong, autoplay muted khi cuộn tới, có nút bật tiếng).
 
 ## Ghi chú
 

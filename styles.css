@@ -626,6 +626,174 @@ section[id] { scroll-margin-top: 84px; }
   color: #0b1226; background: var(--green); border-radius: 999px;
 }
 
+/* ── Game tương tác qua bình luận ────────────────────────── */
+.games-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+.game-card {
+  display: flex; flex-direction: column;
+  background: linear-gradient(180deg, #1e253a, var(--panel));
+  border: 1px solid var(--line); border-radius: var(--radius-lg);
+  overflow: hidden; box-shadow: var(--shadow-card);
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+.game-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--purple-line);
+  box-shadow: 0 28px 60px -32px rgba(155, 124, 255, .45);
+}
+
+/* khung video demo 16:9 — video fade-in khi tải xong, placeholder tự ẩn */
+.game-media { position: relative; aspect-ratio: 16 / 9; background: #0d1018; overflow: hidden; }
+.game-video {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; opacity: 0; transition: opacity .45s ease;
+}
+.game-media.has-video .game-video { opacity: 1; }
+.game-media.has-video .game-placeholder { display: none; }
+/* video dọc 9:16 (clip TikTok): giữ nguyên khung ở giữa, nền blur phủ kín khung */
+.game-video--contain { object-fit: contain; z-index: 1; }
+.game-video-bg {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: 0;
+  filter: blur(22px) brightness(.5) saturate(1.15);
+  transform: scale(1.2);
+  opacity: 0; transition: opacity .45s ease;
+}
+.game-media.has-video .game-video-bg { opacity: 1; }
+/* chip nguồn clip — chỉ hiện khi video đã tải */
+.game-media-note {
+  position: absolute; left: 12px; bottom: 10px; z-index: 3;
+  display: none; align-items: center; gap: 5px;
+  padding: 4px 11px; font-size: 11px; font-weight: 600; letter-spacing: .02em;
+  color: #c8fff9; background: rgba(11, 13, 19, .74);
+  border: 1px solid rgba(37, 244, 238, .35); border-radius: 999px;
+  backdrop-filter: blur(6px); transition: border-color .15s, color .15s;
+}
+.game-media-note:hover { border-color: rgba(37, 244, 238, .7); color: #7df3ee; }
+.game-media.has-video .game-media-note { display: inline-flex; }
+.game-mute {
+  position: absolute; right: 10px; bottom: 10px; z-index: 3;
+  display: grid; place-items: center; width: 34px; height: 34px; padding: 0; font-size: 14px;
+  color: var(--text); background: rgba(11, 13, 19, .68);
+  border: 1px solid rgba(255, 255, 255, .16); border-radius: 999px;
+  cursor: pointer; backdrop-filter: blur(6px);
+}
+.game-mute:hover { border-color: rgba(155, 124, 255, .5); background: rgba(155, 124, 255, .2); }
+.game-mute.hidden { display: none; }
+
+/* placeholder khi chưa thay video */
+.game-placeholder { position: absolute; inset: 0; overflow: hidden; }
+.game-placeholder-badge {
+  position: absolute; left: 12px; bottom: 10px; z-index: 2;
+  padding: 4px 11px; font-size: 11px; font-weight: 600; letter-spacing: .02em;
+  color: var(--muted); background: rgba(11, 13, 19, .74);
+  border: 1px solid var(--line); border-radius: 999px; backdrop-filter: blur(6px);
+}
+.ph-bubbles { position: absolute; right: 14px; bottom: 12px; z-index: 1; display: grid; gap: 8px; justify-items: end; }
+.ph-bubbles span {
+  padding: 4px 10px; font-size: 11.5px; font-weight: 600; color: #c8fff9;
+  background: rgba(16, 32, 40, .92); border: 1px solid rgba(37, 244, 238, .35);
+  border-radius: 999px; box-shadow: 0 4px 14px rgba(0, 0, 0, .35);
+  opacity: 0; animation: ph-bubble 4.6s linear infinite; animation-delay: var(--bt, 0s);
+}
+@keyframes ph-bubble {
+  0% { opacity: 0; transform: translateY(8px) scale(.92); }
+  10%, 74% { opacity: 1; transform: none; }
+  100% { opacity: 0; transform: translateY(-8px); }
+}
+
+/* placeholder — quiz lớp 5 */
+.ph-quiz {
+  display: grid; place-items: center; padding: 16px;
+  background:
+    radial-gradient(420px 200px at 18% 0%, rgba(155, 124, 255, .18), transparent 60%),
+    radial-gradient(360px 200px at 90% 100%, rgba(94, 229, 162, .1), transparent 60%),
+    linear-gradient(180deg, #171d30, #10131d);
+}
+.ph-quiz-card {
+  width: min(330px, 84%); padding: 15px 17px 13px;
+  background: rgba(27, 33, 51, .95); border: 1px solid var(--purple-line); border-radius: 14px;
+  box-shadow: 0 16px 44px -14px rgba(155, 124, 255, .5);
+}
+.ph-quiz-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; font-size: 11.5px; color: var(--muted); }
+.ph-quiz-top b { color: #d6cbff; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+.ph-timer { flex: 1; max-width: 92px; height: 4px; border-radius: 2px; background: rgba(255, 255, 255, .1); overflow: hidden; }
+.ph-timer i { display: block; height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--green), #ffd76a); transform-origin: left center; animation: ph-timer 6s linear infinite; }
+@keyframes ph-timer { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+.ph-q { margin: 0 0 10px; font-size: 15px; font-weight: 600; }
+.ph-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+.ph-opt {
+  padding: 7px 10px; font-size: 12.5px; font-weight: 600; color: var(--muted);
+  background: var(--panel-2); border: 1px solid var(--line); border-radius: 9px;
+}
+.ph-opt.is-correct { color: var(--green); animation: ph-correct 1.8s ease-in-out infinite; }
+@keyframes ph-correct {
+  0%, 100% { border-color: rgba(94, 229, 162, .3); box-shadow: none; }
+  50% { border-color: var(--green); box-shadow: 0 0 0 3px rgba(94, 229, 162, .16); }
+}
+
+/* placeholder — đua ngựa 3D */
+.ph-race {
+  background:
+    radial-gradient(460px 210px at 80% -12%, rgba(155, 124, 255, .22), transparent 62%),
+    linear-gradient(180deg, #141d33 0%, #17291e 52%, #1b3524 100%);
+}
+.ph-race-top {
+  position: absolute; top: 0; left: 0; right: 0; z-index: 1;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px 14px; font-size: 11.5px; color: var(--muted);
+}
+.ph-race-top b { font-weight: 700; color: #d6cbff; letter-spacing: .05em; text-transform: uppercase; }
+.ph-race-top span { display: inline-flex; align-items: center; gap: 6px; }
+.ph-race-top span::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--orange); animation: pulse 1.6s infinite; }
+.ph-lanes { position: absolute; inset: 40px 40px 54px 14px; display: grid; grid-template-rows: repeat(4, 1fr); }
+.ph-lane { position: relative; border-bottom: 1px dashed rgba(255, 255, 255, .1); }
+.ph-lane:last-child { border-bottom: none; }
+.ph-lane i {
+  position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+  display: grid; place-items: center; width: 18px; height: 18px;
+  font-size: 10px; font-style: normal; font-weight: 700; color: #0b0d13;
+  background: rgba(255, 255, 255, .55); border-radius: 5px;
+}
+.ph-horse {
+  position: absolute; top: 50%; left: 8%; margin-top: -12px; font-size: 21px;
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, .5));
+  animation: ph-run var(--dur, 6s) linear infinite, ph-gallop .5s ease-in-out infinite;
+  animation-delay: var(--hd, 0s), var(--hd, 0s);
+}
+@keyframes ph-run { from { left: 8%; } to { left: calc(100% - 30px); } }
+@keyframes ph-gallop { 0%, 100% { margin-top: -12px; } 50% { margin-top: -16px; } }
+.ph-finish {
+  position: absolute; top: -6px; bottom: -6px; right: -2px; width: 3px;
+  background: repeating-linear-gradient(180deg, rgba(255, 255, 255, .38) 0 8px, transparent 8px 16px);
+}
+
+/* nội dung thẻ game */
+.game-body { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 24px; }
+.game-head { display: flex; align-items: center; gap: 12px; }
+.game-icon {
+  display: grid; place-items: center; width: 46px; height: 46px; font-size: 23px;
+  background: var(--purple-soft); border: 1px solid var(--purple-line); border-radius: 12px;
+}
+.game-card h3 { margin: 0; font-size: 19px; }
+.game-body > p { margin: 0; color: var(--muted); font-size: 15.5px; line-height: 1.65; }
+.game-card code {
+  padding: 1px 7px; font-size: .88em; color: #d6cbff; white-space: nowrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: var(--purple-soft); border: 1px solid var(--purple-line); border-radius: 6px;
+}
+.game-points { list-style: none; display: grid; gap: 8px; margin: 0; padding: 0; }
+.game-points li { display: flex; align-items: flex-start; gap: 9px; color: var(--muted); font-size: 14.5px; }
+.game-points .check {
+  display: grid; place-items: center; width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px;
+  border-radius: 50%; background: var(--green-soft); color: var(--green); font-size: 11px; font-weight: 700;
+}
+.game-comments { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 2px; }
+.game-comments span {
+  padding: 4px 10px; font-size: 11.5px; font-weight: 600; color: var(--muted);
+  background: var(--panel-2); border: 1px solid var(--line); border-radius: 999px;
+}
+.games-note a { color: var(--purple); font-weight: 600; }
+
 /* ── Compare table ───────────────────────────────────────── */
 .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--panel); box-shadow: var(--shadow-card); }
 .compare-table { width: 100%; min-width: 900px; border-collapse: collapse; font-size: 14.5px; }
@@ -862,6 +1030,7 @@ section[id] { scroll-margin-top: 84px; }
   .hero-demo-phone { border-radius: 20px; }
   .hero-demo-phone-bar { padding: 6px 10px; font-size: 10px; }
   .demo-grid { grid-template-columns: 1fr; }
+  .games-grid { grid-template-columns: 1fr; }
   .steps-grid, .features-grid { grid-template-columns: 1fr 1fr; }
   .testimonials-grid { grid-template-columns: 1fr 1fr; }
   .pricing-tiers, .pricing-tiers--two { grid-template-columns: 1fr; gap: 14px; max-width: 100%; }
@@ -899,6 +1068,7 @@ section[id] { scroll-margin-top: 84px; }
   .nav-cta-mobile { display: block; color: var(--purple); font-weight: 700; }
 
   .steps-grid, .features-grid { grid-template-columns: 1fr; }
+  .ph-bubbles span:nth-child(3) { display: none; }
   .trust-grid { grid-template-columns: 1fr; gap: 0; padding: 8px 0; }
   .hero h1 { font-size: 30px; }
   .kicker { white-space: normal; line-height: 1.4; }

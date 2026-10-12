@@ -125,6 +125,49 @@
     syncSeekUi();
   }
 
+  /* Slot video demo game (section #games) — placeholder tự ẩn khi video tải xong
+     (kể cả khi src được gán sau), autoplay muted khi cuộn tới, nút bật/tắt tiếng */
+  document.querySelectorAll('.game-media').forEach(function (media) {
+    var video = media.querySelector('.game-video');
+    if (!video) return;
+    var muteBtn = media.querySelector('.game-mute');
+    var bgVideo = media.querySelector('.game-video-bg'); /* backdrop blur cho video dọc */
+
+    video.addEventListener('loadeddata', function () {
+      media.classList.add('has-video');
+      if (muteBtn) muteBtn.classList.remove('hidden');
+    });
+    video.addEventListener('error', function () {
+      media.classList.remove('has-video');
+      if (muteBtn) muteBtn.classList.add('hidden');
+      if (bgVideo) bgVideo.pause();
+    });
+    if (muteBtn) {
+      muteBtn.addEventListener('click', function () {
+        video.muted = !video.muted;
+        muteBtn.textContent = video.muted ? '🔇' : '🔊';
+        muteBtn.setAttribute('aria-label', video.muted ? 'Bật tiếng video' : 'Tắt tiếng video');
+      });
+    }
+    if ('IntersectionObserver' in window) {
+      var vio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            video.play().catch(function () {});
+            if (bgVideo) bgVideo.play().catch(function () {});
+          } else {
+            video.pause();
+            if (bgVideo) bgVideo.pause();
+          }
+        });
+      }, { threshold: 0.35 });
+      vio.observe(media);
+    } else {
+      video.play().catch(function () {});
+      if (bgVideo) bgVideo.play().catch(function () {});
+    }
+  });
+
   /* Scroll-reveal */
   var reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
