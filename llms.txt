@@ -6,7 +6,8 @@
 
 - Tên sản phẩm: LiveQR
 - Website: https://liveqr.me
-- Đăng ký / ứng dụng: https://app.liveqr.me
+- Đăng ký / dashboard web: https://app.liveqr.me
+- App desktop TikTok Live (macOS & Windows): https://liveqr.me/liveqr-tiktok/ — tải từ https://media.liveqr.me/desktop/
 - Ngôn ngữ: tiếng Việt
 - Đối tượng: streamer Việt trên TikTok Live, Facebook Gaming, YouTube Live, Twitch — phát sóng qua OBS Studio, Streamlabs hoặc TikTok Live Studio
 - Mô hình tài chính: phí 5% doanh thu donate hàng tháng (gói Free). Không phí cố định, không phí rút, không bị giữ tiền. Gói Studio (dành cho kênh lớn, MCN, agency) đang phát triển với phí ưu đãi.

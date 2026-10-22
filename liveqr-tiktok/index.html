@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LiveQR TikTok — App desktop đọc bình luận, alert & overlay OBS | Tải miễn phí</title>
+  <meta name="description" content="Tải LiveQR TikTok cho macOS và Windows: kết nối TikTok Live, TTS đọc bình luận tiếng Việt, alert quà & follow, máy in quà overlay, đồng hồ quà ± giờ — một app thay TikFinity + overlay riêng." />
+  <meta name="author" content="LiveQR" />
+  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="liveqr tiktok, tải liveqr tiktok, app đọc bình luận tiktok live, tikfinity thay thế, overlay tiktok obs, máy in quà tiktok" />
+  <link rel="canonical" href="https://liveqr.me/liveqr-tiktok/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://liveqr.me/liveqr-tiktok/" />
+  <meta property="og:title" content="LiveQR TikTok — App desktop cho streamer TikTok Live" />
+  <meta property="og:description" content="Kết nối TikTok Live, TTS bình luận, alert quà, máy in quà overlay — tải bản macOS hoặc Windows, tự cập nhật." />
+  <meta property="og:image" content="https://liveqr.me/og-image.png" />
+  <meta property="og:locale" content="vi_VN" />
+  <meta property="og:site_name" content="LiveQR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="LiveQR TikTok — App desktop cho TikTok Live" />
+  <meta name="twitter:description" content="Tải app macOS / Windows: TTS bình luận, alert quà, overlay OBS, máy in quà." />
+  <meta name="twitter:image" content="https://liveqr.me/og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "LiveQR TikTok",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "macOS, Windows",
+    "description": "Ứng dụng desktop cho streamer TikTok Live: kết nối live, TTS đọc bình luận tiếng Việt, alert quà và follow, máy in quà trên overlay OBS, đồng hồ quà ± giờ.",
+    "url": "https://liveqr.me/liveqr-tiktok/",
+    "downloadUrl": "https://media.liveqr.me/desktop/LiveQR%20TikTok%20Setup%200.1.7.exe",
+    "inLanguage": "vi",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "VND" },
+    "publisher": { "@type": "Organization", "name": "LiveQR", "url": "https://liveqr.me" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://liveqr.me/" },
+      { "@type": "ListItem", "position": 2, "name": "LiveQR TikTok", "item": "https://liveqr.me/liveqr-tiktok/" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+
+  <style>
+    .app-hero { padding: 72px 0 40px; }
+    .app-hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; }
+    @media (max-width: 900px) { .app-hero-grid { grid-template-columns: 1fr; } }
+    .app-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      color: var(--purple); background: var(--purple-soft); border: 1px solid var(--purple-line);
+      padding: 6px 14px; border-radius: 999px; margin-bottom: 18px;
+    }
+    .app-hero h1 { font-size: clamp(32px, 4.6vw, 52px); letter-spacing: -.03em; line-height: 1.08; margin: 0 0 16px; }
+    .app-hero-lead { color: var(--muted); font-size: 18px; line-height: 1.7; max-width: 540px; margin: 0 0 24px; }
+    .app-hero-note { font-size: 14px; color: var(--muted-2); margin-top: 14px; }
+    .download-panel {
+      padding: 28px; background: var(--panel); border: 1px solid var(--purple-line);
+      border-radius: var(--radius-lg); box-shadow: 0 24px 60px rgba(0,0,0,.35);
+    }
+    .download-panel h2 { font-size: 20px; margin: 0 0 6px; color: var(--text); }
+    .download-version { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
+    .download-version strong { color: var(--green); }
+    .download-btns { display: flex; flex-direction: column; gap: 10px; }
+    .download-btn {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 14px 16px; border-radius: var(--radius);
+      background: var(--panel-2); border: 1px solid var(--line);
+      color: var(--text); font-weight: 600; font-size: 15px;
+      transition: border-color .2s, transform .15s;
+    }
+    .download-btn:hover { border-color: var(--purple-line); transform: translateY(-1px); }
+    .download-btn small { display: block; font-weight: 500; color: var(--muted); font-size: 12.5px; margin-top: 2px; }
+    .download-btn .dl-arrow { color: var(--purple); font-size: 18px; }
+    .download-btn.is-loading { opacity: .65; pointer-events: none; }
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; padding: 32px 0 48px; }
+    .feature-card {
+      padding: 22px; background: var(--panel); border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+    }
+    .feature-card .icon { font-size: 28px; margin-bottom: 10px; }
+    .feature-card h3 { font-size: 17px; margin: 0 0 8px; color: var(--text); }
+    .feature-card p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.65; }
+    .app-section { padding: 24px 0 56px; max-width: 720px; }
+    .app-section h2 { font-size: clamp(24px, 3vw, 32px); margin: 0 0 16px; }
+    .app-section p, .app-section li { color: var(--muted); line-height: 1.75; font-size: 16px; }
+    .app-section ul { padding-left: 22px; }
+    .app-section li { margin-bottom: 8px; }
+    .compare-mini { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14.5px; }
+    .compare-mini th, .compare-mini td { padding: 11px 12px; border-bottom: 1px solid var(--line); text-align: left; }
+    .compare-mini th { color: var(--muted-2); font-weight: 600; background: var(--panel-2); }
+    .compare-mini td { color: var(--muted); }
+    .step-list { list-style: none; padding: 0; counter-reset: steps; margin: 20px 0; }
+    .step-list li { counter-increment: steps; display: flex; gap: 16px; margin-bottom: 18px; }
+    .step-list li::before {
+      content: counter(steps); flex-shrink: 0; width: 32px; height: 32px;
+      display: grid; place-items: center; border-radius: 50%;
+      background: var(--purple-soft); border: 1px solid var(--purple-line);
+      color: var(--purple); font-weight: 700; font-size: 14px;
+    }
+    .step-list strong { display: block; color: var(--text); margin-bottom: 4px; }
+    .step-list span { color: var(--muted); font-size: 15px; line-height: 1.6; }
+    .app-cta-box {
+      margin: 40px 0; padding: 28px 32px;
+      background: var(--panel-2); border: 1px solid var(--purple-line); border-radius: var(--radius-lg);
+    }
+    .app-cta-box p { margin: 0 0 16px; color: var(--muted); }
+    .app-cta-box .cta-btns { display: flex; flex-wrap: wrap; gap: 12px; }
+    .faq-section { margin-top: 32px; max-width: 720px; padding-bottom: 64px; }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="brand" href="../" aria-label="LiveQR — trang chủ">
+        <img class="brand-logo" src="../brand/logo-on-dark.svg" alt="LiveQR" height="28" width="148" />
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="Điều hướng chính">
+        <a href="../#demo">Demo</a>
+        <a href="../#features">Tính năng</a>
+        <a href="../#compare">So sánh</a>
+        <a href="../#pricing">Giá</a>
+        <a href="../#faq">FAQ</a>
+        <a href="./" aria-current="page">App TikTok</a>
+        <a class="nav-cta-mobile" href="#tai-app">Tải app</a>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm" href="#tai-app">Tải LiveQR TikTok</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Mở menu" aria-expanded="false" aria-controls="mainNav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="app-hero">
+      <div class="container app-hero-grid">
+        <div>
+          <span class="app-badge">🖥 App desktop · macOS &amp; Windows</span>
+          <h1>LiveQR TikTok — một app cho TikTok Live trên OBS</h1>
+          <p class="app-hero-lead">
+            Kết nối trực tiếp phiên TikTok Live, đọc bình luận bằng TTS tiếng Việt, bắn alert quà &amp; follow, chạy overlay OBS và máy in quà ngay trên máy bạn — không cần TikFinity hay extension Chrome dễ hỏng.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary btn-lg" href="#tai-app">Tải bản mới nhất</a>
+            <a class="btn btn-ghost btn-lg" href="https://app.liveqr.me" target="_blank" rel="noopener">Dashboard web</a>
+          </div>
+          <p class="app-hero-note">Cần license từ <a href="https://liveqr.me/licenses" target="_blank" rel="noopener">liveqr.me/licenses</a> · App tự kiểm tra cập nhật sau khi cài</p>
+        </div>
+
+        <aside class="download-panel" id="tai-app" aria-labelledby="download-heading">
+          <h2 id="download-heading">Tải LiveQR TikTok</h2>
+          <p class="download-version">Phiên bản: <strong>v0.1.7</strong></p>
+          <div class="download-btns" id="desktop-downloads">
+            <a class="download-btn" href="https://media.liveqr.me/desktop/LiveQR%20TikTok-0.1.7-arm64.dmg" download>
+              <span>🍎 macOS (Apple Silicon)<small>Mac M1 / M2 / M3 / M4 — file .dmg</small></span>
+              <span class="dl-arrow" aria-hidden="true">↓</span>
+            </a>
+            <a class="download-btn" href="https://media.liveqr.me/desktop/LiveQR%20TikTok-0.1.7.dmg" download>
+              <span>🍎 macOS (Intel)<small>MacBook / iMac chip Intel — file .dmg</small></span>
+              <span class="dl-arrow" aria-hidden="true">↓</span>
+            </a>
+            <a class="download-btn" href="https://media.liveqr.me/desktop/LiveQR%20TikTok%20Setup%200.1.7.exe" download>
+              <span>🪟 Windows 10/11<small>Trình cài .exe — chọn thư mục khi cài</small></span>
+              <span class="dl-arrow" aria-hidden="true">↓</span>
+            </a>
+          </div>
+          <p class="app-hero-note" style="margin-top:16px;margin-bottom:0;">
+            Link tải lấy từ CDN chính thức <code>media.liveqr.me</code>. Không rõ chip Mac? Mở <strong> → About This Mac</strong> — nếu ghi Apple M… thì chọn Apple Silicon.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="container">
+      <h2 style="font-size:clamp(24px,3vw,34px);margin:0 0 8px;">Tính năng trong app</h2>
+      <p style="color:var(--muted);max-width:640px;margin:0 0 8px;line-height:1.7;">
+        LiveQR TikTok là bản desktop dành riêng streamer TikTok Live. Dashboard donate VietQR vẫn dùng trên <a href="https://app.liveqr.me" target="_blank" rel="noopener">app.liveqr.me</a>; app desktop lo phần live, overlay và hiệu ứng trên sóng.
+      </p>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="icon" aria-hidden="true">📡</div>
+          <h3>Kết nối TikTok Live</h3>
+          <p>Nhập username, session — app bám phiên live và nhận sự kiện quà, bình luận, follow theo thời gian thực.</p>
+        </article>
+        <article class="feature-card">
+          <div class="icon" aria-hidden="true">🗣</div>
+          <h3>TTS bình luận</h3>
+          <p>Đọc bình luận tiếng Việt qua hàng đợi, kiểm duyệt từ khoá — chỉ âm thanh, không che màn hình game.</p>
+        </article>
+        <article class="feature-card">
+          <div class="icon" aria-hidden="true">🎁</div>
+          <h3>Alert quà &amp; follow</h3>
+          <p>Tùy chỉnh hình, video, Lottie, TTS theo từng mức quà; alert follow riêng — phát tuần tự, không chồng âm.</p>
+        </article>
+        <article class="feature-card">
+          <div class="icon" aria-hidden="true">🖨</div>
+          <h3>Máy in quà overlay</h3>
+          <p>In avatar khán giả lên “giấy” trên overlay: mức Thường / VIP / Super VIP, khung vinh danh và pháo hoa.</p>
+        </article>
+        <article class="feature-card">
+          <div class="icon" aria-hidden="true">⏱</div>
+          <h3>Quà ± giờ live</h3>
+          <p>Quà TikTok cộng hoặc trừ thời gian đồng hồ live — widget đồng hồ &amp; bảng quà trên cùng overlay OBS.</p>
+        </article>
+        <article class="feature-card">
+          <div class="icon" aria-hidden="true">🎬</div>
+          <h3>Overlay URL cho OBS</h3>
+          <p>Server overlay chạy local — dán Browser Source vào OBS hoặc TikTok Live Studio, xem trước vị trí ngay trong app.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container app-section">
+      <h2>App desktop vs dashboard web</h2>
+      <table class="compare-mini">
+        <thead>
+          <tr><th></th><th>LiveQR TikTok (desktop)</th><th>app.liveqr.me (web)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Donate VietQR, trang @username</td><td>—</td><td>✓</td></tr>
+          <tr><td>Kết nối TikTok Live + TTS comment</td><td>✓</td><td>✓ (widget)</td></tr>
+          <tr><td>Alert / overlay / máy in quà local</td><td>✓</td><td>Qua URL cloud</td></tr>
+          <tr><td>Chạy khi tắt trình duyệt</td><td>✓</td><td>Cần tab mở</td></tr>
+          <tr><td>Tự cập nhật</td><td>✓</td><td>Luôn mới nhất</td></tr>
+        </tbody>
+      </table>
+      <p>Nhiều streamer dùng <strong>cả hai</strong>: web để quản lý donate và ngân hàng, desktop để live ổn định trên OBS.</p>
+    </section>
+
+    <section class="container app-section">
+      <h2>Cài đặt nhanh</h2>
+      <ol class="step-list">
+        <li>
+          <div>
+            <strong>Tải và cài app</strong>
+            <span>Chọn đúng bản macOS (Apple Silicon hoặc Intel) hoặc Windows ở khung bên trên. macOS: mở .dmg, kéo vào Applications. Windows: chạy file Setup.</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Kích hoạt license</strong>
+            <span>Mở tab License, dán key từ <a href="https://liveqr.me/licenses" target="_blank" rel="noopener">liveqr.me/licenses</a>. Mỗi key gắn một máy.</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Kết nối TikTok Live</strong>
+            <span>Tab Kết nối — nhập username và thông tin phiên. Bắt đầu live trên TikTok, app tự bám stream.</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <strong>Dán overlay vào OBS</strong>
+            <span>Tab Overlay URL — copy link, thêm Browser Source trong OBS (hoặc Source Link trên TikTok Live Studio). Chỉnh vị trí máy in, đồng hồ trong app.</span>
+          </div>
+        </li>
+      </ol>
+
+      <div class="app-cta-box">
+        <p><strong>Chưa có trang donate?</strong> Tạo miễn phí trên web — tiền VietQR về thẳng ngân hàng, dùng chung overlay với app desktop.</p>
+        <div class="cta-btns">
+          <a class="btn btn-primary" href="https://app.liveqr.me" target="_blank" rel="noopener">Tạo tài khoản web</a>
+          <a class="btn btn-ghost" href="../huong-dan/doc-binh-luan-tiktok-live/">Hướng dẫn TTS TikTok</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="container faq-section">
+      <h2>Câu hỏi thường gặp</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">LiveQR TikTok có miễn phí không?<span class="faq-icon"></span></button>
+          <div class="faq-a"><p>Tải và cài app miễn phí. Bạn cần license hợp lệ để dùng đầy đủ tính năng — liên hệ LiveQR hoặc lấy key tại trang licenses. Dashboard donate trên web vẫn theo gói phí donate (xem <a href="../#pricing">bảng giá</a>).</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">App có thay TikFinity không?<span class="faq-icon"></span></button>
+          <div class="faq-a"><p>Với nhu cầu TikTok Live + TTS tiếng Việt + alert quà trên OBS, app thay được phần lớn workflow TikFinity, kèm máy in quà và alert follow tích hợp. Hỗ trợ cả macOS lẫn Windows (TikFinity chủ yếu Windows).</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">macOS báo app không mở được?<span class="faq-icon"></span></button>
+          <div class="faq-a"><p>Bản macOS đã notarize. Nếu vẫn bị chặn: chuột phải vào icon app → Open / Mở lần đầu. Hoặc System Settings → Privacy &amp; Security → Allow. Cần hỗ trợ: <a href="https://zalo.me/84394675935" target="_blank" rel="noopener">Zalo 0394 675 935</a>.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Làm sao biết app đã mới nhất?<span class="faq-icon"></span></button>
+          <div class="faq-a"><p>Trong app, bấm <strong>Kiểm tra cập nhật</strong> (menu dưới cùng). App tải bản mới từ cùng nguồn với link trên trang này.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="../">
+          <img class="brand-logo" src="../brand/logo-on-dark.svg" alt="LiveQR" height="28" width="148" />
+        </a>
+        <p>Donate VietQR về thẳng tài khoản ngân hàng. App LiveQR TikTok cho overlay &amp; TTS TikTok Live.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sản phẩm</h4>
+        <a href="./">LiveQR TikTok (tải app)</a>
+        <a href="https://app.liveqr.me" target="_blank" rel="noopener">Dashboard web</a>
+        <a href="../#demo">Demo alert</a>
+        <a href="../#pricing">Bảng giá</a>
+      </div>
+      <div class="footer-col">
+        <h4>Hướng dẫn</h4>
+        <a href="../huong-dan/doc-binh-luan-tiktok-live/">Đọc bình luận TikTok Live</a>
+        <a href="../huong-dan/nhan-donate-tiktok-live/">Nhận donate TikTok Live</a>
+        <a href="../huong-dan/">Xem tất cả</a>
+      </div>
+      <div class="footer-col">
+        <h4>Liên hệ</h4>
+        <a href="https://zalo.me/84394675935" target="_blank" rel="noopener">Zalo: 0394 675 935</a>
+        <a href="https://www.facebook.com/profile.php?id=61594529878517" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 LiveQR · Tải app từ media.liveqr.me/desktop</span>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
