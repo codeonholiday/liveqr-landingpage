@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cách lấy Google API key để đọc bình luận miễn phí | LiveQR</title>
+  <meta name="description" content="Hướng dẫn từng bước tạo Google Cloud API key cho Text-to-Speech để LiveQR TikTok đọc bình luận bằng giọng Google. Có quota miễn phí, kèm cách giới hạn key an toàn." />
+  <meta name="author" content="LiveQR" />
+  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="lấy google api key, google text to speech api key, đọc bình luận tiktok miễn phí, tts google tiếng việt, liveqr tiktok" />
+  <link rel="canonical" href="https://liveqr.me/huong-dan/lay-google-api-key-doc-binh-luan/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://liveqr.me/huong-dan/lay-google-api-key-doc-binh-luan/" />
+  <meta property="og:title" content="Cách lấy Google API key để đọc bình luận miễn phí" />
+  <meta property="og:description" content="Tạo Google Cloud API key cho giọng đọc bình luận TikTok — hướng dẫn từng bước, có quota miễn phí và cách bảo mật key." />
+  <meta property="og:image" content="https://liveqr.me/og-image.png" />
+  <meta property="og:locale" content="vi_VN" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cách lấy Google API key để đọc bình luận miễn phí" />
+  <meta name="twitter:description" content="Tạo Google Cloud API key cho giọng đọc bình luận TikTok — miễn phí trong quota." />
+  <meta name="twitter:image" content="https://liveqr.me/og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Cách lấy Google API key để đọc bình luận miễn phí",
+    "description": "Hướng dẫn tạo Google Cloud API key để dùng Cloud Text-to-Speech đọc bình luận TikTok bằng LiveQR.",
+    "url": "https://liveqr.me/huong-dan/lay-google-api-key-doc-binh-luan/",
+    "datePublished": "2026-10-25",
+    "dateModified": "2026-10-26",
+    "author": { "@type": "Organization", "name": "LiveQR", "url": "https://liveqr.me" },
+    "publisher": { "@type": "Organization", "name": "LiveQR", "url": "https://liveqr.me" },
+    "inLanguage": "vi"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Google Text-to-Speech có hoàn toàn miễn phí không?", "acceptedAnswer": { "@type": "Answer", "text": "Google Cloud yêu cầu bật thanh toán cho dự án, nhưng có quota miễn phí hằng tháng. Với giọng Standard, quota miễn phí hiện là 4 triệu ký tự/tháng; các loại giọng khác có quota và giá khác nhau. Hãy theo dõi trang giá của Google để xem mức hiện hành." } },
+      { "@type": "Question", "name": "Google yêu cầu xác minh danh tính thì làm gì?", "acceptedAnswer": { "@type": "Answer", "text": "Mở email từ Google Payments, bấm Start verification và hoàn thành quy trình bằng giấy tờ Google chấp nhận. Chờ xác minh hoàn tất trước khi quay lại bật API; không có cách bỏ qua bước này." } },
+      { "@type": "Question", "name": "Có nên gửi Google API key cho người khác không?", "acceptedAnswer": { "@type": "Answer", "text": "Không. API key là thông tin riêng của dự án Google Cloud. Chỉ dán key vào ứng dụng LiveQR TikTok trên máy của bạn; không đăng ảnh, gửi qua chat công khai hay dán vào OBS." } },
+      { "@type": "Question", "name": "Lỗi API has not been used or is disabled nghĩa là gì?", "acceptedAnswer": { "@type": "Answer", "text": "Bạn chưa bật Cloud Text-to-Speech API đúng project, hoặc API key thuộc một project khác. Hãy kiểm tra lại project đang chọn, bật API và thử lại sau vài phút." } }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  { "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://liveqr.me/" },
+    { "@type": "ListItem", "position": 2, "name": "Hướng dẫn", "item": "https://liveqr.me/huong-dan/" },
+    { "@type": "ListItem", "position": 3, "name": "Lấy Google API key", "item": "https://liveqr.me/huong-dan/lay-google-api-key-doc-binh-luan/" }
+  ] }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <style>
+    .article-hero { padding: 64px 0; }
+    .article-breadcrumb, .article-meta { font-size: 13px; color: var(--muted); }
+    .article-breadcrumb { margin-bottom: 24px; } .article-breadcrumb a, .article-body a { color: var(--purple); }
+    .article-breadcrumb span { margin: 0 6px; opacity: .5; }
+    .article-meta { display:flex; gap:16px; flex-wrap:wrap; margin:0 0 32px; }
+    .article-body { max-width: 760px; } .article-body h1 { font-size:clamp(29px,4vw,46px); letter-spacing:-.03em; margin:0 0 16px; }
+    .article-body h2 { font-size:clamp(22px,2.8vw,30px); margin:48px 0 16px; color:var(--text); }
+    .article-body h3 { font-size:20px; margin:30px 0 10px; color:var(--text); }
+    .article-body p, .article-body li { color:var(--muted); font-size:16px; line-height:1.75; }
+    .article-body ul, .article-body ol { padding-left:24px; margin:0 0 18px; } .article-body li { margin-bottom:8px; }
+    .article-body strong { color:var(--text); } .article-body a { font-weight:600; }
+    .step-list { list-style:none; padding:0 !important; counter-reset:steps; }
+    .step-list > li { display:flex; gap:16px; counter-increment:steps; margin-bottom:22px; }
+    .step-list > li::before { content:counter(steps); display:grid; place-items:center; flex:0 0 32px; width:32px; height:32px; margin-top:2px; border-radius:50%; background:var(--purple-soft); border:1px solid var(--purple-line); color:var(--purple); font-weight:700; }
+    .step-list > li > div { flex:1; } .step-list strong { display:block; margin-bottom:4px; }
+    .notice, .tip, .article-cta { padding:20px 22px; border-radius:var(--radius); margin:24px 0; }
+    .notice { background:rgba(255, 191, 71, .08); border:1px solid rgba(255, 191, 71, .28); }
+    .tip { background:rgba(94, 229, 162, .07); border:1px solid rgba(94, 229, 162, .22); }
+    .notice p, .tip p { margin:0; } .article-cta { padding:30px; background:var(--panel-2); border:1px solid var(--purple-line); border-radius:var(--radius-lg); }
+    .article-cta h2 { margin:0 0 10px; font-size:22px; } .article-cta p { margin:0 0 20px; }
+    .cta-btns { display:flex; gap:12px; flex-wrap:wrap; } code { color:var(--green); background:var(--panel-2); padding:2px 6px; border-radius:4px; }
+    .faq-list { margin-top:48px; }
+    .guide-shot { margin:16px 0 4px; }
+    .guide-shot img { display:block; width:100%; border:1px solid var(--line); border-radius:12px; background:#fff; }
+    .guide-shot figcaption { margin-top:8px; color:var(--muted-2); font-size:13px; line-height:1.5; }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader"><div class="container header-inner">
+    <a class="brand" href="../../" aria-label="LiveQR — trang chủ"><img class="brand-logo" src="../../brand/logo-on-dark.svg" alt="LiveQR" height="28" width="148" /></a>
+    <nav class="main-nav" id="mainNav" aria-label="Điều hướng chính"><a href="../../#demo">Demo</a><a href="../../#features">Tính năng</a><a href="../../#pricing">Giá</a><a class="nav-cta-mobile" href="https://app.liveqr.me" target="_blank" rel="noopener">Dùng thử miễn phí</a></nav>
+    <div class="header-actions"><a class="btn btn-primary btn-sm" href="https://app.liveqr.me" target="_blank" rel="noopener">Dùng thử miễn phí</a><button class="menu-toggle" id="menuToggle" aria-label="Mở menu" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button></div>
+  </div></header>
+  <main><div class="article-hero"><div class="container"><nav class="article-breadcrumb" aria-label="Breadcrumb"><a href="../../">Trang chủ</a><span>›</span><a href="../">Hướng dẫn</a><span>›</span><span>Lấy Google API key</span></nav>
+    <article class="article-body">
+      <h1>Cách lấy Google API key để LiveQR TikTok đọc bình luận</h1>
+      <div class="article-meta"><span>📅 Cập nhật 26/10/2026</span><span>⏱ 7 phút đọc</span><span>✍️ LiveQR</span></div>
+      <p>LiveQR TikTok dùng <strong>Google Cloud Text-to-Speech</strong> để biến bình luận thành giọng nói. Bạn tạo một API key trong chính tài khoản Google của mình, sau đó dán key vào app. Quy trình dưới đây bám theo tài liệu Google Cloud hiện hành và phù hợp cho người mới bắt đầu.</p>
+      <div class="notice"><p><strong>Yên tâm về chi phí:</strong> Google tính theo <strong>ký tự</strong> (không phải token). Riêng giọng Standard có <strong>4 triệu ký tự miễn phí mỗi tháng</strong> — với nhu cầu đọc bình luận của một streamer thông thường, mức này rất rộng rãi để dùng hằng ngày mà không phải lo phát sinh thêm phí, miễn là tổng mức dùng vẫn nằm trong quota. Cloud Text-to-Speech vẫn yêu cầu project có Billing đang hoạt động, vì vậy nên tạo cảnh báo chi phí để chủ động theo dõi.</p></div>
+
+      <h2>Chuẩn bị trước khi làm</h2>
+      <ul><li>Một tài khoản Google bạn kiểm soát lâu dài.</li><li>Máy tính để mở <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">Google Cloud Console</a>.</li><li>Phương thức thanh toán nếu Google yêu cầu khi kích hoạt Billing.</li><li>LiveQR TikTok đã cài trên máy để dán key sau cùng.</li></ul>
+      <p>Không dùng key của người khác và không gửi key cho hỗ trợ qua Zalo, Facebook hay ảnh chụp màn hình. Key gắn với quota và billing của project.</p>
+
+      <h2>Tạo API key trong 6 bước</h2>
+      <ol class="step-list">
+        <li><div><strong>Đăng nhập Google Cloud Console</strong><span>Mở <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">Google Cloud Console</a> và đăng nhập. Nếu đây là lần đầu dùng Cloud, Google sẽ hướng dẫn bạn chọn quốc gia, đồng ý điều khoản và thiết lập Billing. Hãy nhập thông tin chính xác theo yêu cầu trên màn hình.</span><figure class="guide-shot"><img src="../../assets/google-tts-guide/02-account-information.png" alt="Màn hình thiết lập thông tin tài khoản Google Cloud" loading="lazy" /><figcaption>Quy trình khởi tạo có thể khác đôi chút tùy tài khoản Google.</figcaption></figure></div></li>
+        <li><div><strong>Tạo project riêng cho LiveQR</strong><span>Ở thanh trên cùng, bấm tên project hiện tại → <b>New Project</b>. Đặt tên dễ nhận biết, ví dụ <code>LiveQR TTS</code>, rồi bấm <b>Create</b>. Sau khi tạo, kiểm tra lại tên project này đang hiển thị ở thanh trên cùng trước khi làm bước tiếp theo.</span></div></li>
+        <li><div><strong>Liên kết Billing với project</strong><span>Vào <b>Billing</b> và làm theo hướng dẫn để liên kết tài khoản thanh toán với project vừa tạo. Google ghi rõ rằng Text-to-Speech cần Billing hoạt động, kể cả khi mức sử dụng vẫn nằm trong quota miễn phí.</span><figure class="guide-shot"><img src="../../assets/google-tts-guide/03-payment-information.png" alt="Màn hình xác minh thông tin thanh toán Google Cloud" loading="lazy" /><figcaption>Chỉ hoàn tất các bước Google hiển thị cho tài khoản của bạn.</figcaption></figure></div></li>
+        <li><div><strong>Bật Cloud Text-to-Speech API</strong><span>Dùng ô tìm kiếm trên đầu trang, nhập <b>Cloud Text-to-Speech API</b>, mở đúng dịch vụ rồi bấm <b>Enable</b>. Khi đã bật, nút này sẽ đổi thành <b>Manage</b> hoặc trạng thái tương đương.</span><figure class="guide-shot"><img src="../../assets/google-tts-guide/04-enable-api.png" alt="Trang Cloud Text-to-Speech API có nút Enable" loading="lazy" /><figcaption>API phải được bật trong đúng project chứa API key.</figcaption></figure></div></li>
+        <li><div><strong>Tạo API key và chỉ cho phép TTS sử dụng</strong><span>Vào <b>APIs &amp; Services → Credentials</b> → <b>Create credentials</b> → <b>API key</b>. Đặt tên <code>LiveQR TikTok</code>. Trong <b>API restrictions</b>, chọn <b>Restrict key</b> và chọn duy nhất <b>Cloud Text-to-Speech API</b>, sau đó bấm <b>Save</b>. Google yêu cầu key tạo từ Console có ít nhất một API restriction.</span></div></li>
+        <li><div><strong>Sao chép key và dán vào LiveQR TikTok</strong><span>Copy chuỗi key, mở phần cài đặt đọc bình luận / giọng Google trong LiveQR TikTok, dán vào ô <b>Google API Key</b> và lưu. Hãy thử một bình luận ngắn trước khi bắt đầu live.</span></div></li>
+      </ol>
+      <div class="tip"><p><strong>💡 Lưu ý về “Application restrictions”:</strong> Đừng chọn Website restrictions cho ứng dụng desktop, vì app không chạy từ website. API restriction tới Cloud Text-to-Speech API là phần bắt buộc và phù hợp nhất ở đây. Nếu nghi ngờ key đã lộ, hãy xóa key đó và tạo key mới ngay.</p></div>
+
+      <h2>Dán key vào LiveQR TikTok</h2>
+      <p>Sau khi lưu, dùng nút test giọng đọc nếu có, hoặc mở một phiên live thử với comment ngắn. Nếu app báo lỗi, xem phần xử lý lỗi ở dưới thay vì liên tục tạo thêm key.</p>
+      <p>Không dán API key vào Browser Source của OBS, caption TikTok, ảnh chụp màn hình, livestream hay chat nhóm. Google khuyến nghị không đưa key vào mã nguồn hoặc nơi công khai vì người khác có thể dùng quota và gây chi phí cho project của bạn.</p>
+
+      <h2>Dùng miễn phí được bao lâu?</h2>
+      <p>Google tính Text-to-Speech theo số <strong>ký tự</strong> gửi đi, bao gồm cả dấu cách — không tính theo token. Tại thời điểm cập nhật, bảng giá của Google nêu mức miễn phí hằng tháng là <strong>4 triệu ký tự cho giọng Standard</strong> và <strong>1 triệu ký tự cho WaveNet</strong>; sau mức đó tính phí theo loại giọng.</p>
+      <p>Với streamer đọc bình luận ở tần suất thông thường, 4 triệu ký tự/tháng là mức dùng thoải mái: bạn có thể dùng hằng ngày mà <strong>không mất thêm phí</strong> khi chưa vượt quota Standard. Nếu livestream rất dài, đọc mọi comment hoặc dùng giọng khác, hãy theo dõi mức dùng trong Billing. Xem <a href="https://cloud.google.com/text-to-speech/pricing" target="_blank" rel="noopener">bảng giá Text-to-Speech</a> vì quota và giá có thể thay đổi.</p>
+      <p>Vào <b>Billing → Budgets &amp; alerts</b> để tạo cảnh báo email ở các ngưỡng thấp, ví dụ 50%, 80% và 100%. <strong>Budget alert chỉ gửi cảnh báo, không tự khóa chi tiêu.</strong> Nếu cần dừng hoàn toàn, hãy chủ động tắt API hoặc tắt Billing của project (việc này sẽ làm LiveQR TikTok không gọi được TTS).</p>
+
+      <h2>Lỗi thường gặp và cách xử lý</h2>
+      <h3>“API has not been used in project … or it is disabled”</h3><p>API chưa được bật, hoặc key lấy từ project khác. Kiểm tra project đang chọn ở đầu Google Cloud Console, bật lại <strong>Cloud Text-to-Speech API</strong>, rồi chờ vài phút và thử lại.</p>
+      <h3>“Billing account not configured”</h3><p>Project chưa liên kết Billing, hoặc key thuộc project khác. Vào <b>Billing</b>, kiểm tra project <code>LiveQR TTS</code> đã được liên kết rồi thử lại.</p>
+      <h3>“Your account has been closed” hoặc “partially suspended”</h3><p>Google đang yêu cầu xác minh tài khoản thanh toán hoặc danh tính. Mở email từ Google Payments, làm đúng quy trình xác minh được yêu cầu và chờ Google hoàn tất. Không có cách hợp lệ để bỏ qua bước này.</p>
+      <h3>“API key not valid” hoặc “Permission denied”</h3><p>Copy lại key để loại trừ thiếu ký tự. Trên trang Credentials, xác nhận key vẫn hoạt động và phần API restrictions có <strong>Cloud Text-to-Speech API</strong>. Đồng thời kiểm tra API đã được bật trong chính project của key.</p>
+      <h3>Key bị lộ hoặc nghi bị dùng trái phép</h3><p>Vào <b>APIs &amp; Services → Credentials</b>, xóa key cũ ngay rồi tạo key mới. Sau đó kiểm tra báo cáo Billing để xem có mức dùng bất thường không. Đừng tiếp tục sử dụng key đã lộ.</p>
+
+      <h2>Nguồn chính thức để đối chiếu</h2>
+      <ul><li><a href="https://cloud.google.com/text-to-speech/docs/get-started" target="_blank" rel="noopener">Google Cloud: Get started with Text-to-Speech</a> — yêu cầu project, Billing và bật API.</li><li><a href="https://docs.cloud.google.com/docs/authentication/api-keys" target="_blank" rel="noopener">Google Cloud: Manage API keys</a> — cách tạo và giới hạn API key.</li><li><a href="https://cloud.google.com/text-to-speech/pricing" target="_blank" rel="noopener">Google Cloud: Text-to-Speech pricing</a> — quota miễn phí và đơn giá hiện hành.</li><li><a href="https://docs.cloud.google.com/billing/docs/how-to/budgets" target="_blank" rel="noopener">Google Cloud: Budgets and alerts</a> — cách hoạt động của cảnh báo ngân sách.</li></ul>
+
+      <div class="article-cta"><h2>Sẵn sàng đọc bình luận bằng giọng Google?</h2><p>Sau khi dán key, hãy test một comment ngắn trước khi lên sóng. Nếu cần hỗ trợ cài LiveQR TikTok hoặc kiểm tra lỗi kết nối, nhắn Zalo cho đội ngũ LiveQR.</p><div class="cta-btns"><a class="btn btn-primary btn-lg" href="../../liveqr-tiktok/">Tải LiveQR TikTok</a><a class="btn btn-ghost btn-lg" href="https://zalo.me/84394675935" target="_blank" rel="noopener">💬 Hỏi qua Zalo</a></div></div>
+
+      <section class="faq-list"><h2>Câu hỏi thường gặp</h2>
+        <div class="faq-item"><button class="faq-q" aria-expanded="false">Google Text-to-Speech có hoàn toàn miễn phí không?<span class="faq-icon"></span></button><div class="faq-a"><p>Bạn cần bật Billing, nhưng giọng Standard có 4 triệu ký tự miễn phí mỗi tháng. Với streamer đọc bình luận thông thường, mức này thường đủ để dùng hằng ngày mà không phát sinh phí; phí chỉ tính khi vượt quota hoặc dùng loại giọng có mức quota khác.</p></div></div>
+        <div class="faq-item"><button class="faq-q" aria-expanded="false">Google yêu cầu xác minh danh tính thì làm gì?<span class="faq-icon"></span></button><div class="faq-a"><p>Mở email từ Google Payments, bấm <strong>Start verification</strong> và hoàn thành quy trình bằng giấy tờ Google chấp nhận. Chờ xác minh hoàn tất trước khi quay lại bật API; không có cách bỏ qua bước này.</p></div></div>
+        <div class="faq-item"><button class="faq-q" aria-expanded="false">Có nên gửi API key cho người khác không?<span class="faq-icon"></span></button><div class="faq-a"><p>Không. API key gắn với quota và Billing của project. Chỉ dán vào LiveQR TikTok trên máy bạn; không đăng ảnh, gửi qua chat công khai hay đưa vào OBS.</p></div></div>
+        <div class="faq-item"><button class="faq-q" aria-expanded="false">Không nghe thấy giọng đọc sau khi dán key?<span class="faq-icon"></span></button><div class="faq-a"><p>Kiểm tra kết nối mạng, API đã bật và billing đã liên kết đúng project. Sau đó kiểm tra phần cài đặt âm thanh của LiveQR TikTok và thiết bị output trên máy.</p></div></div>
+      </section>
+    </article>
+  </div></div></main>
+  <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><a class="brand" href="../../"><img class="brand-logo" src="../../brand/logo-on-dark.svg" alt="LiveQR" height="28" width="148" /></a><p>Donate VietQR về thẳng tài khoản ngân hàng. Trang donate tuỳ chỉnh, alert OBS realtime cho streamer Việt.</p></div><div class="footer-col"><h4>Sản phẩm</h4><a href="https://app.liveqr.me" target="_blank" rel="noopener">Dùng thử miễn phí</a><a href="../../liveqr-tiktok/">LiveQR TikTok</a><a href="../../#pricing">Bảng giá</a></div><div class="footer-col"><h4>Hướng dẫn</h4><a href="../doc-binh-luan-tiktok-live/">Đọc bình luận TikTok Live</a><a href="../donate-giong-chi-google-obs/">Donate giọng chị Google OBS</a><a href="../">Xem tất cả hướng dẫn</a></div><div class="footer-col"><h4>Liên hệ</h4><a href="https://zalo.me/84394675935" target="_blank" rel="noopener">Zalo: 0394 675 935</a><a href="tel:0394675935">Gọi: 0394675935</a></div></div><div class="container footer-bottom"><span>© 2026 LiveQR.</span></div></footer>
+  <script src="../../script.js"></script>
+</body>
+</html>

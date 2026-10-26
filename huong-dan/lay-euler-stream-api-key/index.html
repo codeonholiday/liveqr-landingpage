@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cách lấy Euler Stream API key để kết nối TikTok Live | LiveQR</title>
+  <meta name="description" content="Hướng dẫn tạo Euler Stream API key để LiveQR TikTok kết nối TikTok LIVE, nhận bình luận, quà tặng và follow ổn định hơn." />
+  <meta name="author" content="LiveQR" />
+  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="euler stream api key, lấy euler key, kết nối tiktok live, api đọc bình luận tiktok, liveqr tiktok" />
+  <link rel="canonical" href="https://liveqr.me/huong-dan/lay-euler-stream-api-key/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://liveqr.me/huong-dan/lay-euler-stream-api-key/" />
+  <meta property="og:title" content="Cách lấy Euler Stream API key để kết nối TikTok Live" />
+  <meta property="og:description" content="Tạo Euler Stream API key, dán vào LiveQR TikTok và kiểm tra kết nối bình luận TikTok LIVE." />
+  <meta property="og:image" content="https://liveqr.me/og-image.png" />
+  <meta property="og:locale" content="vi_VN" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cách lấy Euler Stream API key để kết nối TikTok Live" />
+  <meta name="twitter:description" content="Hướng dẫn tạo Euler API key để kết nối và đọc bình luận TikTok LIVE." />
+  <meta name="twitter:image" content="https://liveqr.me/og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"Cách lấy Euler Stream API key để kết nối TikTok Live","description":"Hướng dẫn tạo Euler Stream API key để LiveQR TikTok kết nối TikTok LIVE và nhận sự kiện realtime.","url":"https://liveqr.me/huong-dan/lay-euler-stream-api-key/","datePublished":"2026-10-26","dateModified":"2026-10-26","author":{"@type":"Organization","name":"LiveQR","url":"https://liveqr.me"},"publisher":{"@type":"Organization","name":"LiveQR","url":"https://liveqr.me"},"inLanguage":"vi"}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Euler Stream key có phải stream key để phát video không?","acceptedAnswer":{"@type":"Answer","text":"Không. Đây là API key để xác thực việc kết nối tới dịch vụ Euler Stream, giúp ứng dụng lấy dữ liệu TikTok LIVE như bình luận và quà tặng. Nó không phải RTMP stream key dùng trong OBS."}},
+    {"@type":"Question","name":"Khi nào cần Euler Stream API key?","acceptedAnswer":{"@type":"Answer","text":"Bạn nên thêm key riêng khi cần quota riêng, gặp giới hạn kết nối hoặc LiveQR TikTok yêu cầu cấu hình Euler Stream để kết nối phiên live."}},
+    {"@type":"Question","name":"Có được chia sẻ Euler API key không?","acceptedAnswer":{"@type":"Answer","text":"Không. API key là thông tin riêng của tài khoản Euler Stream. Chỉ dán vào cài đặt LiveQR TikTok trên máy bạn và tạo key mới ngay nếu key bị lộ."}}
+  ]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"Trang chủ","item":"https://liveqr.me/"},
+    {"@type":"ListItem","position":2,"name":"Hướng dẫn","item":"https://liveqr.me/huong-dan/"},
+    {"@type":"ListItem","position":3,"name":"Lấy Euler Stream API key","item":"https://liveqr.me/huong-dan/lay-euler-stream-api-key/"}
+  ]}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <style>
+    .article-hero { padding:64px 0; }.article-breadcrumb,.article-meta{font-size:13px;color:var(--muted)}.article-breadcrumb{margin-bottom:24px}.article-breadcrumb a,.article-body a{color:var(--purple)}.article-breadcrumb span{margin:0 6px;opacity:.5}.article-meta{display:flex;gap:16px;flex-wrap:wrap;margin:0 0 32px}.article-body{max-width:760px}.article-body h1{font-size:clamp(29px,4vw,46px);letter-spacing:-.03em;margin:0 0 16px}.article-body h2{font-size:clamp(22px,2.8vw,30px);margin:48px 0 16px;color:var(--text)}.article-body h3{font-size:20px;margin:30px 0 10px;color:var(--text)}.article-body p,.article-body li{color:var(--muted);font-size:16px;line-height:1.75}.article-body ul,.article-body ol{padding-left:24px;margin:0 0 18px}.article-body li{margin-bottom:8px}.article-body strong{color:var(--text)}.article-body a{font-weight:600}.step-list{list-style:none;padding:0!important;counter-reset:steps}.step-list>li{display:flex;gap:16px;counter-increment:steps;margin-bottom:22px}.step-list>li::before{content:counter(steps);display:grid;place-items:center;flex:0 0 32px;width:32px;height:32px;margin-top:2px;border-radius:50%;background:var(--purple-soft);border:1px solid var(--purple-line);color:var(--purple);font-weight:700}.step-list>li>div{flex:1}.step-list strong{display:block;margin-bottom:4px}.notice,.tip,.article-cta{padding:20px 22px;border-radius:var(--radius);margin:24px 0}.notice{background:rgba(255,191,71,.08);border:1px solid rgba(255,191,71,.28)}.tip{background:rgba(94,229,162,.07);border:1px solid rgba(94,229,162,.22)}.notice p,.tip p{margin:0}.article-cta{padding:30px;background:var(--panel-2);border:1px solid var(--purple-line);border-radius:var(--radius-lg)}.article-cta h2{margin:0 0 10px;font-size:22px}.article-cta p{margin:0 0 20px}.cta-btns{display:flex;gap:12px;flex-wrap:wrap}code{color:var(--green);background:var(--panel-2);padding:2px 6px;border-radius:4px}.faq-list{margin-top:48px}
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader"><div class="container header-inner"><a class="brand" href="../../" aria-label="LiveQR — trang chủ"><img class="brand-logo" src="../../brand/logo-on-dark.svg" alt="LiveQR" height="28" width="148" /></a><nav class="main-nav" id="mainNav" aria-label="Điều hướng chính"><a href="../../#demo">Demo</a><a href="../../#features">Tính năng</a><a href="../../#pricing">Giá</a><a class="nav-cta-mobile" href="https://app.liveqr.me" target="_blank" rel="noopener">Dùng thử miễn phí</a></nav><div class="header-actions"><a class="btn btn-primary btn-sm" href="https://app.liveqr.me" target="_blank" rel="noopener">Dùng thử miễn phí</a><button class="menu-toggle" id="menuToggle" aria-label="Mở menu" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button></div></div></header>
+  <main><div class="article-hero"><div class="container"><nav class="article-breadcrumb" aria-label="Breadcrumb"><a href="../../">Trang chủ</a><span>›</span><a href="../">Hướng dẫn</a><span>›</span><span>Lấy Euler Stream API key</span></nav>
+    <article class="article-body">
+      <h1>Cách lấy Euler Stream API key để kết nối TikTok Live</h1>
+      <div class="article-meta"><span>📅 Cập nhật 26/10/2026</span><span>⏱ 4 phút đọc</span><span>✍️ LiveQR</span></div>
+      <p>Euler Stream là dịch vụ hỗ trợ ứng dụng kết nối dữ liệu <strong>TikTok LIVE</strong> theo thời gian thực. API key của Euler giúp LiveQR TikTok xác thực kết nối để nhận bình luận, quà tặng, follow và các sự kiện live.</p>
+      <div class="notice"><p><strong>Đừng nhầm với stream key:</strong> Euler API key không phải RTMP stream key để phát video từ OBS lên TikTok. Đây là key dùng cho tính năng kết nối và đọc dữ liệu TikTok LIVE trong LiveQR TikTok.</p></div>
+      <h2>Khi nào bạn cần key Euler riêng?</h2>
+      <p>LiveQR TikTok có thể dùng cấu hình kết nối mặc định. Bạn nên tạo key Euler riêng khi app yêu cầu, cần quota kết nối riêng hoặc thường gặp tình trạng không thể kết nối do giới hạn lượt gọi. Key riêng giúp không phải dùng chung quota ẩn danh theo IP.</p>
+      <h2>Tạo Euler Stream API key trong 4 bước</h2>
+      <ol class="step-list">
+        <li><div><strong>Tạo tài khoản Euler Stream</strong><span>Mở <a href="https://www.eulerstream.com/register" target="_blank" rel="noopener">trang đăng ký Euler Stream</a>, đăng ký bằng email hoặc phương thức đăng nhập được hỗ trợ. Xác minh email nếu hệ thống yêu cầu, rồi đăng nhập vào Dashboard.</span></div></li>
+        <li><div><strong>Mở Dashboard và tạo key mới</strong><span>Trong Dashboard Euler Stream, tìm khu vực <b>API Keys</b> hoặc <b>Sign API Keys</b>, sau đó chọn tạo key mới. Đặt tên dễ nhận biết, ví dụ <code>LiveQR TikTok</code>.</span></div></li>
+        <li><div><strong>Sao chép API key ngay</strong><span>Sao chép key vừa tạo và lưu tạm vào nơi riêng tư. Không gửi key cho bất kỳ ai, không đưa vào ảnh chụp màn hình hoặc Browser Source OBS. Nếu Dashboard chỉ hiển thị key một lần, hãy đảm bảo bạn đã copy trước khi đóng cửa sổ.</span></div></li>
+        <li><div><strong>Dán key vào LiveQR TikTok</strong><span>Mở LiveQR TikTok, vào phần cài đặt kết nối TikTok LIVE hoặc Euler Stream, dán key vào ô <b>Euler Stream API Key</b> rồi lưu. Sau đó nhập username TikTok đang live và thử kết nối lại.</span></div></li>
+      </ol>
+      <div class="tip"><p><strong>💡 Mẹo:</strong> Sau khi lưu key, chỉ kết nối lại một lần và chờ phản hồi. Việc bấm kết nối liên tục có thể nhanh chóng dùng hết giới hạn theo phút của dịch vụ.</p></div>
+      <h2>Kiểm tra kết nối</h2>
+      <ul><li>Đảm bảo TikTok username nhập đúng, có thể kèm hoặc không kèm <code>@</code> tùy ô nhập trong app.</li><li>Chỉ thử khi tài khoản TikTok đang thực sự LIVE.</li><li>Gửi một bình luận thử từ tài khoản khác và kiểm tra LiveQR TikTok đã nhận được chưa.</li><li>Nếu key vừa tạo, chờ một lát rồi thử lại vì cấu hình có thể cần thời gian đồng bộ.</li></ul>
+      <h2>Lỗi thường gặp</h2>
+      <h3>“Invalid API key” hoặc không xác thực được</h3><p>Copy lại key từ Euler Dashboard, kiểm tra không bị thừa khoảng trắng khi dán và chắc chắn bạn đang dùng key còn hoạt động. Nếu nghi ngờ key bị lộ, hãy thu hồi key cũ và tạo key mới.</p>
+      <h3>Không kết nối được dù key đúng</h3><p>Kiểm tra username, trạng thái live và kết nối mạng. Euler Stream là một lớp kết nối trung gian; đôi lúc TikTok thay đổi hoặc máy chủ Euler quá tải, nên hãy cập nhật LiveQR TikTok và thử lại sau.</p>
+      <h3>Gặp giới hạn kết nối</h3><p>Không xóa/thêm lại phiên kết nối liên tục. Hãy đợi giới hạn theo phút hoặc giờ được reset, sau đó dùng API key riêng trong app để có quota dành cho tài khoản của bạn.</p>
+      <h2>Bảo mật API key</h2>
+      <p>API key giống mật khẩu của dịch vụ kết nối TikTok LIVE. Chỉ lưu trong LiveQR TikTok trên máy bạn; không đăng công khai, không gửi qua chat và không quay màn hình lúc key hiển thị. Nếu key từng xuất hiện trong ảnh hoặc video, hãy thu hồi key đó trong Euler Dashboard rồi tạo key mới.</p>
+      <h2>Nguồn chính thức</h2>
+      <ul><li><a href="https://www.eulerstream.com/docs/api/quickstart" target="_blank" rel="noopener">Euler Stream API Quickstart</a> — tạo tài khoản, tạo API key và bắt đầu kết nối TikTok LIVE.</li><li><a href="https://www.eulerstream.com/docs/quickstart" target="_blank" rel="noopener">Euler Stream Quickstart</a> — cách API key được dùng khi mở kết nối livestream.</li><li><a href="https://www.eulerstream.com/docs/api/authentication" target="_blank" rel="noopener">Euler Stream Authentication</a> — tài liệu quản lý Sign API keys.</li></ul>
+      <div class="article-cta"><h2>Sẵn sàng kết nối TikTok LIVE?</h2><p>Sau khi thêm Euler key, hãy thử một phiên live ngắn để xác nhận LiveQR TikTok nhận bình luận và sự kiện bình thường.</p><div class="cta-btns"><a class="btn btn-primary btn-lg" href="../../liveqr-tiktok/">Tải LiveQR TikTok</a><a class="btn btn-ghost btn-lg" href="https://zalo.me/84394675935" target="_blank" rel="noopener">💬 Hỏi qua Zalo</a></div></div>
+      <section class="faq-list"><h2>Câu hỏi thường gặp</h2>
+        <div class="faq-item"><button class="faq-q" aria-expanded="false">Euler Stream key có phải stream key để phát video không?<span class="faq-icon"></span></button><div class="faq-a"><p>Không. Đây là API key để LiveQR TikTok kết nối dữ liệu TikTok LIVE, không phải RTMP stream key dùng trong OBS để phát video.</p></div></div>
+        <div class="faq-item"><button class="faq-q" aria-expanded="false">Khi nào cần Euler API key riêng?<span class="faq-icon"></span></button><div class="faq-a"><p>Khi app yêu cầu cấu hình Euler, cần quota riêng hoặc bạn thường gặp giới hạn kết nối. Key riêng không dùng chung quota ẩn danh theo IP.</p></div></div>
+        <div class="faq-item"><button class="faq-q" aria-expanded="false">Có nên gửi key cho người khác không?<span class="faq-icon"></span></button><div class="faq-a"><p>Không. Nếu key bị lộ, hãy thu hồi key trong Euler Dashboard và tạo key mới ngay.</p></div></div>
+      </section>
+    </article>
+  </div></div></main>
+  <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><a class="brand" href="../../"><img class="brand-logo" src="../../brand/logo-on-dark.svg" alt="LiveQR" height="28" width="148" /></a><p>Donate VietQR về thẳng tài khoản ngân hàng. Trang donate tuỳ chỉnh, alert OBS realtime cho streamer Việt.</p></div><div class="footer-col"><h4>Sản phẩm</h4><a href="https://app.liveqr.me" target="_blank" rel="noopener">Dùng thử miễn phí</a><a href="../../liveqr-tiktok/">LiveQR TikTok</a><a href="../../#pricing">Bảng giá</a></div><div class="footer-col"><h4>Hướng dẫn</h4><a href="../doc-binh-luan-tiktok-live/">Đọc bình luận TikTok Live</a><a href="../lay-google-api-key-doc-binh-luan/">Lấy Google API key</a><a href="../">Xem tất cả hướng dẫn</a></div><div class="footer-col"><h4>Liên hệ</h4><a href="https://zalo.me/84394675935" target="_blank" rel="noopener">Zalo: 0394 675 935</a><a href="tel:0394675935">Gọi: 0394675935</a></div></div><div class="container footer-bottom"><span>© 2026 LiveQR.</span></div></footer>
+  <script src="../../script.js"></script>
+</body>
+</html>

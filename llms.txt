@@ -52,6 +52,10 @@
 
 - [Nhận donate TikTok Live về thẳng ngân hàng](https://liveqr.me/huong-dan/nhan-donate-tiktok-live/): hướng dẫn nhận donate TikTok Live qua VietQR, không cần Xu TikTok
 - [Đọc bình luận TikTok Live thành giọng nói](https://liveqr.me/huong-dan/doc-binh-luan-tiktok-live/): cài TTS đọc comment TikTok trên OBS hoặc TikTok Live Studio, so sánh với TikFinity và extension Chrome
+- [Lấy Google API key để đọc bình luận miễn phí](https://liveqr.me/huong-dan/lay-google-api-key-doc-binh-luan/): tạo và giới hạn Google Cloud Text-to-Speech API key cho LiveQR TikTok
+- [Lấy Euler Stream API key để kết nối TikTok Live](https://liveqr.me/huong-dan/lay-euler-stream-api-key/): tạo Euler API key riêng cho LiveQR TikTok để kết nối và nhận dữ liệu TikTok LIVE
+- [Tạo hiệu ứng vào phòng cho TOP 1 TikTok Live](https://liveqr.me/huong-dan/hieu-ung-vao-phong-top-1-tiktok-live/): cài overlay và effect chào mừng TOP 1 để tăng tương tác, đua hạng trên live
+- [Cộng trừ thời gian live theo quà tặng TikTok](https://liveqr.me/huong-dan/cong-tru-thoi-gian-live-theo-qua-tang-tiktok/): cài timer quà tặng trên overlay OBS hoặc TikTok Live Studio
 - [Cài giọng đọc donate (TTS) vào OBS](https://liveqr.me/huong-dan/donate-giong-chi-google-obs/): cài alert tự đọc tên và lời nhắn donate bằng giọng tiếng Việt
 - [Tạo trang donate cho streamer miễn phí](https://liveqr.me/huong-dan/tao-trang-donate-streamer/): tạo link donate liveqr.me/@ten với QR VietQR, tuỳ chỉnh theo phong cách kênh
 - [WeScan là gì](https://liveqr.me/huong-dan/wescan-la-gi/): phân tích phí 10%, ví trung gian, tất toán 2 tuần của WeScan và lựa chọn thay thế
