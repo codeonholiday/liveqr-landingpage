@@ -140,6 +140,30 @@
   var toxicBtn = $('toxicBtn');
   var obsIdle = $('obsIdle');
   var obsAlert = $('obsAlert');
+  var obsFrame = $('obsFrame');
+  var heroThemeStage = $('heroThemeStage');
+  var activeThemeLabel = $('activeThemeLabel');
+  var themeNames = {
+    hoangkim: 'Hoàng kim', aurora: 'Aurora', cyber: 'Cyber pulse',
+    candy: 'Kẹo ngọt', phaohoa: 'Pháo hoa', party: 'Rainbow party'
+  };
+  var themeButtons = document.querySelectorAll('[data-alert-theme]');
+  function selectAlertTheme(theme) {
+    if (!themeNames[theme]) return;
+    if (heroThemeStage) {
+      heroThemeStage.dataset.theme = theme;
+      heroThemeStage.setAttribute('aria-label', 'Xem trước alert donate ' + themeNames[theme]);
+    }
+    if (obsFrame) obsFrame.dataset.theme = theme;
+    if (activeThemeLabel) activeThemeLabel.textContent = themeNames[theme];
+    themeButtons.forEach(function (button) {
+      button.setAttribute('aria-pressed', button.dataset.alertTheme === theme ? 'true' : 'false');
+    });
+  }
+  themeButtons.forEach(function (button) {
+    button.addEventListener('click', function () { selectAlertTheme(button.dataset.alertTheme); });
+  });
+  selectAlertTheme('hoangkim');
   var alertAvatar = $('alertAvatar');
   var alertName = $('alertName');
   var alertAction = $('alertAction');
@@ -371,7 +395,13 @@
   }
 
   function next() {
-    if (queue.length === 0) { playing = false; updateQueueBadge(); return; }
+    if (queue.length === 0) {
+      playing = false;
+      updateQueueBadge();
+      if (obsAlert) obsAlert.classList.add('hidden');
+      if (obsIdle) obsIdle.classList.remove('hidden');
+      return;
+    }
     playing = true;
     var item = queue.shift();
     updateQueueBadge();
