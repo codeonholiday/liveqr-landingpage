@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://liveqr.me/huong-dan/</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -75,6 +75,12 @@
   <url>
     <loc>https://liveqr.me/huong-dan/tao-trang-donate-streamer/</loc>
     <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://liveqr.me/huong-dan/tao-trang-donate-dep-streamer/</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cách tạo trang donate đẹp cho streamer: màu sắc, ảnh nền và alert OBS | LiveQR</title>
+  <meta name="description" content="Hướng dẫn tạo trang donate đẹp, đồng bộ với thương hiệu kênh: chọn màu, ảnh nền, lời nhắn, mức tiền gợi ý và preset alert OBS như Hoàng kim, Aurora, Cyber, Pháo hoa." />
+  <meta name="author" content="LiveQR" />
+  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="tạo trang donate đẹp, trang donate streamer, alert donate đẹp, preset alert OBS, giao diện donate streamer, tùy chỉnh trang donate" />
+  <link rel="canonical" href="https://liveqr.me/huong-dan/tao-trang-donate-dep-streamer/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://liveqr.me/huong-dan/tao-trang-donate-dep-streamer/" />
+  <meta property="og:title" content="Cách tạo trang donate đẹp cho streamer — LiveQR" />
+  <meta property="og:description" content="Từng bước chỉnh màu, ảnh nền và preset alert OBS để trang donate đồng bộ với phong cách kênh." />
+  <meta property="og:image" content="https://liveqr.me/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="LiveQR" />
+  <meta property="og:locale" content="vi_VN" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cách tạo trang donate đẹp cho streamer" />
+  <meta name="twitter:description" content="Chỉnh màu, ảnh nền, mức tiền gợi ý và chọn preset alert OBS hợp phong cách kênh." />
+  <meta name="twitter:image" content="https://liveqr.me/og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Cách tạo trang donate đẹp cho streamer: màu sắc, ảnh nền và alert OBS",
+    "description": "Hướng dẫn tùy chỉnh trang donate và chọn preset alert OBS để giao diện đồng bộ, dễ đọc trên stream.",
+    "url": "https://liveqr.me/huong-dan/tao-trang-donate-dep-streamer/",
+    "datePublished": "2026-10-28",
+    "dateModified": "2026-10-28",
+    "author": { "@type": "Organization", "name": "LiveQR", "url": "https://liveqr.me" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "LiveQR",
+      "url": "https://liveqr.me",
+      "logo": { "@type": "ImageObject", "url": "https://liveqr.me/brand/logo-on-dark.svg" }
+    },
+    "image": "https://liveqr.me/og-image.png",
+    "inLanguage": "vi"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://liveqr.me/" },
+      { "@type": "ListItem", "position": 2, "name": "Hướng dẫn", "item": "https://liveqr.me/huong-dan/" },
+      { "@type": "ListItem", "position": 3, "name": "Tạo trang donate đẹp cho streamer", "item": "https://liveqr.me/huong-dan/tao-trang-donate-dep-streamer/" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+  <style>
+    .article-hero { padding: 64px 0 40px; }
+    .article-breadcrumb { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+    .article-breadcrumb a { color: var(--purple); }
+    .article-breadcrumb span { margin: 0 6px; opacity: .5; }
+    .article-meta { font-size: 14px; color: var(--muted-2); margin: 0 0 32px; display: flex; gap: 16px; flex-wrap: wrap; }
+    .article-body { max-width: 760px; }
+    .article-body h1 { font-size: clamp(28px,4vw,46px); letter-spacing: -.03em; margin-bottom: 16px; }
+    .article-body h2 { font-size: clamp(22px,2.8vw,30px); margin: 48px 0 16px; color: var(--text); }
+    .article-body h3 { font-size: clamp(18px,2vw,22px); margin: 30px 0 12px; color: var(--purple); }
+    .article-body p { color: var(--muted); line-height: 1.75; font-size: 16.5px; margin-bottom: 16px; }
+    .article-body ul, .article-body ol { color: var(--muted); line-height: 1.75; padding-left: 24px; margin-bottom: 16px; }
+    .article-body li { margin-bottom: 8px; font-size: 16px; }
+    .article-body strong { color: var(--text); }
+    .article-body a { color: var(--purple); font-weight: 600; }
+    .article-body a:hover { text-decoration: underline; }
+    .article-body .toc { padding: 18px 22px; background: var(--panel-2); border: 1px solid var(--line); border-radius: var(--radius); }
+    .article-body .toc strong { display: block; margin-bottom: 8px; }
+    .article-body .toc ol { margin: 0; }
+    .article-cta-box { margin: 48px 0; padding: 32px; background: var(--panel-2); border: 1px solid var(--purple-line); border-radius: var(--radius-lg); }
+    .article-cta-box h3 { margin: 0 0 12px; color: var(--text); font-size: 20px; }
+    .article-cta-box p { margin: 0 0 20px; }
+    .article-cta-box .cta-btns { display: flex; flex-wrap: wrap; gap: 12px; }
+    .tip-box { padding: 16px 20px; background: rgba(94,229,162,.07); border: 1px solid rgba(94,229,162,.22); border-radius: var(--radius); margin: 20px 0; }
+    .tip-box strong { color: var(--green); }
+    .tip-box p { margin: 0; font-size: 15px; }
+    .preset-list { list-style: none; padding: 0 !important; display: grid; gap: 10px; }
+    .preset-list li { padding: 12px 15px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; }
+    .article-preset-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; margin: 24px 0; }
+    .article-preset-card { min-width: 0; padding: 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; }
+    .article-preset-card h3 { margin: 0 0 8px; color: var(--text); font-size: 16px; }
+    .article-preset-card p { margin: 9px 0 0; font-size: 14px; line-height: 1.55; }
+    .article-preset-card .hero-theme-stage { aspect-ratio: 16/9; }
+    .article-preset-card .hero-stream-scene { height: 100%; }
+    .article-preset-card .hero-alert-card { width: 88%; gap: 8px; padding: 9px; }
+    .article-preset-card .hero-alert-card small { font-size: 6px; }
+    .article-preset-card .hero-alert-card strong { font-size: 9px; }
+    .article-preset-card .hero-alert-card p { font-size: 8px; }
+    .article-preset-card .hero-alert-icon { width: 24px; height: 24px; flex: 0 0 24px; }
+    .article-preset-card .hero-scene-tag { font-size: 6px; }
+    .faq-list { margin-top: 48px; }
+    @media(max-width:640px) { .article-hero { padding-top: 42px; } .article-cta-box { padding: 22px; } .article-preset-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="brand" href="../../" aria-label="LiveQR — trang chủ"><img class="brand-logo" src="../../brand/logo-on-dark.svg" alt="LiveQR" height="28" width="148" /></a>
+      <nav class="main-nav" id="mainNav" aria-label="Điều hướng chính">
+        <a href="../../#demo">Thử preset</a><a href="../../#features">Tính năng</a><a href="../../#pricing">Giá</a><a href="../">Hướng dẫn</a>
+        <a class="nav-cta-mobile" href="https://app.liveqr.me" target="_blank" rel="noopener">Tạo trang donate</a>
+      </nav>
+      <div class="header-actions"><a class="btn btn-primary btn-sm" href="https://app.liveqr.me" target="_blank" rel="noopener">Tạo trang donate</a><button class="menu-toggle" id="menuToggle" aria-label="Mở menu" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button></div>
+    </div>
+  </header>
+
+  <main>
+    <div class="article-hero"><div class="container">
+      <nav class="article-breadcrumb" aria-label="Breadcrumb"><a href="../../">Trang chủ</a><span aria-hidden="true">›</span><a href="../">Hướng dẫn</a><span aria-hidden="true">›</span><span>Tạo trang donate đẹp</span></nav>
+      <article class="article-body">
+        <h1>Cách tạo trang donate đẹp cho streamer: màu sắc, ảnh nền và alert OBS</h1>
+        <div class="article-meta"><span>📅 Cập nhật tháng 10/2026</span><span>⏱ Đọc trong 6 phút</span><span>✍️ LiveQR</span></div>
+        <p>Trang donate là một phần nhận diện của kênh. Khi màu sắc, lời nhắn và alert trên OBS cùng phong cách, người xem dễ nhận ra đây là kênh của bạn. Bài này hướng dẫn từng bước tạo <strong>trang donate đẹp, dễ đọc trên điện thoại</strong> và chọn preset alert hợp với bố cục stream.</p>
+        <p>Với LiveQR, bạn có thể chỉnh tiêu đề, lời mô tả, mức tiền gợi ý, màu chủ đạo và ảnh nền; phần alert có các preset hiệu ứng riêng. Bạn cũng có thể <a href="../../#demo">xem thử các preset alert</a> trước khi thiết lập.</p>
+
+        <nav class="toc" aria-label="Mục lục"><strong>Trong bài này</strong><ol>
+          <li><a href="#nguyen-tac">Nguyên tắc để trang donate trông gọn và đồng bộ</a></li>
+          <li><a href="#tuy-chinh">Tuỳ chỉnh trang donate từng bước</a></li>
+          <li><a href="#preset-alert">Chọn preset alert OBS theo phong cách kênh</a></li>
+          <li><a href="#canh-bo-cuc">Căn bố cục và kiểm tra trên khung live</a></li>
+        </ol></nav>
+
+        <h2 id="nguyen-tac">Nguyên tắc để trang donate trông gọn và đồng bộ</h2>
+        <p>Không cần nhồi nhiều hiệu ứng để trang donate đẹp. Hãy bắt đầu từ ba điểm: <strong>nhìn ra thương hiệu kênh, nội dung dễ đọc và nút donate dễ tìm</strong>.</p>
+        <ul>
+          <li><strong>Dùng một màu nhấn chính.</strong> Chọn màu gần với avatar, logo hoặc overlay. Giữ nền đủ tối hoặc đủ sáng để chữ nổi rõ.</li>
+          <li><strong>Viết lời chào ngắn.</strong> Nói rõ người xem đang ủng hộ điều gì; một đến hai câu thường dễ đọc hơn đoạn giới thiệu dài.</li>
+          <li><strong>Chọn ảnh nền ít chi tiết.</strong> Ảnh quá sáng hoặc nhiều chữ có thể làm nội dung donate khó nhìn trên màn hình điện thoại.</li>
+          <li><strong>Giữ mức tiền gợi ý dễ chọn.</strong> Đưa ra vài mức phù hợp với cộng đồng của bạn; người xem vẫn có thể nhập số tiền khác.</li>
+          <li><strong>Đồng bộ alert với trang donate.</strong> Có thể dùng cùng màu nhấn hoặc một chi tiết nhận diện, nhưng đừng để hiệu ứng che khuôn mặt, game hay chat.</li>
+        </ul>
+        <div class="tip-box"><p><strong>Mẹo nhanh:</strong> nếu chưa biết phối màu, lấy một màu từ avatar làm màu nhấn, dùng nền trung tính và giữ phần chữ sáng, tương phản. Sau đó xem lại trên điện thoại trước khi chia sẻ link.</p></div>
+
+        <h2 id="tuy-chinh">Tuỳ chỉnh trang donate từng bước</h2>
+        <ol>
+          <li><strong>Mở phần hồ sơ trong dashboard.</strong> Đăng nhập LiveQR, vào trang cá nhân và tìm khung “Tuỳ chỉnh trang donate”.</li>
+          <li><strong>Đặt tiêu đề và lời mô tả.</strong> Dùng tiêu đề dễ hiểu, chẳng hạn “Gửi lời nhắn cho mình” hoặc một câu đúng chất kênh. Phần mô tả nên nói ngắn cách ủng hộ.</li>
+          <li><strong>Chọn mức tiền gợi ý.</strong> Sắp xếp các mức từ thấp đến cao, tránh để toàn mức quá lớn so với tệp người xem thường xuyên.</li>
+          <li><strong>Chọn màu chủ đạo và màu nền.</strong> Dùng một màu nhấn nhất quán với nhận diện kênh, rồi kiểm tra độ tương phản của chữ.</li>
+          <li><strong>Thêm ảnh nền nếu cần.</strong> Ưu tiên ảnh của kênh hoặc hình nền đơn giản. Nếu ảnh có nhiều chi tiết, hãy chọn ảnh khác để phần biểu mẫu vẫn rõ.</li>
+          <li><strong>Xem trước rồi lưu.</strong> Kiểm tra trên khung preview, sửa lại tiêu đề hoặc màu nếu nội dung bị chìm, sau đó bấm “Lưu tuỳ chỉnh trang donate”.</li>
+        </ol>
+        <p>Nếu đã có link donate, hãy mở link ở kích thước màn hình điện thoại để xem tiêu đề, lựa chọn số tiền và nút chuyển khoản có dễ tìm không. Hướng dẫn tạo trang và lấy link đầy đủ có trong bài <a href="../tao-trang-donate-streamer/">cách tạo trang donate cho streamer</a>.</p>
+
+        <h2 id="preset-alert">Chọn preset alert OBS theo phong cách kênh</h2>
+        <p>Trang donate là nơi người xem thao tác; alert là phần xuất hiện trên sóng khi có giao dịch. Trong dashboard, mở <strong>Tùy chỉnh widget</strong>, chọn preset giao diện, rồi xem alert trên preview canvas. Các preset mới gồm:</p>
+        <div class="article-preset-grid" aria-label="Xem trước sáu preset alert donate">
+          <article class="article-preset-card"><h3>Hoàng kim</h3><div class="hero-theme-stage" data-theme="hoangkim" aria-label="Preview preset Hoàng kim"><div class="hero-stream-scene"><div class="hero-cam"><span>CAM</span><i></i></div><div class="hero-stream-chat"><b>chat trực tiếp</b><span>đỉnh quá stream ơi</span><span>vào đúng lúc luôn ✨</span><span>lên rank nào!</span></div><div class="hero-alert-card"><span class="hero-alert-effect" aria-hidden="true"></span><span class="hero-alert-icon">✦</span><div><small>MỘT LỜI CẢM ƠN TỪ CỘNG ĐỒNG</small><strong>Minh Anh <b>vừa donate 100.000 ₫</b></strong><p>Chúc stream hôm nay thật cháy!</p></div></div><span class="hero-scene-tag">1920 × 1080 · Browser Source</span></div></div><p>Ánh vàng và vệt sáng nổi bật khi muốn vinh danh lượt donate.</p></article>
+          <article class="article-preset-card"><h3>Aurora</h3><div class="hero-theme-stage" data-theme="aurora" aria-label="Preview preset Aurora"><div class="hero-stream-scene"><div class="hero-cam"><span>CAM</span><i></i></div><div class="hero-stream-chat"><b>chat trực tiếp</b><span>đỉnh quá stream ơi</span><span>vào đúng lúc luôn ✨</span><span>lên rank nào!</span></div><div class="hero-alert-card"><span class="hero-alert-effect" aria-hidden="true"></span><span class="hero-alert-icon">✦</span><div><small>MỘT LỜI CẢM ƠN TỪ CỘNG ĐỒNG</small><strong>Minh Anh <b>vừa donate 100.000 ₫</b></strong><p>Chúc stream hôm nay thật cháy!</p></div></div><span class="hero-scene-tag">1920 × 1080 · Browser Source</span></div></div><p>Xanh ngọc và tím tạo sắc thái dịu, chuyển động như cực quang.</p></article>
+          <article class="article-preset-card"><h3>Cyber</h3><div class="hero-theme-stage" data-theme="cyber" aria-label="Preview preset Cyber"><div class="hero-stream-scene"><div class="hero-cam"><span>CAM</span><i></i></div><div class="hero-stream-chat"><b>chat trực tiếp</b><span>đỉnh quá stream ơi</span><span>vào đúng lúc luôn ✨</span><span>lên rank nào!</span></div><div class="hero-alert-card"><span class="hero-alert-effect" aria-hidden="true"></span><span class="hero-alert-icon">✦</span><div><small>MỘT LỜI CẢM ƠN TỪ CỘNG ĐỒNG</small><strong>Minh Anh <b>vừa donate 100.000 ₫</b></strong><p>Chúc stream hôm nay thật cháy!</p></div></div><span class="hero-scene-tag">1920 × 1080 · Browser Source</span></div></div><p>Hồng neon, cyan và scanline hợp với gaming hoặc công nghệ.</p></article>
+          <article class="article-preset-card"><h3>Kẹo ngọt</h3><div class="hero-theme-stage" data-theme="candy" aria-label="Preview preset Kẹo ngọt"><div class="hero-stream-scene"><div class="hero-cam"><span>CAM</span><i></i></div><div class="hero-stream-chat"><b>chat trực tiếp</b><span>đỉnh quá stream ơi</span><span>vào đúng lúc luôn ✨</span><span>lên rank nào!</span></div><div class="hero-alert-card"><span class="hero-alert-effect" aria-hidden="true"></span><span class="hero-alert-icon">✦</span><div><small>MỘT LỜI CẢM ƠN TỪ CỘNG ĐỒNG</small><strong>Minh Anh <b>vừa donate 100.000 ₫</b></strong><p>Chúc stream hôm nay thật cháy!</p></div></div><span class="hero-scene-tag">1920 × 1080 · Browser Source</span></div></div><p>Hồng tím pastel và ánh lấp lánh cho phong cách vui vẻ, dễ thương.</p></article>
+          <article class="article-preset-card"><h3>Pháo hoa</h3><div class="hero-theme-stage" data-theme="phaohoa" aria-label="Preview preset Pháo hoa"><div class="hero-stream-scene"><div class="hero-cam"><span>CAM</span><i></i></div><div class="hero-stream-chat"><b>chat trực tiếp</b><span>đỉnh quá stream ơi</span><span>vào đúng lúc luôn ✨</span><span>lên rank nào!</span></div><div class="hero-alert-card"><span class="hero-alert-effect" aria-hidden="true"></span><span class="hero-alert-icon">✦</span><div><small>MỘT LỜI CẢM ƠN TỪ CỘNG ĐỒNG</small><strong>Minh Anh <b>vừa donate 100.000 ₫</b></strong><p>Chúc stream hôm nay thật cháy!</p></div></div><span class="hero-scene-tag">1920 × 1080 · Browser Source</span></div></div><p>Ánh vàng cam và tia sáng lấp lánh cho khoảnh khắc ăn mừng.</p></article>
+          <article class="article-preset-card"><h3>Rainbow</h3><div class="hero-theme-stage" data-theme="party" aria-label="Preview preset Rainbow"><div class="hero-stream-scene"><div class="hero-cam"><span>CAM</span><i></i></div><div class="hero-stream-chat"><b>chat trực tiếp</b><span>đỉnh quá stream ơi</span><span>vào đúng lúc luôn ✨</span><span>lên rank nào!</span></div><div class="hero-alert-card"><span class="hero-alert-effect" aria-hidden="true"></span><span class="hero-alert-icon">✦</span><div><small>MỘT LỜI CẢM ƠN TỪ CỘNG ĐỒNG</small><strong>Minh Anh <b>vừa donate 100.000 ₫</b></strong><p>Chúc stream hôm nay thật cháy!</p></div></div><span class="hero-scene-tag">1920 × 1080 · Browser Source</span></div></div><p>Nhiều màu rực rỡ cho stream sôi động, nhiều năng lượng.</p></article>
+        </div>
+        <p>Bấm preset để áp dụng; sau đó bạn có thể chỉnh thêm màu, thời lượng hoặc CSS trong phần giao diện alert. Nếu muốn so sánh trước, <a href="../../#demo">thử chọn preset và gửi donate demo</a> ngay trên landing page.</p>
+        <div class="tip-box"><p><strong>Lưu ý:</strong> preset alert thay đổi giao diện thông báo trên stream, không tự thay giao diện trang donate dành cho người ủng hộ. Hai phần có thể tuỳ chỉnh riêng, rồi dùng chung màu nhấn để tạo cảm giác đồng bộ.</p></div>
+
+        <h2 id="canh-bo-cuc">Căn bố cục và kiểm tra trên khung live</h2>
+        <ol>
+          <li><strong>Chọn đúng khung phát.</strong> Dùng canvas PC/YouTube cho bố cục ngang 16:9 hoặc TikTok cho khung dọc 9:16.</li>
+          <li><strong>Kéo alert đến vùng trống.</strong> Tránh đặt lên mặt streamer, phụ đề, minimap hoặc khu vực chat thường xuyên có nội dung.</li>
+          <li><strong>Chỉnh kích thước.</strong> Thu nhỏ đến khi alert không lấn át nội dung chính nhưng tên, số tiền và lời nhắn vẫn đọc được.</li>
+          <li><strong>Thử lại ở kích thước thực tế.</strong> Xem preview trên canvas và kiểm tra Browser Source trong OBS. Nếu đổi preset hoặc bố cục trong khi nguồn đang mở, refresh Browser Source để tải giao diện mới.</li>
+        </ol>
+        <p>Muốn bật đọc lời nhắn sau khi đã chọn alert, xem thêm <a href="../donate-giong-chi-google-obs/">hướng dẫn cài giọng đọc donate vào OBS</a>.</p>
+
+        <div class="article-cta-box">
+          <h3>Xem thử alert trước khi đưa lên sóng</h3>
+          <p>Chọn Hoàng kim, Aurora, Cyber, Kẹo ngọt, Pháo hoa hoặc Rainbow, rồi gửi donate demo để xem thông báo trong khung stream.</p>
+          <div class="cta-btns"><a class="btn btn-primary btn-lg" href="../../#demo">Thử preset donate</a><a class="btn btn-ghost btn-lg" href="https://app.liveqr.me" target="_blank" rel="noopener">Tạo trang donate</a></div>
+        </div>
+
+        <section class="faq-list" id="faq" aria-labelledby="faq-title">
+          <h2 id="faq-title">Câu hỏi thường gặp</h2>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false">Làm sao tạo trang donate đẹp nếu không biết thiết kế?<span class="faq-icon"></span></button><div class="faq-a"><p>Bắt đầu bằng một màu nhấn, nền ít chi tiết, tiêu đề ngắn và một ảnh nhận diện của kênh. Dùng preview để xem trên điện thoại trước khi lưu.</p></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false">Preset alert có thay đổi luôn trang donate không?<span class="faq-icon"></span></button><div class="faq-a"><p>Không. Preset ở mục Tùy chỉnh widget đổi alert trên OBS. Màu nền, tiêu đề, lời mô tả và ảnh nền của trang donate chỉnh riêng trong phần hồ sơ.</p></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false">Có thể chỉnh preset alert sau khi áp dụng không?<span class="faq-icon"></span></button><div class="faq-a"><p>Có. Sau khi chọn preset, bạn có thể tiếp tục chỉnh màu, thời lượng, vị trí và kích thước trên canvas; phần CSS nâng cao dành cho người muốn tùy chỉnh sâu hơn.</p></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false">Làm sao biết alert có dễ đọc trên TikTok Live không?<span class="faq-icon"></span></button><div class="faq-a"><p>Chọn canvas dọc 9:16, đặt alert ở vùng trống và xem thử ở kích thước gần với màn hình điện thoại. Giữ chữ đủ lớn, tương phản rõ và không che nội dung live.</p></div></div>
+        </section>
+      </article>
+    </div></div>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-grid">
+    <div class="footer-brand"><a class="brand" href="../../"><img class="brand-logo" src="../../brand/logo-on-dark.svg" alt="LiveQR" height="28" width="148" /></a><p>Donate VietQR về thẳng tài khoản ngân hàng. Trang donate tuỳ chỉnh, alert OBS realtime cho streamer Việt.</p></div>
+    <div class="footer-col"><h4>Sản phẩm</h4><a href="https://app.liveqr.me" target="_blank" rel="noopener">Tạo trang donate</a><a href="../../#demo">Thử preset alert</a><a href="../../#pricing">Bảng giá</a></div>
+    <div class="footer-col"><h4>Hướng dẫn</h4><a href="../">Tất cả hướng dẫn</a><a href="../tao-trang-donate-streamer/">Tạo trang donate</a><a href="../donate-giong-chi-google-obs/">Cài TTS vào OBS</a></div>
+    <div class="footer-col"><h4>Liên hệ</h4><a href="https://zalo.me/84394675935" target="_blank" rel="noopener">Zalo: 0394 675 935</a><a href="tel:0394675935">Gọi: 0394675935</a></div>
+  </div><div class="container footer-bottom"><span>© 2026 LiveQR.</span></div></footer>
+  <script src="../../script.js"></script>
+</body>
+</html>
