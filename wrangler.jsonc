@@ -1,0 +1,13 @@
+// Cloudflare Workers — deploy landing liveqr.me
+// Static site nằm trong public/, worker.js xử lý proxy trang donate (/@streamer, /_next/*)
+// sang app.liveqr.me; các path khác trả static qua binding ASSETS.
+{
+  "name": "liveqr-landingpage",
+  "compatibility_date": "2026-10-01",
+  "main": "worker.js",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "not_found_handling": "none"
+  }
+}

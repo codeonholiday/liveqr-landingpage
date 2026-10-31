@@ -5,34 +5,43 @@ HTML/CSS/JS thuần — không build tool, không dependency.
 
 | File | Vai trò |
 |---|---|
-| `index.html` | Toàn bộ nội dung trang (tiếng Việt) |
-| `styles.css` | Design system (brand token đồng bộ với app: `#0b0d13`, tím `#9b7cff`, xanh `#5ee5a2`, DM Sans + Space Grotesk) |
-| `demo.js` | Demo tương tác: donate → alert overlay, hàng đợi, TTS, đọc bình luận TikTok Live (chỉ phát âm thanh), kiểm duyệt tiếng Việt |
-| `script.js` | Menu mobile, FAQ accordion, scroll-reveal, header |
-| `huong-dan/index.html` | Trang hub danh sách tất cả bài hướng dẫn |
-| `favicon.svg`, `robots.txt`, `sitemap.xml`, `og-image.png`, `llms.txt` | Meta/SEO — `og-image.png` là ảnh share 1200×630, `llms.txt` là bản tóm tắt cho AI crawler (ChatGPT, Claude, Perplexity), `robots.txt` cho phép rõ ràng các AI bot |
+| `public/index.html` | Toàn bộ nội dung trang (tiếng Việt) |
+| `public/styles.css` | Design system (brand token đồng bộ với app: `#0b0d13`, tím `#9b7cff`, xanh `#5ee5a2`, DM Sans + Space Grotesk) |
+| `public/demo.js` | Demo tương tác: donate → alert overlay, hàng đợi, TTS, đọc bình luận TikTok Live (chỉ phát âm thanh), kiểm duyệt tiếng Việt |
+| `public/script.js` | Menu mobile, FAQ accordion, scroll-reveal, header |
+| `public/huong-dan/index.html` | Trang hub danh sách tất cả bài hướng dẫn |
+| `public/favicon.svg`, `public/robots.txt`, `public/sitemap.xml`, `public/og-image.png`, `public/llms.txt` | Meta/SEO — `og-image.png` là ảnh share 1200×630, `llms.txt` là bản tóm tắt cho AI crawler (ChatGPT, Claude, Perplexity), `robots.txt` cho phép rõ ràng các AI bot |
+| `worker.js` | Worker Cloudflare: proxy `/@<streamer>` và `/_next/*` → `app.liveqr.me`, còn lại serve static |
+| `wrangler.jsonc` | Cấu hình deploy Cloudflare Workers (static assets trong `public/`) |
 
 ## Xem local
 
 ```bash
 cd liveqr-landing
-python3 -m http.server 4173
+python3 -m http.server 4173 --directory public
 # mở http://localhost:4173
 ```
 
-(Mở thẳng `index.html` cũng chạy, nhưng nên qua HTTP để đúng môi trường deploy.)
+(Mở thẳng `public/index.html` cũng chạy, nhưng nên qua HTTP để đúng môi trường deploy.)
 
-## Deploy lên Cloudflare Pages → liveqr.me
+## Deploy lên Cloudflare Workers → liveqr.me
 
-1. Đẩy repo này lên GitHub (repo riêng, ví dụ `liveqr-landing`).
-2. Vào [Cloudflare Dashboard](https://dash.cloudflare.com) → **Workers & Pages** → **Create** → **Pages** → **Connect to Git** → chọn repo.
-3. Cấu hình build:
-   - **Framework preset**: `None`
-   - **Build command**: *(để trống)*
-   - **Build output directory**: `/`
-4. **Save and Deploy**. Sau deploy xong sẽ có URL `*.pages.dev`.
-5. Vào **Custom domains** của project → **Set up a custom domain** → nhập `liveqr.me`.
-   DNS liveqr.me đang quản lý ở Cloudflare nên bản ghi CNAME sẽ được tự thêm, HTTPS tự cấp.
+Repo này deploy qua **Cloudflare Workers Builds** (git integration) — cấu trúc kiểu Workers static assets,
+không còn là Pages (Cloudflare đã migrate Pages → Workers, Pages Functions cũ không deploy được nữa):
+
+- `public/` — toàn bộ static site
+- `worker.js` + `wrangler.jsonc` — Worker proxy trang donate + binding assets (`ASSETS`)
+  (thay cho `functions/_middleware.js`, `_redirects`, `_routes.json` của Pages cũ)
+
+Pipeline: push lên `main` → Cloudflare chạy `wrangler deploy` theo `wrangler.jsonc`
+(project `liveqr-landingpage`, custom domain `liveqr.me` gắn sẵn trên project).
+
+Chạy thử môi trường production local (bao gồm cả proxy `/@streamer`):
+
+```bash
+npx wrangler dev --port 8799
+# mở http://localhost:8799
+```
 
 ## Chỉnh sửa nội dung thường gặp
 
