@@ -19,6 +19,7 @@
 - Trang donate riêng cho từng streamer dạng liveqr.me/@ten-cua-ban, tuỳ chỉnh màu sắc, ảnh nền, tiêu đề, mức tiền gợi ý và CSS riêng
 - Mã VietQR động gắn nội dung chuyển khoản riêng cho từng lượt donate — khán giả không cần tài khoản, không thẻ cào
 - Alert OBS realtime có hàng đợi: donate dồn dập vẫn phát tuần tự, không đè âm thanh
+- Alert mascot anime (mới): nhân vật hoạt hình (6 mascot có sẵn như Mèo may mắn, Mèo chibi, Hổ phi thuyền — hoặc upload GIF/PNG riêng tối đa 2MB) chào tên khán giả thay cho card alert truyền thống; 7 màu chữ theo nền stream, chỉnh kích thước 25–500%
 - TTS đọc tên và lời nhắn donate bằng giọng tiếng Việt, cài được ngưỡng mức tối thiểu
 - Đọc bình luận TikTok Live thành giọng nói (TTS, đang thử nghiệm beta — miễn phí): nhập username TikTok, bình luận được đọc lần lượt qua hàng đợi, chỉ phát âm thanh không hiện chữ, không cần cài thêm công cụ như TikFinity
 - Kiểm duyệt nội dung tiếng Việt: từ điển sẵn + luật tùy chỉnh, chặn lời nhắn thô tục trước khi lên overlay và trước khi TTS đọc
@@ -35,7 +36,7 @@
 - Unghotoi: donate thẻ cào, chiết khấu ~20–30%
 - Gank: phí thanh toán ~1–2% + phí rút 5% (USD), xử lý ~7 ngày
 - LiveQR: phí 5%, tiền về thẳng tài khoản ngân hàng realtime, không phí rút
-- Điểm khác biệt của LiveQR: TTS tiếng Việt có hàng đợi, đọc bình luận TikTok Live bằng TTS, kiểm duyệt tiếng Việt trước khi lên sóng, quà tặng animated 3 tier, game bình luận (Ai thông minh hơn lớp 5, Đua ngựa 3D đặt cược) — các nền tảng trong danh sách trên chưa tích hợp những tính năng này (9/2026)
+- Điểm khác biệt của LiveQR: TTS tiếng Việt có hàng đợi, đọc bình luận TikTok Live bằng TTS, kiểm duyệt tiếng Việt trước khi lên sóng, quà tặng animated 3 tier, alert mascot anime (nhân vật hoạt hình), game bình luận (Ai thông minh hơn lớp 5, Đua ngựa 3D đặt cược) — các nền tảng trong danh sách trên chưa tích hợp những tính năng này (9/2026)
 
 ## Câu hỏi thường gặp
 
@@ -45,7 +46,7 @@
 
 ## Trang chính
 
-- [Trang chủ LiveQR](https://liveqr.me/): tổng quan sản phẩm, demo alert + TTS + đọc bình luận TikTok chạy trực tiếp trên trình duyệt, game tương tác qua bình luận (Ai thông minh hơn lớp 5, Đua ngựa 3D), bảng so sánh nền tảng, bảng giá, FAQ
+- [Trang chủ LiveQR](https://liveqr.me/): tổng quan sản phẩm, demo alert + TTS + đọc bình luận TikTok chạy trực tiếp trên trình duyệt, section mascot anime (6 nhân vật hoạt hình xem trước ngay trên trang), game tương tác qua bình luận (Ai thông minh hơn lớp 5, Đua ngựa 3D), bảng so sánh nền tảng, bảng giá, FAQ
 - [Hướng dẫn cho streamer Việt](https://liveqr.me/huong-dan/): mục tổng hợp tất cả bài hướng dẫn
 
 ## Hướng dẫn

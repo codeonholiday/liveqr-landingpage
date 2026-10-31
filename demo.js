@@ -125,6 +125,211 @@
     catch (e) { return amount.toLocaleString() + ' ₫'; }
   }
 
+  /* ── Mascot anime — nhân vật Lottie cho alert donate ─────── */
+  var MASCOTS = [
+    { id: 'meo-mayman', name: 'Mèo may mắn', emoji: '🐱' },
+    { id: 'meo-chibi', name: 'Mèo chibi', emoji: '😻' },
+    { id: 'meo-dance', name: 'Mèo dance', emoji: '😼' },
+    { id: 'meo-cam', name: 'Mèo cam', emoji: '🐈' },
+    { id: 'meo-den', name: 'Mèo đen', emoji: '🐈‍⬛' },
+    { id: 'ho-phi-thuyen', name: 'Hổ phi thuyền', emoji: '🐯' }
+  ];
+  /* 7 màu chữ theo nền stream — mirror MASCOT_TEXT_STYLES của overlay */
+  var MASCOT_TEXT_COLORS = [
+    { key: 'white', label: 'Nền tối', bg: 'linear-gradient(110deg,#1a2433,#10141f)' },
+    { key: 'dark', label: 'Nền sáng', bg: 'linear-gradient(110deg,#eef1f7,#c9d2e0)' },
+    { key: 'yellow', label: 'Nền neon', bg: 'linear-gradient(110deg,#12081f,#3a1450)' },
+    { key: 'pink', label: 'Nền pastel', bg: 'linear-gradient(110deg,#ffd9e8,#ffb3d1)' },
+    { key: 'mint', label: 'Nền xanh lá', bg: 'linear-gradient(110deg,#0d2b1e,#123a29)' },
+    { key: 'sky', label: 'Nền biển', bg: 'linear-gradient(110deg,#0b2537,#154b6e)' },
+    { key: 'orange', label: 'Nền tối ấm', bg: 'linear-gradient(110deg,#2a1007,#4a2410)' }
+  ];
+  function findMascot(id) {
+    for (var m = 0; m < MASCOTS.length; m++) {
+      if (MASCOTS[m].id === id) return MASCOTS[m];
+    }
+    return MASCOTS[0];
+  }
+
+  var selectedMascotId = 'meo-mayman';
+  var currentTheme = 'hoangkim';
+
+  /* Lottie nạp lười — chỉ tải khi mascot lần đầu cần hiển thị */
+  var lottieReady = null;
+  function loadLottie() {
+    if (window.lottie) return Promise.resolve(window.lottie);
+    if (!lottieReady) {
+      lottieReady = new Promise(function (resolve, reject) {
+        var tag = document.createElement('script');
+        tag.src = 'assets/vendor/lottie.min.js';
+        tag.onload = function () { resolve(window.lottie); };
+        tag.onerror = function () { lottieReady = null; reject(new Error('lottie')); };
+        document.head.appendChild(tag);
+      });
+    }
+    return lottieReady;
+  }
+
+  function destroyMascotArt(container) {
+    if (!container) return;
+    container.dataset.mascotToken = String((parseInt(container.dataset.mascotToken || '0', 10) || 0) + 1);
+    if (container.lottieItem) {
+      var item = container.lottieItem;
+      container.lottieItem = null;
+      try { item.destroy(); } catch (e) { /* animation đã huỷ */ }
+    }
+    container.innerHTML = '';
+  }
+
+  function mountMascotArt(container, mascot) {
+    if (!container || !mascot) return;
+    destroyMascotArt(container);
+    container.dataset.mascotId = mascot.id;
+    var token = container.dataset.mascotToken;
+    var fallback = function () {
+      if (container.dataset.mascotToken === token) {
+        container.innerHTML = '<span class="mascot-fallback">' + mascot.emoji + '</span>';
+      }
+    };
+    loadLottie().then(function (lottie) {
+      if (!container.isConnected || container.dataset.mascotToken !== token || !lottie) return;
+      try {
+        var item = lottie.loadAnimation({
+          container: container,
+          renderer: 'svg',
+          loop: true,
+          autoplay: true,
+          path: 'assets/characters/' + mascot.id + '.json'
+        });
+        container.lottieItem = item;
+        item.addEventListener('data_failed', fallback);
+        item.addEventListener('data_error', fallback);
+      } catch (e) { fallback(); }
+    }).catch(fallback);
+  }
+
+  /* Hero: dãy chip đổi nhân vật — hiện khi preset mascot được chọn */
+  var heroMascotPicker = $('heroMascotPicker');
+  var heroMascotChips = $('heroMascotChips');
+  var heroMascotArt = $('heroMascotArt');
+  var obsMascotArt = $('obsMascotArt');
+
+  function refreshMascotSelection() {
+    document.querySelectorAll('.mascot-chip, .mascot-tile').forEach(function (el) {
+      el.classList.toggle('selected', el.dataset.mascotId === selectedMascotId);
+    });
+  }
+
+  if (heroMascotChips) {
+    MASCOTS.forEach(function (mascot) {
+      var chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'mascot-chip' + (mascot.id === selectedMascotId ? ' selected' : '');
+      chip.dataset.mascotId = mascot.id;
+      chip.textContent = mascot.name;
+      chip.addEventListener('click', function () {
+        if (selectedMascotId === mascot.id) return;
+        selectedMascotId = mascot.id;
+        refreshMascotSelection();
+        syncMascotPreview();
+        if (currentTheme === 'mascot' && heroMascotArt) mountMascotArt(heroMascotArt, mascot);
+      });
+      heroMascotChips.appendChild(chip);
+    });
+  }
+
+  /* Section mascot: thẻ nhân vật + preview stream + màu chữ */
+  var mascotTiles = $('mascotTiles');
+  var mascotPreviewArt = $('mascotPreviewArt');
+  var mascotPreviewName = $('mascotPreviewName');
+  var mascotColorChips = $('mascotColorChips');
+  var mascotPreviewStage = $('mascotPreviewStage');
+
+  function syncMascotPreview() {
+    var mascot = findMascot(selectedMascotId);
+    if (mascotPreviewName) mascotPreviewName.textContent = mascot.name;
+    if (mascotPreviewArt && mascotPreviewArt.dataset.mascotId !== mascot.id) {
+      mountMascotArt(mascotPreviewArt, mascot);
+    }
+  }
+
+  if (mascotColorChips && mascotPreviewStage) {
+    MASCOT_TEXT_COLORS.forEach(function (option) {
+      var chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'mascot-color-chip' + (option.key === 'white' ? ' selected' : '');
+      chip.dataset.mascotColor = option.key;
+      chip.title = 'Chữ cho ' + option.label;
+      chip.setAttribute('aria-label', 'Màu chữ cho ' + option.label);
+      chip.setAttribute('aria-pressed', option.key === 'white' ? 'true' : 'false');
+      var dot = document.createElement('i');
+      dot.style.background = option.bg;
+      chip.appendChild(dot);
+      chip.addEventListener('click', function () {
+        mascotPreviewStage.dataset.color = option.key;
+        mascotColorChips.querySelectorAll('.mascot-color-chip').forEach(function (c) {
+          var on = c.dataset.mascotColor === option.key;
+          c.classList.toggle('selected', on);
+          c.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+      });
+      mascotColorChips.appendChild(chip);
+    });
+  }
+
+  if (mascotTiles) {
+    MASCOTS.forEach(function (mascot) {
+      var tile = document.createElement('button');
+      tile.type = 'button';
+      tile.className = 'mascot-tile' + (mascot.id === selectedMascotId ? ' selected' : '');
+      tile.dataset.mascotId = mascot.id;
+      var art = document.createElement('span');
+      art.className = 'mascot-tile-art';
+      var label = document.createElement('small');
+      label.textContent = mascot.name;
+      tile.appendChild(art);
+      tile.appendChild(label);
+      tile.addEventListener('click', function () {
+        if (selectedMascotId === mascot.id) return;
+        selectedMascotId = mascot.id;
+        refreshMascotSelection();
+        syncMascotPreview();
+      });
+      tile.mascotArt = art;
+      tile.mascot = mascot;
+      mascotTiles.appendChild(tile);
+    });
+
+    var tilesMounted = false;
+    function mountAllTiles() {
+      if (tilesMounted) return;
+      tilesMounted = true;
+      mascotTiles.querySelectorAll('.mascot-tile').forEach(function (tile) {
+        mountMascotArt(tile.mascotArt, tile.mascot);
+      });
+      syncMascotPreview();
+    }
+    if ('IntersectionObserver' in window) {
+      var tilesObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            mountAllTiles();
+            mascotTiles.querySelectorAll('.mascot-tile').forEach(function (tile) {
+              if (tile.mascotArt.lottieItem) tile.mascotArt.lottieItem.play();
+            });
+          } else if (tilesMounted) {
+            mascotTiles.querySelectorAll('.mascot-tile').forEach(function (tile) {
+              if (tile.mascotArt.lottieItem) tile.mascotArt.lottieItem.pause();
+            });
+          }
+        });
+      }, { rootMargin: '200px' });
+      tilesObserver.observe(mascotTiles);
+    } else {
+      mountAllTiles();
+    }
+  }
+
   /* ── Trạng thái demo ────────────────────────────────────── */
   var queue = [];
   var playing = false;
@@ -145,11 +350,13 @@
   var activeThemeLabel = $('activeThemeLabel');
   var themeNames = {
     hoangkim: 'Hoàng kim', aurora: 'Aurora', cyber: 'Cyber pulse',
-    candy: 'Kẹo ngọt', phaohoa: 'Pháo hoa', party: 'Rainbow party'
+    candy: 'Kẹo ngọt', phaohoa: 'Pháo hoa', party: 'Rainbow party',
+    mascot: 'Mèo anime'
   };
   var themeButtons = document.querySelectorAll('[data-alert-theme]');
   function selectAlertTheme(theme) {
     if (!themeNames[theme]) return;
+    currentTheme = theme;
     if (heroThemeStage) {
       heroThemeStage.dataset.theme = theme;
       heroThemeStage.setAttribute('aria-label', 'Xem trước alert donate ' + themeNames[theme]);
@@ -159,6 +366,18 @@
     themeButtons.forEach(function (button) {
       button.setAttribute('aria-pressed', button.dataset.alertTheme === theme ? 'true' : 'false');
     });
+    if (heroMascotPicker) heroMascotPicker.hidden = theme !== 'mascot';
+    if (theme === 'mascot') {
+      if (heroMascotArt && heroMascotArt.dataset.mascotId !== selectedMascotId) {
+        mountMascotArt(heroMascotArt, findMascot(selectedMascotId));
+      }
+    } else {
+      destroyMascotArt(heroMascotArt);
+    }
+    if (obsAlert) {
+      obsAlert.classList.toggle('obs-alert--mascot', theme === 'mascot');
+      if (theme !== 'mascot') destroyMascotArt(obsMascotArt);
+    }
   }
   themeButtons.forEach(function (button) {
     button.addEventListener('click', function () { selectAlertTheme(button.dataset.alertTheme); });
@@ -409,10 +628,18 @@
     if (obsIdle) obsIdle.classList.add('hidden');
     obsAlert.classList.remove('hidden', 'out');
 
+    var isMascot = currentTheme === 'mascot';
+    obsAlert.classList.toggle('obs-alert--mascot', isMascot);
+    if (isMascot) {
+      mountMascotArt(obsMascotArt, findMascot(selectedMascotId));
+    } else {
+      destroyMascotArt(obsMascotArt);
+    }
+
     var initial = (item.name || '?').trim().charAt(0).toUpperCase() || '?';
     alertAvatar.textContent = initial;
     alertName.textContent = item.name;
-    if (alertAction) alertAction.textContent = 'vừa donate';
+    if (alertAction) alertAction.textContent = isMascot ? 'vừa ủng hộ' : 'vừa donate';
     alertAmount.textContent = vnd(item.amount);
     alertMsg.textContent = '';
     alertCaret.style.display = 'inline-block';
