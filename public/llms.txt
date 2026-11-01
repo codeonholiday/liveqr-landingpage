@@ -63,6 +63,11 @@
 - [WeScan là gì](https://liveqr.me/huong-dan/wescan-la-gi/): phân tích phí 10%, ví trung gian, tất toán 2 tuần của WeScan và lựa chọn thay thế
 - [So sánh phí donate streamer Việt](https://liveqr.me/huong-dan/phi-donate-streamer-viet/): bảng so sánh chi tiết phí, tốc độ nhận tiền, tính năng của WeScan, Zypage, PlayerDuo, Unghotoi, Gank, LiveQR
 
+## Pháp lý
+
+- [Chính sách bảo mật](https://liveqr.me/privacy/): dữ liệu thu thập (tài khoản, đăng nhập bằng Google, donate VietQR, TikTok Live), mục đích sử dụng, bên thứ ba, quyền của người dùng — cam kết tuân theo Google API Services User Data Policy (Limited Use)
+- [Điều khoản sử dụng](https://liveqr.me/terms/): mô tả dịch vụ, tài khoản, phí 5%/tháng, mô hình donate non-custodial, trách nhiệm streamer và khán giả, miễn trừ trách nhiệm, luật áp dụng Việt Nam
+
 ## Giới thiệu / Liên hệ
 
 - Liên hệ hỗ trợ: Zalo 0394 675 935 — https://zalo.me/84394675935
