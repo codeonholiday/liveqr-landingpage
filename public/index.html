@@ -115,6 +115,14 @@
       },
       {
         "@type": "Question",
+        "name": "Khán giả có phải tạo tài khoản hay nạp tiền vào nền tảng để donate không?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Không. Khán giả chỉ cần mở trang donate liveqr.me/@ten-cua-ban, nhập số tiền và lời nhắn — app ngân hàng sẽ tự mở với số tiền và nội dung chuyển khoản đã điền sẵn, chỉ việc xác nhận. Không đăng ký, không nạp ví trung gian, không chờ duyệt — tiền chuyển thẳng từ tài khoản khán giả vào tài khoản của bạn qua VietQR."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "Phí donate LiveQR bao nhiêu?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -367,7 +375,7 @@
               <span class="viewer-avatar" aria-hidden="true">S</span>
               <div>
                 <b>streamer_cua_ban</b>
-                <small>Mở app ngân hàng → quét QR → xong trong 5 giây</small>
+                <small>Nhập số tiền → app ngân hàng mở sẵn → xong trong 5 giây</small>
               </div>
             </div>
 
@@ -687,6 +695,62 @@
       </div>
     </section>
 
+    <!-- ══════════ TRẢI NGHIỆM KHÁN GIẢ KHI DONATE ══════════ -->
+    <section class="section" id="flow">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">Trải nghiệm khán giả khi donate</p>
+          <h2>Khán giả donate trong <span class="grad">5 giây</span> — không đăng ký, không nạp ví</h2>
+          <p class="section-sub">
+            Trên các nền tảng có ví trung gian, khán giả phải đăng ký tài khoản rồi nạp tiền vào nền tảng trước khi donate được — mỗi bước thừa là một lượt donate mất đi. Với LiveQR, tiền đi thẳng từ app ngân hàng của khán giả sang tài khoản của bạn.
+          </p>
+        </div>
+
+        <div class="flow-grid reveal">
+          <div class="flow-vs" aria-hidden="true">VS</div>
+
+          <!-- Kiểu cũ: ví trung gian -->
+          <div class="flow-card flow-card--old">
+            <div class="flow-card-head">
+              <span class="flow-badge flow-badge--old">Nền tảng có ví trung gian</span>
+              <span class="flow-time flow-time--old">⏱ 3–5 phút / lượt</span>
+            </div>
+            <ol class="flow-steps">
+              <li><span class="flow-step-num">1</span><div><b>Tạo tài khoản &amp; đăng nhập</b><small>Email, số điện thoại, mật khẩu, xác thực…</small></div></li>
+              <li><span class="flow-step-num">2</span><div><b>Nạp tiền vào ví của nền tảng</b><small>Khán giả chuyển tiền trước — tiền nằm lại ví trung gian</small></div></li>
+              <li><span class="flow-step-num">3</span><div><b>Tìm lại streamer, chọn mức donate</b><small>Rời trang nạp tiền, tìm kênh, nhập số tiền</small></div></li>
+              <li><span class="flow-step-num">4</span><div><b>Chờ nền tảng xử lý</b><small>Tiền phải tất toán qua ví rồi mới tới tay streamer</small></div></li>
+            </ol>
+            <p class="flow-verdict flow-verdict--old">4 rào cản trước 1 lượt donate — khán giả bỏ cuộc giữa chừng, donate nhỏ bị bỏ lỡ.</p>
+          </div>
+
+          <!-- LiveQR: VietQR trực tiếp -->
+          <div class="flow-card flow-card--new">
+            <div class="flow-card-head">
+              <span class="flow-badge flow-badge--new">LiveQR · VietQR trực tiếp</span>
+              <span class="flow-time flow-time--new">⚡ ~5 giây là xong</span>
+            </div>
+            <ol class="flow-steps">
+              <li><span class="flow-step-num">1</span><div><b>Mở trang donate liveqr.me/@streamer</b><small>Link nằm ngay mô tả buổi live — không cần đăng nhập gì cả</small></div></li>
+              <li><span class="flow-step-num">2</span><div><b>Nhập số tiền + lời nhắn</b><small>Chọn mức gợi ý hoặc gõ số khác — hết 1 màn hình</small></div></li>
+              <li class="flow-step--star"><span class="flow-step-num">3</span><div><b>App ngân hàng tự mở — số tiền điền sẵn</b><small>Số tiền và nội dung chuyển khoản được điền sẵn, khán giả chỉ việc xác nhận</small></div></li>
+            </ol>
+            <p class="flow-verdict flow-verdict--new">Trải nghiệm liền mạch: thấy alert trên sóng → quyết định donate → tiền về tài khoản của bạn ngay khi xác nhận.</p>
+            <div class="flow-perks">
+              <span>✓ Không cần tài khoản</span>
+              <span>✓ Không nạp ví trung gian</span>
+              <span>✓ Tiền về thẳng ngân hàng</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="table-note flow-note reveal">
+          Khán giả dùng đúng app ngân hàng họ đang có — không tạo tài khoản, không nạp tiền vào nền tảng, không chờ duyệt.
+          Trải nghiệm trang donate thật ở <a href="#demo">bản demo</a> phía trên.
+        </p>
+      </div>
+    </section>
+
     <!-- ══════════ TÍNH NĂNG ══════════ -->
     <section class="section" id="features">
       <div class="container">
@@ -816,6 +880,15 @@
                 <td class="no">✗</td>
               </tr>
               <tr>
+                <td class="col-criteria">Khán giả donate không cần đăng ký &amp; nạp ví</td>
+                <td class="col-liveqr ok">✓</td>
+                <td class="no">✗</td>
+                <td class="muted">—</td>
+                <td class="no">✗</td>
+                <td class="no">✗</td>
+                <td class="no">✗</td>
+              </tr>
+              <tr>
                 <td class="col-criteria">Alert OBS realtime</td>
                 <td class="col-liveqr ok">✓</td>
                 <td class="ok">✓</td>
@@ -914,6 +987,7 @@
           Zypage: phí ~8%/giao dịch. PlayerDuo: 10% nút Donate. Unghotoi: donate thẻ cào thường bị chiết khấu ~20–30%.
           Gank: phí thanh toán nội địa ~1–2%, phí rút 5% (USD), xử lý ~7 ngày làm việc.
           Đọc bình luận TikTok Live: các nền tảng trong bảng chưa tích hợp (9/2026) — streamer thường phải cài thêm tool riêng như TikFinity hay Chị Google TikTok.
+          Khán giả donate qua các nền tảng dùng ví (WeScan, PlayerDuo, Unghotoi, Gank) cần có tài khoản và nạp số dư trong nền tảng trước khi donate.
         </p>
       </div>
     </section>
@@ -990,6 +1064,10 @@
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">LiveQR có giữ tiền của tôi không?<span class="faq-icon"></span></button>
             <div class="faq-a"><p>Không. LiveQR hoạt động theo mô hình non-custodial: tiền donate chuyển thẳng từ tài khoản khán giả vào tài khoản ngân hàng của bạn qua VietQR. LiveQR chỉ nhận tín hiệu giao dịch để bắn alert lên sóng — tiền không bao giờ đi qua LiveQR.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">Khán giả có phải tạo tài khoản hay nạp tiền vào nền tảng để donate không?<span class="faq-icon"></span></button>
+            <div class="faq-a"><p>Không. Khán giả chỉ cần mở trang donate <b>liveqr.me/@ten-cua-ban</b>, nhập số tiền và lời nhắn — app ngân hàng sẽ tự mở với số tiền và nội dung chuyển khoản đã điền sẵn, chỉ việc xác nhận. Không đăng ký, không nạp ví trung gian, không chờ duyệt — tiền chuyển thẳng từ tài khoản khán giả vào tài khoản của bạn qua VietQR.</p></div>
           </div>
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">Phí bao nhiêu?<span class="faq-icon"></span></button>

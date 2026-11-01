@@ -36,11 +36,12 @@
 - Unghotoi: donate thẻ cào, chiết khấu ~20–30%
 - Gank: phí thanh toán ~1–2% + phí rút 5% (USD), xử lý ~7 ngày
 - LiveQR: phí 5%, tiền về thẳng tài khoản ngân hàng realtime, không phí rút
-- Điểm khác biệt của LiveQR: TTS tiếng Việt có hàng đợi, đọc bình luận TikTok Live bằng TTS, kiểm duyệt tiếng Việt trước khi lên sóng, quà tặng animated 3 tier, alert mascot anime (nhân vật hoạt hình), game bình luận (Ai thông minh hơn lớp 5, Đua ngựa 3D đặt cược) — các nền tảng trong danh sách trên chưa tích hợp những tính năng này (9/2026)
+- Điểm khác biệt của LiveQR: khán giả donate không cần đăng ký hay nạp ví trung gian — mở trang donate, nhập số tiền, app ngân hàng tự mở với số tiền điền sẵn, xác nhận là xong (~5 giây); TTS tiếng Việt có hàng đợi, đọc bình luận TikTok Live bằng TTS, kiểm duyệt tiếng Việt trước khi lên sóng, quà tặng animated 3 tier, alert mascot anime (nhân vật hoạt hình), game bình luận (Ai thông minh hơn lớp 5, Đua ngựa 3D đặt cược) — các nền tảng trong danh sách trên chưa tích hợp những tính năng này (9/2026)
 
 ## Câu hỏi thường gặp
 
 - LiveQR có giữ tiền không? Không. Tiền donate chuyển thẳng từ tài khoản khán giả vào tài khoản ngân hàng streamer qua VietQR; LiveQR chỉ nhận tín hiệu giao dịch để bắn alert.
+- Khán giả có phải tạo tài khoản hay nạp tiền vào nền tảng không? Không. Mở trang donate liveqr.me/@ten-streamer, nhập số tiền và lời nhắn, app ngân hàng tự mở với số tiền và nội dung chuyển khoản điền sẵn — chỉ việc xác nhận.
 - Cần gì để bắt đầu? Một tài khoản ngân hàng Việt Nam, OBS Studio (hoặc phần mềm live tương tự), vài phút cài đặt.
 - Hỗ trợ nền tảng nào? Mọi nền tảng phát qua OBS/Streamlabs: Facebook Gaming, TikTok Live, YouTube Live, Twitch… Overlay là Browser Source chuẩn.
 
