@@ -11,13 +11,14 @@
 - Ngôn ngữ: tiếng Việt
 - Đối tượng: streamer Việt trên TikTok Live, Facebook Gaming, YouTube Live, Twitch — phát sóng qua OBS Studio, Streamlabs hoặc TikTok Live Studio
 - Mô hình tài chính: phí 5% doanh thu donate hàng tháng (gói Free). Không phí cố định, không phí rút, không bị giữ tiền. Gói Studio (dành cho kênh lớn, MCN, agency) đang phát triển với phí ưu đãi.
-- Thanh toán: VietQR — khán giả quét mã bằng app ngân hàng, tiền vào thẳng tài khoản streamer. Kết nối ngân hàng qua SePay hoặc GPMpay.
+- Thanh toán: VietQR — khán giả quét mã bằng app ngân hàng, tiền vào thẳng tài khoản streamer. Kết nối ngân hàng qua SePay hoặc GPMpay. Donate quốc tế qua PayPal — khán giả ở nước ngoài trả bằng PayPal/thẻ quốc tế (USD), tiền vào thẳng PayPal của streamer.
 - Hỗ trợ: Zalo 0394 675 935 (https://zalo.me/84394675935)
 
 ## Tính năng chính
 
 - Trang donate riêng cho từng streamer dạng liveqr.me/@ten-cua-ban, tuỳ chỉnh màu sắc, ảnh nền, tiêu đề, mức tiền gợi ý và CSS riêng
 - Mã VietQR động gắn nội dung chuyển khoản riêng cho từng lượt donate — khán giả không cần tài khoản, không thẻ cào
+- Nhận donate quốc tế qua PayPal (mới): streamer cấu hình email PayPal trong dashboard một lần — trang donate tự hiện tùy chọn thanh toán PayPal, khán giả ở nước ngoài thanh toán, tiền chuyển thẳng vào tài khoản PayPal theo email đó, alert + TTS hiện lên OBS realtime chạy chung hàng đợi với donate VietQR
 - Alert OBS realtime có hàng đợi: donate dồn dập vẫn phát tuần tự, không đè âm thanh
 - Alert mascot anime (mới): nhân vật hoạt hình (6 mascot có sẵn như Mèo may mắn, Mèo chibi, Hổ phi thuyền — hoặc upload GIF/PNG riêng tối đa 2MB) chào tên khán giả thay cho card alert truyền thống; 7 màu chữ theo nền stream, chỉnh kích thước 25–500%
 - TTS đọc tên và lời nhắn donate bằng giọng tiếng Việt, cài được ngưỡng mức tối thiểu
@@ -25,7 +26,6 @@
 - Kiểm duyệt nội dung tiếng Việt: từ điển sẵn + luật tùy chỉnh, chặn lời nhắn thô tục trước khi lên overlay và trước khi TTS đọc
 - Quà tặng animated 7 loại, 3 tier (rail, banner, takeover) hiện trên OBS kiểu TikTok
 - Widget tương tác: vòng quay, thử thách, bình chọn, đồng hồ đếm, PK
-- Game tương tác qua bình luận (mới): Ai thông minh hơn học sinh lớp 5 — câu hỏi toán lớp 5, khán giả trả lời qua comment A/B/C/D hoặc gõ trực tiếp đáp án, chấm điểm tự động, bảng xếp hạng realtime trên OBS, TTS công bố người thắng; Đua ngựa 3D — khán giả comment "số làn + dấu cách + số tiền" (VD "3 5000") để dự đoán và đặt cược, cuộc đua 3D chạy trực tiếp trên overlay OBS, người đoán đúng được cộng điểm
 - Báo cáo doanh thu CSV để đối chiếu ngân hàng và kê khai thuế
 
 ## So sánh với các nền tảng donate khác (số liệu công khai 9/2026)
@@ -36,7 +36,7 @@
 - Unghotoi: donate thẻ cào, chiết khấu ~20–30%
 - Gank: phí thanh toán ~1–2% + phí rút 5% (USD), xử lý ~7 ngày
 - LiveQR: phí 5%, tiền về thẳng tài khoản ngân hàng realtime, không phí rút
-- Điểm khác biệt của LiveQR: khán giả donate không cần đăng ký hay nạp ví trung gian — mở trang donate, nhập số tiền, app ngân hàng tự mở với số tiền điền sẵn, xác nhận là xong (~5 giây); TTS tiếng Việt có hàng đợi, đọc bình luận TikTok Live bằng TTS, kiểm duyệt tiếng Việt trước khi lên sóng, quà tặng animated 3 tier, alert mascot anime (nhân vật hoạt hình), game bình luận (Ai thông minh hơn lớp 5, Đua ngựa 3D đặt cược) — các nền tảng trong danh sách trên chưa tích hợp những tính năng này (9/2026)
+- Điểm khác biệt của LiveQR: khán giả donate không cần đăng ký hay nạp ví trung gian — mở trang donate, nhập số tiền, app ngân hàng tự mở với số tiền điền sẵn, xác nhận là xong (~5 giây); TTS tiếng Việt có hàng đợi, đọc bình luận TikTok Live bằng TTS, kiểm duyệt tiếng Việt trước khi lên sóng, quà tặng animated 3 tier, alert mascot anime (nhân vật hoạt hình) — các nền tảng trong danh sách trên chưa tích hợp những tính năng này (9/2026; riêng donate PayPal: LiveQR và Zypage đều hỗ trợ)
 
 ## Câu hỏi thường gặp
 
@@ -47,11 +47,12 @@
 
 ## Trang chính
 
-- [Trang chủ LiveQR](https://liveqr.me/): tổng quan sản phẩm, demo alert + TTS + đọc bình luận TikTok chạy trực tiếp trên trình duyệt, section mascot anime (6 nhân vật hoạt hình xem trước ngay trên trang), game tương tác qua bình luận (Ai thông minh hơn lớp 5, Đua ngựa 3D), bảng so sánh nền tảng, bảng giá, FAQ
+- [Trang chủ LiveQR](https://liveqr.me/): tổng quan sản phẩm, demo alert + TTS + đọc bình luận TikTok chạy trực tiếp trên trình duyệt, section mascot anime (6 nhân vật hoạt hình xem trước ngay trên trang), section donate quốc tế qua PayPal, bảng so sánh nền tảng, bảng giá, FAQ
 - [Hướng dẫn cho streamer Việt](https://liveqr.me/huong-dan/): mục tổng hợp tất cả bài hướng dẫn
 
 ## Hướng dẫn
 
+- [Nhận donate từ nước ngoài qua PayPal](https://liveqr.me/huong-dan/nhan-donate-tu-nuoc-ngoai-paypal/): nhận donate quốc tế qua PayPal — tiền vào thẳng PayPal, alert + TTS realtime trên OBS
 - [Nhận donate TikTok Live về thẳng ngân hàng](https://liveqr.me/huong-dan/nhan-donate-tiktok-live/): hướng dẫn nhận donate TikTok Live qua VietQR, không cần Xu TikTok
 - [Đọc bình luận TikTok Live thành giọng nói](https://liveqr.me/huong-dan/doc-binh-luan-tiktok-live/): cài TTS đọc comment TikTok trên OBS hoặc TikTok Live Studio, so sánh với TikFinity và extension Chrome
 - [Lấy Google API key để đọc bình luận miễn phí](https://liveqr.me/huong-dan/lay-google-api-key-doc-binh-luan/): tạo và giới hạn Google Cloud Text-to-Speech API key cho LiveQR TikTok

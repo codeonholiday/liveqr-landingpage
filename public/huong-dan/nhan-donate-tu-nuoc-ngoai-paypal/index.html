@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nhận donate từ nước ngoài qua PayPal — alert lên sóng ngay (2026) | LiveQR</title>
+  <meta name="description" content="Hướng dẫn nhận donate quốc tế qua PayPal với LiveQR: cấu hình email PayPal một lần trong app, khán giả ở nước ngoài thanh toán bằng PayPal, tiền chuyển thẳng vào PayPal của bạn và alert + TTS hiện lên OBS realtime — không cần link PayPal.me thủ công." />
+  <meta name="author" content="LiveQR" />
+  <meta name="robots" content="index, follow" />
+  <meta name="keywords" content="nhận donate từ nước ngoài, donate paypal streamer, donate quốc tế paypal, nhận tiền paypal khi live, donate việt kiều, livestream nhận tiền quốc tế" />
+  <link rel="canonical" href="https://liveqr.me/huong-dan/nhan-donate-tu-nuoc-ngoai-paypal/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://liveqr.me/huong-dan/nhan-donate-tu-nuoc-ngoai-paypal/" />
+  <meta property="og:title" content="Nhận donate từ nước ngoài qua PayPal — alert lên sóng ngay (2026)" />
+  <meta property="og:description" content="Cấu hình email PayPal một lần trong app LiveQR — khán giả ở nước ngoài donate bằng PayPal, tiền chuyển thẳng vào PayPal của bạn, alert + TTS hiện lên OBS realtime trong cùng widget với donate VietQR." />
+  <meta property="og:image" content="https://liveqr.me/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="LiveQR" />
+  <meta property="og:locale" content="vi_VN" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Nhận donate từ nước ngoài qua PayPal — alert lên sóng ngay (2026)" />
+  <meta name="twitter:description" content="Cấu hình email PayPal trong LiveQR là xong — khán giả quốc tế donate bằng PayPal, alert + TTS bật lên ngay trên livestream." />
+  <meta name="twitter:image" content="https://liveqr.me/og-image.png" />
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Nhận donate từ nước ngoài qua PayPal — alert bật lên ngay trên livestream",
+    "description": "Hướng dẫn nhận donate quốc tế qua PayPal với LiveQR — cấu hình email PayPal một lần trong app, khán giả ở nước ngoài thanh toán bằng PayPal, tiền chuyển thẳng vào PayPal của bạn và alert + TTS hiện lên OBS realtime.",
+    "url": "https://liveqr.me/huong-dan/nhan-donate-tu-nuoc-ngoai-paypal/",
+    "datePublished": "2026-11-09",
+    "dateModified": "2026-11-09",
+    "author": {
+      "@type": "Organization",
+      "name": "LiveQR",
+      "url": "https://liveqr.me"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "LiveQR",
+      "url": "https://liveqr.me",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://liveqr.me/brand/logo-on-dark.svg"
+      }
+    },
+    "inLanguage": "vi"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Khán giả ở nước ngoài cần gì để donate cho tôi qua PayPal?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Chỉ cần một tài khoản PayPal hoặc thẻ quốc tế (Visa/Mastercard). Họ mở đúng trang donate liveqr.me/@ten-cua-ban của bạn — sau khi bạn cấu hình email PayPal, tùy chọn thanh toán PayPal tự hiện trên trang — chọn mức tiền, nhập lời nhắn và thanh toán. Không cần tạo tài khoản LiveQR, không cần app ngân hàng Việt Nam."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Tiền donate PayPal về đâu? LiveQR có giữ tiền không?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tiền chuyển vào thẳng tài khoản PayPal tương ứng email bạn đã cấu hình trong app LiveQR. LiveQR chỉ nhận tín hiệu giao dịch để bắn alert lên sóng — tiền không đi qua LiveQR, không có ví trung gian, không chờ tất toán."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Donate PayPal có hiện alert trên OBS realtime không?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Có. Khi giao dịch PayPal hoàn tất, alert hiện tên khán giả, số tiền USD và lời nhắn lên OBS theo thời gian thực, kèm hiệu ứng preset và TTS đọc lời nhắn — chạy chung hàng đợi với donate VietQR, không cần thêm Browser Source mới."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "TTS đọc được lời nhắn tiếng Anh không?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Đọc được. Khán giả quốc tế gửi lời nhắn tiếng Anh vẫn được TTS đọc thành tiếng như lời nhắn tiếng Việt, và lời nhắn vẫn đi qua bộ kiểm duyệt nội dung trước khi hiện lên sóng."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Phí nhận donate PayPal là bao nhiêu?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Có hai phần: phí nền tảng LiveQR theo gói bạn đang dùng (gói Free: 5% doanh thu donate hàng tháng) và phí giao dịch quốc tế của PayPal theo bảng phí công khai của họ cho thị trường nơi tài khoản PayPal của bạn đăng ký, cộng phần chênh lệch tỷ giá nếu quy đổi USD ra VND. LiveQR không thu phí rút."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Trang chủ", "item": "https://liveqr.me" },
+      { "@type": "ListItem", "position": 2, "name": "Hướng dẫn", "item": "https://liveqr.me/huong-dan/" },
+      { "@type": "ListItem", "position": 3, "name": "Nhận donate từ nước ngoài qua PayPal", "item": "https://liveqr.me/huong-dan/nhan-donate-tu-nuoc-ngoai-paypal/" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../styles.css" />
+
+  <style>
+    .article-hero { padding: 64px 0 40px; }
+    .article-breadcrumb { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+    .article-breadcrumb a { color: var(--purple); }
+    .article-breadcrumb span { margin: 0 6px; opacity: .5; }
+    .article-meta { font-size: 14px; color: var(--muted-2); margin-bottom: 32px; display: flex; gap: 16px; flex-wrap: wrap; }
+    .article-meta span { display: inline-flex; align-items: center; gap: 6px; }
+    .article-body { max-width: 720px; }
+    .article-body h2 { font-size: clamp(22px, 2.8vw, 30px); margin: 48px 0 16px; color: var(--text); }
+    .article-body h3 { font-size: clamp(18px, 2vw, 22px); margin: 32px 0 12px; color: var(--purple); }
+    .article-body p { color: var(--muted); line-height: 1.75; font-size: 16.5px; margin-bottom: 16px; }
+    .article-body ul, .article-body ol { color: var(--muted); line-height: 1.75; padding-left: 24px; margin-bottom: 16px; }
+    .article-body li { margin-bottom: 8px; font-size: 16px; }
+    .article-body strong { color: var(--text); }
+    .article-body a { color: var(--purple); font-weight: 600; }
+    .article-body a:hover { text-decoration: underline; }
+    .article-cta-box { margin: 48px 0; padding: 32px; background: var(--panel-2); border: 1px solid var(--purple-line); border-radius: var(--radius-lg); }
+    .article-cta-box h3 { margin: 0 0 12px; color: var(--text); font-size: 20px; }
+    .article-cta-box p { margin: 0 0 20px; }
+    .article-cta-box .cta-btns { display: flex; flex-wrap: wrap; gap: 12px; }
+    .step-list { list-style: none; padding: 0; counter-reset: steps; }
+    .step-list li { counter-increment: steps; display: flex; gap: 16px; margin-bottom: 20px; align-items: flex-start; }
+    .step-list li::before {
+      content: counter(steps);
+      display: grid; place-items: center; flex-shrink: 0;
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--purple-soft); border: 1px solid var(--purple-line);
+      color: var(--purple); font-weight: 700; font-size: 14px;
+      margin-top: 2px;
+    }
+    .step-list li > div { flex: 1; }
+    .step-list li strong { display: block; color: var(--text); font-size: 16px; margin-bottom: 4px; }
+    .step-list li span { color: var(--muted); font-size: 15px; line-height: 1.6; }
+    .tip-box { padding: 16px 20px; background: rgba(94, 229, 162, .07); border: 1px solid rgba(94, 229, 162, .22); border-radius: var(--radius); margin: 20px 0; }
+    .tip-box strong { color: var(--green); }
+    .tip-box p { margin: 0; font-size: 15px; }
+    .compare-quick { border-collapse: collapse; width: 100%; margin: 20px 0; display: block; overflow-x: auto; }
+    .compare-quick th, .compare-quick td { padding: 11px 14px; text-align: left; border-bottom: 1px solid var(--line); font-size: 14.5px; white-space: nowrap; }
+    .compare-quick th { color: var(--muted-2); font-size: 13px; font-weight: 600; background: var(--panel-2); }
+    .compare-quick td { color: var(--muted); }
+    .compare-quick td:first-child { color: var(--text); font-weight: 600; }
+    .compare-quick tr:last-child td { border-bottom: none; }
+    .ok { color: var(--green); font-weight: 600; }
+    .no { color: #ff6b7a; }
+    .highlight-paypal { padding: 20px 24px; background: rgba(0, 112, 224, .08); border: 1px solid rgba(0, 112, 224, .3); border-radius: var(--radius-lg); margin: 24px 0; }
+    .highlight-paypal h3 { margin: 0 0 10px; color: var(--text); font-size: 18px; }
+    .highlight-paypal p { margin: 0; color: var(--muted); font-size: 15.5px; line-height: 1.7; }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════ HEADER ══════════ -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="brand" href="../../" aria-label="LiveQR — trang chủ">
+        <img class="brand-logo" src="../../brand/logo-on-dark.svg" alt="LiveQR" height="28" width="148" />
+      </a>
+      <nav class="main-nav" id="mainNav" aria-label="Điều hướng chính">
+        <a href="../../#demo">Demo</a>
+        <a href="../../#features">Tính năng</a>
+        <a href="../../#compare">So sánh</a>
+        <a href="../../#pricing">Giá</a>
+        <a href="../../#faq">FAQ</a>
+        <a class="nav-cta-mobile" href="https://app.liveqr.me" target="_blank" rel="noopener">Dùng thử miễn phí</a>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm" href="https://app.liveqr.me" target="_blank" rel="noopener">Dùng thử miễn phí</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Mở menu" aria-expanded="false" aria-controls="mainNav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="article-hero">
+      <div class="container">
+        <nav class="article-breadcrumb" aria-label="Breadcrumb">
+          <a href="../../">Trang chủ</a>
+          <span aria-hidden="true">›</span>
+          <a href="../">Hướng dẫn</a>
+          <span aria-hidden="true">›</span>
+          <span>Nhận donate từ nước ngoài qua PayPal</span>
+        </nav>
+
+        <div class="article-body">
+          <h1 style="font-size:clamp(28px,4vw,46px);letter-spacing:-.03em;margin-bottom:16px;">
+            Nhận donate từ nước ngoài qua PayPal — alert bật lên ngay trên livestream
+          </h1>
+          <div class="article-meta">
+            <span>📅 Cập nhật tháng 11/2026</span>
+            <span>⏱ Đọc trong 6 phút</span>
+            <span>✍️ LiveQR</span>
+          </div>
+
+          <p>
+            Kênh của bạn không chỉ có khán giả ở Việt Nam. Việt kiều, du học sinh và cả khán giả quốc tế xem live
+            của bạn mỗi tối — nhưng khi họ muốn ủng hộ,<strong> app ngân hàng Việt Nam không mở được ở nước ngoài</strong>,
+            và bạn đành bỏ lỡ lượt donate đó. Giờ đây LiveQR hỗ trợ <strong>nhận donate quốc tế qua PayPal</strong>:
+            khán giả ở bất kỳ đâu thanh toán bằng PayPal hoặc thẻ quốc tế, tiền vào thẳng PayPal của bạn và
+            <strong>alert + TTS hiện lên OBS theo thời gian thực</strong> — như một lượt donate VietQR bình thường.
+          </p>
+
+          <h2>Vì sao "nhận tiền từ nước ngoài" luôn là bài toán khó với streamer Việt?</h2>
+
+          <p>Trước đây, muốn nhận tiền ủng hộ từ khán giả ở nước ngoài, bạn chỉ có vài lựa chọn — và cái nào cũng đánh đổi:</p>
+
+          <ul>
+            <li><strong>Gửi link PayPal.me / email PayPal thủ công</strong> — khán giả chuyển xong thì… im lặng. Không có alert, không có lời nhắn, không biết ai vừa ủng hộ để cảm ơn trên sóng. Buổi live đông comment là bỏ sót ngay.</li>
+            <li><strong>Chuyển khoản SWIFT / remittance</strong> — phí cố định cao, mất vài ngày, khán giả phải ra ngân hàng: không ai chịu làm chỉ để ủng hộ $5.</li>
+            <li><strong>Các nền tảng donate quốc tế</strong> — gom tiền vào ví trung gian, rút về Việt Nam phức tạp, chậm và bị thêm một tầng phí nữa.</li>
+          </ul>
+
+          <p>Kết quả: phần lớn streamer Việt <strong>từ chối luôn dòng tiền quốc tế</strong> — hoặc nhận một cách thủ công, không đưa được lên sóng như donate trong nước.</p>
+
+          <div style="overflow-x:auto;margin:24px 0;">
+            <table class="compare-quick">
+              <thead>
+                <tr>
+                  <th>Tiêu chí</th>
+                  <th>Link PayPal.me thủ công</th>
+                  <th>SWIFT / remittance</th>
+                  <th>PayPal qua LiveQR</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Alert hiện lên OBS</td>
+                  <td class="no">✗ Không có</td>
+                  <td class="no">✗</td>
+                  <td class="ok">✓ Realtime, kèm TTS</td>
+                </tr>
+                <tr>
+                  <td>Tên + lời nhắn lên sóng</td>
+                  <td class="no">✗</td>
+                  <td class="no">✗</td>
+                  <td class="ok">✓</td>
+                </tr>
+                <tr>
+                  <td>Tiền về đâu</td>
+                  <td>PayPal của bạn</td>
+                  <td>Ngân hàng (chậm)</td>
+                  <td class="ok">Thẳng PayPal của bạn</td>
+                </tr>
+                <tr>
+                  <td>Khán giả cần gì</td>
+                  <td>Tài khoản PayPal</td>
+                  <td>Ra ngân hàng, mất vài ngày</td>
+                  <td class="ok">PayPal hoặc thẻ Visa/Mastercard</td>
+                </tr>
+                <tr>
+                  <td>Cùng widget với donate VietQR</td>
+                  <td class="no">✗</td>
+                  <td class="no">✗</td>
+                  <td class="ok">✓ 1 Browser Source duy nhất</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>Luồng PayPal trên LiveQR hoạt động như thế nào?</h2>
+
+          <p>Nguyên tắc giữ nguyên như donate VietQR: <strong>một trang donate, một widget OBS</strong>. Bạn cấu hình <strong>email PayPal một lần duy nhất</strong> trong app LiveQR — sau đó tùy chọn thanh toán PayPal tự xuất hiện trên trang donate của bạn và mọi thứ chạy tự động:</p>
+
+          <ol class="step-list">
+            <li>
+              <div>
+                <strong>Khán giả mở trang donate của bạn</strong>
+                <span>Cùng một link <code>liveqr.me/@ten-cua-ban</code> quen thuộc — phương thức PayPal hiển thị sẵn trên trang, không cần link riêng, không cần hướng dẫn gì thêm.</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Nhập số tiền (USD), biệt danh và lời nhắn</strong>
+                <span>Khán giả chọn mức gợi ý hoặc tự nhập — lời nhắn viết tiếng Anh hay tiếng Việt đều được.</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Thanh toán bằng PayPal hoặc thẻ quốc tế</strong>
+                <span>Đăng nhập PayPal hoặc nhập thẻ Visa/Mastercard. Không cần tài khoản LiveQR, không cần app ngân hàng Việt Nam.</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Tiền vào PayPal của bạn — alert lên sóng ngay</strong>
+                <span>Tên khán giả, số tiền USD và lời nhắn hiện lên OBS realtime với đúng preset bạn đang dùng. TTS đọc lời nhắn, kiểm duyệt nội dung vẫn hoạt động — tất cả chạy chung hàng đợi với donate VietQR.</span>
+              </div>
+            </li>
+          </ol>
+
+          <div class="highlight-paypal">
+            <h3>🌍 Không bỏ sót lượt ủng hộ nào — trong nước hay quốc tế</h3>
+            <p>
+              Alert PayPal và alert VietQR dùng chung một Browser Source trong OBS, phát tuần tự qua một hàng đợi.
+              Buổi live đông người, donate trong nước và nước ngoài xen kẽ nhau vẫn mượt — không đè âm thanh, không cần bấm gì thêm.
+            </p>
+          </div>
+
+          <h2>Hướng dẫn nhận donate PayPal — chỉ cần cấu hình 1 email</h2>
+
+          <ol class="step-list">
+            <li>
+              <div>
+                <strong>Tạo tài khoản LiveQR (nếu chưa có)</strong>
+                <span>Truy cập <a href="https://app.liveqr.me" target="_blank" rel="noopener">app.liveqr.me</a> → đăng ký miễn phí. Đã có tài khoản thì bỏ qua bước này — PayPal bật thêm ngay trên trang donate hiện tại của bạn, không tạo trang mới.</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Cấu hình email PayPal trong app LiveQR</strong>
+                <span>Vào dashboard → phần cài đặt thanh toán → nhập <b>email PayPal</b> của bạn (email của tài khoản PayPal dùng để nhận tiền) → lưu. Chỉ vậy thôi — không cần đăng nhập PayPal, không API key, không kết nối gì phức tạp.</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Trang donate tự hiện tùy chọn PayPal</strong>
+                <span>Lưu email xong là xong — khán giả mở <code>liveqr.me/@ten-cua-ban</code> sẽ thấy tùy chọn thanh toán bằng PayPal ngay trên trang, không cần bật thêm gì. Khán giả trong nước vẫn donate VietQR như bình thường.</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Live thôi — alert tự bật khi có donate</strong>
+                <span>Khán giả ở nước ngoài thanh toán xong, tiền chuyển vào đúng tài khoản PayPal theo email bạn đã cấu hình và alert + TTS hiện lên OBS ngay. Widget OBS giữ nguyên — không cần thêm Browser Source mới.</span>
+              </div>
+            </li>
+          </ol>
+
+          <div class="tip-box">
+            <p><strong>💡 Mẹo:</strong> Khi live, thi thoảng nhắc khán giả ở nước ngoài: <em>"Bạn ở nước ngoài vẫn donate được nhé — vào link trong phần mô tả, chọn PayPal là xong!"</em>. Một câu nhắc đều đặn có thể đánh thức cả nhóm khán giả Việt kiều vẫn im lặng theo dõi bạn bấy lâu nay.</p>
+          </div>
+
+          <h2>Chi phí minh bạch: bạn trả gì, cho ai?</h2>
+
+          <p>Nhận donate PayPal có hai phần phí, không có phần nào bị giấu:</p>
+
+          <ul>
+            <li><strong>Phí nền tảng LiveQR</strong> — vẫn theo gói bạn đang dùng (gói Free: 5% doanh thu donate hàng tháng). Không phí cố định, không phí rút.</li>
+            <li><strong>Phí giao dịch quốc tế của PayPal</strong> — theo bảng phí công khai của PayPal cho thị trường nơi tài khoản của bạn đăng ký (thường là phần trăm trên mỗi giao dịch + phí cố định), cộng phần chênh lệch tỷ giá nếu bạn quy đổi USD ra VND. Đây là phí của PayPal, không phải của LiveQR.</li>
+          </ul>
+
+          <p>So với việc để tiền nằm trong ví trung gian rồi chịu phí rút thêm như các nền tảng donate quốc tế khác — tiền PayPal vào thẳng tài khoản của bạn, bạn chủ động rút anytime.</p>
+
+          <h2>Mẹo tăng doanh thu donate quốc tế</h2>
+
+          <ul>
+            <li><strong>Ghim link donate ngay đầu buổi live</strong> — khán giả quốc tế thường xem qua bản share link, họ không biết kênh Việt nhận donate kiểu gì. Link ghim + dòng "PayPal accepted" là tất cả những gì họ cần.</li>
+            <li><strong>Viết đôi lời cảm ơn bằng tiếng Anh trên trang donate</strong> — vài câu đơn giản làm khán giả quốc tế thấy mình được chào đón, sẵn sàng ủng hộ hơn.</li>
+            <li><strong>Cảm ơn đúng tên trên sóng</strong> — alert + TTS đọc tên và lời nhắn chính là "khoảnh khắc lên sóng" mà khán giả nước ngoài mua. Đọc tên xong gọi cảm ơn đúng người, họ sẽ quay lại.</li>
+            <li><strong>Kết hợp quà tặng animated</strong> — quà bay lên màn hình theo tier khiến lượt donate $10 từ California cũng "cháy" như 200k trong nước.</li>
+          </ul>
+
+          <div class="article-cta-box">
+            <h3>Bật nhận donate quốc tế ngay hôm nay</h3>
+            <p>Chỉ cần cấu hình email PayPal trong app LiveQR — trang donate tự hiện tùy chọn PayPal, khán giả ở bất kỳ đâu ủng hộ, alert + TTS lên OBS realtime và tiền chuyển thẳng vào tài khoản PayPal của bạn. Cài đặt xong trong chưa đầy 5 phút.</p>
+            <div class="cta-btns">
+              <a class="btn btn-primary btn-lg" href="https://app.liveqr.me" target="_blank" rel="noopener">Tạo tài khoản miễn phí</a>
+              <a class="btn btn-ghost btn-lg" href="https://zalo.me/84394675935" target="_blank" rel="noopener">💬 Hỏi qua Zalo</a>
+            </div>
+          </div>
+
+          <div class="faq-list" id="faq">
+            <h2>Câu hỏi thường gặp</h2>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">Khán giả ở nước ngoài cần gì để donate cho tôi qua PayPal?<span class="faq-icon"></span></button>
+              <div class="faq-a"><p>Chỉ cần một tài khoản PayPal hoặc thẻ quốc tế (Visa/Mastercard). Họ mở đúng trang donate <b>liveqr.me/@ten-cua-ban</b> của bạn — sau khi bạn cấu hình email PayPal, tùy chọn thanh toán PayPal tự hiện sẵn trên trang — rồi chọn mức tiền, nhập lời nhắn và thanh toán. Không cần tạo tài khoản LiveQR, không cần app ngân hàng Việt Nam.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">Tiền donate PayPal về đâu? LiveQR có giữ tiền không?<span class="faq-icon"></span></button>
+              <div class="faq-a"><p>Tiền chuyển vào <b>đúng tài khoản PayPal theo email bạn đã cấu hình</b> trong app LiveQR. LiveQR chỉ nhận tín hiệu giao dịch để bắn alert lên sóng — tiền không đi qua LiveQR, không có ví trung gian, không chờ tất toán.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">Donate PayPal có hiện alert trên OBS realtime không?<span class="faq-icon"></span></button>
+              <div class="faq-a"><p>Có. Khi giao dịch hoàn tất, alert hiện <b>tên khán giả, số tiền USD và lời nhắn</b> lên OBS theo thời gian thực, kèm đúng preset alert và TTS đọc lời nhắn — chạy chung hàng đợi với donate VietQR, không cần thêm Browser Source mới. Xem thử ở <a href="../../#demo">bản demo</a>.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">TTS đọc được lời nhắn tiếng Anh không?<span class="faq-icon"></span></button>
+              <div class="faq-a"><p>Đọc được. Lời nhắn tiếng Anh vẫn được TTS đọc thành tiếng như lời nhắn tiếng Việt, và vẫn đi qua <b>bộ kiểm duyệt nội dung</b> trước khi hiện lên sóng — bạn không lo bị bắn lời nhắn xấu giữa buổi live.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">Phí nhận donate PayPal là bao nhiêu?<span class="faq-icon"></span></button>
+              <div class="faq-a"><p>Hai phần: phí nền tảng LiveQR theo gói bạn đang dùng (gói Free: <b>5% doanh thu donate hàng tháng</b>) và <b>phí giao dịch quốc tế của PayPal</b> theo bảng phí công khai của họ cho thị trường nơi tài khoản của bạn đăng ký, cộng chênh lệch tỷ giá nếu quy đổi USD ra VND. LiveQR không thu phí rút.</p></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="../../">
+          <img class="brand-logo" src="../../brand/logo-on-dark.svg" alt="LiveQR" height="28" width="148" />
+        </a>
+        <p>Donate VietQR về thẳng tài khoản ngân hàng. Trang donate tuỳ chỉnh, alert OBS realtime cho streamer Việt.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sản phẩm</h4>
+        <a href="https://app.liveqr.me" target="_blank" rel="noopener">Dùng thử miễn phí</a>
+        <a href="../../#demo">Demo alert</a>
+        <a href="../../#pricing">Bảng giá</a>
+        <a href="../../#features">Tính năng</a>
+      </div>
+      <div class="footer-col">
+        <h4>Hướng dẫn</h4>
+        <a href="../nhan-donate-tu-nuoc-ngoai-paypal/">Nhận donate PayPal từ nước ngoài</a>
+        <a href="../nhan-donate-tiktok-live/">Nhận donate TikTok Live</a>
+        <a href="../doc-binh-luan-tiktok-live/">Đọc bình luận TikTok Live</a>
+        <a href="../donate-giong-chi-google-obs/">Donate giọng chị Google OBS</a>
+        <a href="../tao-trang-donate-streamer/">Tạo trang donate miễn phí</a>
+        <a href="../phi-donate-streamer-viet/">So sánh phí donate</a>
+      </div>
+      <div class="footer-col">
+        <h4>Liên hệ</h4>
+        <a href="https://zalo.me/84394675935" target="_blank" rel="noopener">Zalo: 0394 675 935</a>
+        <a href="tel:0394675935">Gọi: 0394675935</a>
+        <a href="https://www.facebook.com/profile.php?id=61594529878517" target="_blank" rel="noopener">Fanpage Facebook</a>
+        <a href="/privacy/">Chính sách bảo mật</a>
+        <a href="/terms/">Điều khoản sử dụng</a>
+        <a href="https://www.tiktok.com/" target="_blank" rel="noopener">TikTok (@codeonholiday)</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 LiveQR. Số liệu so sánh theo thông tin công khai của các nền tảng (11/2026).</span>
+    </div>
+  </footer>
+
+  <script src="../../script.js"></script>
+</body>
+</html>
