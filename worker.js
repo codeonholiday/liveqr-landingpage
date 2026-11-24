@@ -6,7 +6,11 @@
  * - Mọi request khác → serve static từ public/ qua binding ASSETS
  *   (asset có sẵn được Cloudflare serve trực tiếp, worker chỉ nhận path không khớp file)
  */
-const APP_ORIGIN = 'https://app.liveqr.me';
+// Port 443 khai báo tường minh: subrequest từ Worker (zone liveqr.me) sang
+// hostname cùng zone app.liveqr.me từng bị Cloudflare đưa xuống port 80,
+// dính redirect HTTP→HTTPS của nginx (301) thay vì proxied trang donate.
+const APP_ORIGIN = 'https://app.liveqr.me:443';
+const APP_HOST = 'app.liveqr.me';
 
 function shouldProxy(pathname) {
   return pathname.startsWith('/@') || pathname.startsWith('/_next/');
@@ -16,7 +20,7 @@ async function proxyToApp(request) {
   const url = new URL(request.url);
   const target = new URL(url.pathname + url.search, APP_ORIGIN);
   const headers = new Headers(request.headers);
-  headers.set('Host', APP_ORIGIN.replace('https://', ''));
+  headers.set('Host', APP_HOST);
   headers.set('X-Forwarded-Host', url.host);
 
   const init = {
