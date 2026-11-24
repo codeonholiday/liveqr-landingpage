@@ -10,8 +10,8 @@ HTML/CSS/JS thuần — không build tool, không dependency.
 | `public/demo.js` | Demo tương tác: donate → alert overlay, hàng đợi, TTS, đọc bình luận TikTok Live (chỉ phát âm thanh), kiểm duyệt tiếng Việt |
 | `public/script.js` | Menu mobile, FAQ accordion, scroll-reveal, header |
 | `public/huong-dan/index.html` | Trang hub danh sách tất cả bài hướng dẫn |
-| `public/favicon.svg`, `public/robots.txt`, `public/sitemap.xml`, `public/og-image.png`, `public/llms.txt` | Meta/SEO — `og-image.png` là ảnh share 1200×630, `llms.txt` là bản tóm tắt cho AI crawler (ChatGPT, Claude, Perplexity), `robots.txt` cho phép rõ ràng các AI bot |
-| `worker.js` | Worker Cloudflare: proxy `/@<streamer>` và `/_next/*` → `app.liveqr.me`, còn lại serve static |
+| `public/favicon.svg`, `public/robots.txt`, `public/sitemap.xml`, `public/og-image.png`, `public/llms.txt` | Meta/SEO — `og-image.png` là ảnh share 1200×630, `llms.txt` là bản tóm tắt cho AI crawler (ChatGPT, Claude, Perplexity), `robots.txt` cho phép rõ ràng các AI bot. `sitemap.xml` chỉ chứa các trang landing tĩnh — khi serve `/sitemap.xml`, worker ghép thêm `/@<streamer>` lấy từ API public directory |
+| `worker.js` | Worker Cloudflare: proxy `/@<streamer>` và `/_next/*` → `app.liveqr.me`, sinh `/sitemap.xml` động (tĩnh + `/@<streamer>`), còn lại serve static |
 | `wrangler.jsonc` | Cấu hình deploy Cloudflare Workers (static assets trong `public/`) |
 
 ## Xem local
